@@ -1,96 +1,96 @@
-9a,Magyar nyelv és irodalom,3,Pócsik Erzsébet,PE
-9a,Matematika,4,Kovács Elemér,KE
-9a,Angol nyelv,4,Pócsik Erzsébet,PE
-9a,Német nyelv,3,Tardosi Piroska,TP
-9a,Történelem,2,Nagyné Kis Gizella,NKG
-9a,Biológia,3,Madaras Janka,MJ
-9a,Fizika,2,Végh Aladár,VA
-9a,Kémia,2,Kovács Elemér,KE
-9a,Földrajz,2,Madaras Janka,MJ
-9a,Ének-zene,1,Csabai Róbert,CR
-9a,Vizuális kultúra,1,Csabai Róbert,CR
-9a,Digitális kultúra,2,Baráth Anna,BA
-9a,Testnevelés,5,Erõss Zoltán,EZ
-9a,Osztályfõnöki,1,Kovács Elemér,KE
-9b,Magyar nyelv és irodalom,3,Pócsik Erzsébet,NKG
-9b,Matematika,4,Végh Aladár,VA
+9a,Magyar nyelv Ã©s irodalom,3,PÃ³csik ErzsÃ©bet,PE
+9a,Matematika,4,KovÃ¡cs ElemÃ©r,KE
+9a,Angol nyelv,4,PÃ³csik ErzsÃ©bet,PE
+9a,NÃ©met nyelv,3,Tardosi Piroska,TP
+9a,TÃ¶rtÃ©nelem,2,NagynÃ© Kis Gizella,NKG
+9a,BiolÃ³gia,3,Madaras Janka,MJ
+9a,Fizika,2,VÃ©gh AladÃ¡r,VA
+9a,KÃ©mia,2,KovÃ¡cs ElemÃ©r,KE
+9a,FÃ¶ldrajz,2,Madaras Janka,MJ
+9a,Ã‰nek-zene,1,Csabai RÃ³bert,CR
+9a,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+9a,DigitÃ¡lis kultÃºra,2,BarÃ¡th Anna,BA
+9a,TestnevelÃ©s,5,ErÅ‘ss ZoltÃ¡n,EZ
+9a,OsztÃ¡lyfÅ‘nÃ¶ki,1,KovÃ¡cs ElemÃ©r,KE
+9b,Magyar nyelv Ã©s irodalom,3,PÃ³csik ErzsÃ©bet,NKG
+9b,Matematika,4,VÃ©gh AladÃ¡r,VA
 9b,Angol nyelv,4,Tardosi Piroska,TP
-9b,Német nyelv,3,Dudás Tamás,DT
-9b,Történelem,2,Nagyné Kis Gizella,NKG
-9b,Biológia,3,Madaras Janka,MJ
-9b,Fizika,2,dr.Simon Géza,SG
-9b,Kémia,2,Kovács Elemér,KE
-9b,Földrajz,2,Madaras Janka,MJ
-9b,Ének-zene,1,Csabai Róbert,CR
-9b,Vizuális kultúra,1,Csabai Róbert,CR
-9b,Digitális kultúra,2,Baráth Anna,BA
-9b,Testnevelés,5,Aradi Viola,AV
-9b,Osztályfõnöki,1,Baráth Anna,BA
-10a,Magyar nyelv és irodalom,4,Dudás Tamás,DT
-10a,Matematika,4,Kovács Elemér,KE
-10a,Angol nyelv,4,Csabai Róbert,CR
-10a,Német nyelv,3,Dudás Tamás,DT
-10a,Történelem,2,Nagyné Kis Gizella,NKG
-10a,Biológia,2,Madaras Janka,MJ
-10a,Fizika,3,dr.Simon Géza,SG
-10a,Kémia,1,Kovács Elemér,KE
-10a,Földrajz,1,Madaras Janka,MJ
-10a,Ének-zene,1,Csabai Róbert,CR
-10a,Vizuális kultúra,1,Csabai Róbert,CR
-10a,Digitális kultúra,1,Baráth Anna,BA
-10a,Testnevelés,5,Erõss Zoltán,EZ
-10a,Osztályfõnöki,1,Dudás Tamás,DT
-10b,Magyar nyelv és irodalom,4,Nagyné Kis Gizella,NKG
-10b,Matematika,4,Végh Aladár,VA
-10b,Angol nyelv,4,Pócsik Erzsébet,PE
-10b,Német nyelv,3,Tardosi Piroska,TP
-10b,Történelem,2,Nagyné Kis Gizella,NKG
-10b,Biológia,2,Madaras Janka,MJ
-10b,Fizika,3,Végh Aladár,VA
-10b,Kémia,1,Kovács Elemér,KE
-10b,Földrajz,1,Madaras Janka,MJ
-10b,Ének-zene,1,Csabai Róbert,CR
-10b,Vizuális kultúra,1,Csabai Róbert,CR
-10b,Digitális kultúra,1,Baráth Anna,BA
-10b,Testnevelés,5,Aradi Viola,AV
-10b,Osztályfõnöki,1,Végh Aladár,VA
-11a,Magyar nyelv és irodalom,4,Dudás Tamás,DT
-11a,Matematika,3,Végh Aladár,VA
+9b,NÃ©met nyelv,3,DudÃ¡s TamÃ¡s,DT
+9b,TÃ¶rtÃ©nelem,2,NagynÃ© Kis Gizella,NKG
+9b,BiolÃ³gia,3,Madaras Janka,MJ
+9b,Fizika,2,dr.Simon GÃ©za,SG
+9b,KÃ©mia,2,KovÃ¡cs ElemÃ©r,KE
+9b,FÃ¶ldrajz,2,Madaras Janka,MJ
+9b,Ã‰nek-zene,1,Csabai RÃ³bert,CR
+9b,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+9b,DigitÃ¡lis kultÃºra,2,BarÃ¡th Anna,BA
+9b,TestnevelÃ©s,5,Aradi Viola,AV
+9b,OsztÃ¡lyfÅ‘nÃ¶ki,1,BarÃ¡th Anna,BA
+10a,Magyar nyelv Ã©s irodalom,4,DudÃ¡s TamÃ¡s,DT
+10a,Matematika,4,KovÃ¡cs ElemÃ©r,KE
+10a,Angol nyelv,4,Csabai RÃ³bert,CR
+10a,NÃ©met nyelv,3,DudÃ¡s TamÃ¡s,DT
+10a,TÃ¶rtÃ©nelem,2,NagynÃ© Kis Gizella,NKG
+10a,BiolÃ³gia,2,Madaras Janka,MJ
+10a,Fizika,3,dr.Simon GÃ©za,SG
+10a,KÃ©mia,1,KovÃ¡cs ElemÃ©r,KE
+10a,FÃ¶ldrajz,1,Madaras Janka,MJ
+10a,Ã‰nek-zene,1,Csabai RÃ³bert,CR
+10a,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+10a,DigitÃ¡lis kultÃºra,1,BarÃ¡th Anna,BA
+10a,TestnevelÃ©s,5,ErÅ‘ss ZoltÃ¡n,EZ
+10a,OsztÃ¡lyfÅ‘nÃ¶ki,1,DudÃ¡s TamÃ¡s,DT
+10b,Magyar nyelv Ã©s irodalom,4,NagynÃ© Kis Gizella,NKG
+10b,Matematika,4,VÃ©gh AladÃ¡r,VA
+10b,Angol nyelv,4,PÃ³csik ErzsÃ©bet,PE
+10b,NÃ©met nyelv,3,Tardosi Piroska,TP
+10b,TÃ¶rtÃ©nelem,2,NagynÃ© Kis Gizella,NKG
+10b,BiolÃ³gia,2,Madaras Janka,MJ
+10b,Fizika,3,VÃ©gh AladÃ¡r,VA
+10b,KÃ©mia,1,KovÃ¡cs ElemÃ©r,KE
+10b,FÃ¶ldrajz,1,Madaras Janka,MJ
+10b,Ã‰nek-zene,1,Csabai RÃ³bert,CR
+10b,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+10b,DigitÃ¡lis kultÃºra,1,BarÃ¡th Anna,BA
+10b,TestnevelÃ©s,5,Aradi Viola,AV
+10b,OsztÃ¡lyfÅ‘nÃ¶ki,1,VÃ©gh AladÃ¡r,VA
+11a,Magyar nyelv Ã©s irodalom,4,DudÃ¡s TamÃ¡s,DT
+11a,Matematika,3,VÃ©gh AladÃ¡r,VA
 11a,Angol nyelv,4,Tardosi Piroska,TP
-11a,Német nyelv,3,Tardosi Piroska,TP
-11a,Történelem,3,Nagyné Kis Gizella,NKG
-11a,Természettudomány,2,Kovács Elemér,KE
-11a,Vizuális kultúra,1,Csabai Róbert,CR
-11a,Digitális kultúra,2,Baráth Anna,BA
-11a,Testnevelés,5,Erõss Zoltán,EZ
-11a,Osztályfõnöki,1,Tardosi Piroska,TP
-11a,Fakultáció,4,Erõss Zoltán,EZ
-11b,Magyar nyelv és irodalom,4,Pócsik Erzsébet,PE
-11b,Matematika,3,Végh Aladár,VA
-11b,Angol nyelv,4,Pócsik Erzsébet,PE
-11b,Német nyelv,3,Dudás Tamás,DT
-11b,Történelem,3,Nagyné Kis Gizella,NKG
-11b,Természettudomány,2,Kovács Elemér,KE
-11b,Vizuális kultúra,1,Csabai Róbert,CR
-11b,Digitális kultúra,2,Baráth Anna,BA
-11b,Testnevelés,5,Aradi Viola,AV
-11b,Osztályfõnöki,1,Aradi Viola,AV
-11b,Fakultáció,4,Aradi Viola,AV
-12a,Magyar nyelv és irodalom,4,Dudás Tamás,DT
-12a,Matematika,4,Kovács Elemér,KE
+11a,NÃ©met nyelv,3,Tardosi Piroska,TP
+11a,TÃ¶rtÃ©nelem,3,NagynÃ© Kis Gizella,NKG
+11a,TermÃ©szettudomÃ¡ny,2,KovÃ¡cs ElemÃ©r,KE
+11a,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+11a,DigitÃ¡lis kultÃºra,2,BarÃ¡th Anna,BA
+11a,TestnevelÃ©s,5,ErÅ‘ss ZoltÃ¡n,EZ
+11a,OsztÃ¡lyfÅ‘nÃ¶ki,1,Tardosi Piroska,TP
+11a,FakultÃ¡ciÃ³,4,ErÅ‘ss ZoltÃ¡n,EZ
+11b,Magyar nyelv Ã©s irodalom,4,PÃ³csik ErzsÃ©bet,PE
+11b,Matematika,3,VÃ©gh AladÃ¡r,VA
+11b,Angol nyelv,4,PÃ³csik ErzsÃ©bet,PE
+11b,NÃ©met nyelv,3,DudÃ¡s TamÃ¡s,DT
+11b,TÃ¶rtÃ©nelem,3,NagynÃ© Kis Gizella,NKG
+11b,TermÃ©szettudomÃ¡ny,2,KovÃ¡cs ElemÃ©r,KE
+11b,VizuÃ¡lis kultÃºra,1,Csabai RÃ³bert,CR
+11b,DigitÃ¡lis kultÃºra,2,BarÃ¡th Anna,BA
+11b,TestnevelÃ©s,5,Aradi Viola,AV
+11b,OsztÃ¡lyfÅ‘nÃ¶ki,1,Aradi Viola,AV
+11b,FakultÃ¡ciÃ³,4,Aradi Viola,AV
+12a,Magyar nyelv Ã©s irodalom,4,DudÃ¡s TamÃ¡s,DT
+12a,Matematika,4,KovÃ¡cs ElemÃ©r,KE
 12a,Angol nyelv,4,Tardosi Piroska,TP
-12a,Német nyelv,3,Dudás Tamás,DT
-12a,Történelem,4,Nagyné Kis Gizella,NKG
-12a,Média,1,Baráth Anna,BA
-12a,Testnevelés,5,Erõss Zoltán,EZ
-12a,Osztályfõnöki,1,Erõss Zoltán,EZ
-12a,Fakultáció,4,Csabai Róbert,CR
-12b,Magyar nyelv és irodalom,4,Pócsik Erzsébet,PE
-12b,Matematika,4,Végh Aladár,VA
-12b,Angol nyelv,4,Csabai Róbert,PE
-12b,Német nyelv,3,Tardosi Piroska,TP
-12b,Történelem,4,Nagyné Kis Gizella,NKG
-12b,Média,1,Baráth Anna,BA
-12b,Testnevelés,5,Aradi Viola,AV
-12b,Osztályfõnöki,1,Madaras Janka,MJ
-12b,Fakultáció,4,Maradas Janka,MJ
+12a,NÃ©met nyelv,3,DudÃ¡s TamÃ¡s,DT
+12a,TÃ¶rtÃ©nelem,4,NagynÃ© Kis Gizella,NKG
+12a,MÃ©dia,1,BarÃ¡th Anna,BA
+12a,TestnevelÃ©s,5,ErÅ‘ss ZoltÃ¡n,EZ
+12a,OsztÃ¡lyfÅ‘nÃ¶ki,1,ErÅ‘ss ZoltÃ¡n,EZ
+12a,FakultÃ¡ciÃ³,4,Csabai RÃ³bert,CR
+12b,Magyar nyelv Ã©s irodalom,4,PÃ³csik ErzsÃ©bet,PE
+12b,Matematika,4,VÃ©gh AladÃ¡r,VA
+12b,Angol nyelv,4,Csabai RÃ³bert,PE
+12b,NÃ©met nyelv,3,Tardosi Piroska,TP
+12b,TÃ¶rtÃ©nelem,4,NagynÃ© Kis Gizella,NKG
+12b,MÃ©dia,1,BarÃ¡th Anna,BA
+12b,TestnevelÃ©s,5,Aradi Viola,AV
+12b,OsztÃ¡lyfÅ‘nÃ¶ki,1,Madaras Janka,MJ
+12b,FakultÃ¡ciÃ³,4,Maradas Janka,MJ

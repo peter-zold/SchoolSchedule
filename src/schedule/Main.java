@@ -3,7 +3,7 @@ package schedule;
 public class Main {
     public static void main(String[] args){
         // Create GA object
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.001, 0.95, 2);
+        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.001, 0.95, 2);
 
         // Initialize population
         Population population = ga.initPopulation(50);

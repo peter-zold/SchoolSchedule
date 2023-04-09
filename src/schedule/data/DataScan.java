@@ -50,7 +50,7 @@ public class DataScan {
             System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
         }
 
-        TimeTable.createRandomTimeTable(allClasses.get(6));
+        TimeTable.createRandomTimeTable(allClasses.get(1));
     }
 }
 

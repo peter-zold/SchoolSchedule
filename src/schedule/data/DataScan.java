@@ -40,14 +40,17 @@ public class DataScan {
         }
 
         List<Subject> temporary = new ArrayList<>();
+        int lessonsPerWeek = 0;
         for (int i = 0; i < allClassesNames.size();i++) {
             for (int j = 0; j < allSubjects.size(); j++) {
                 if (allClassesNames.get(i).equals(allSubjects.get(j).className)) {
                     temporary.add(allSubjects.get(j));
+                    lessonsPerWeek += allSubjects.get(j).hoursPerWeek;
                 }
             }
-            allClasses.add(new Classes(temporary, allClassesNames.get(i)));
+            allClasses.add(new Classes(temporary, allClassesNames.get(i), lessonsPerWeek));
             temporary.clear();
+            lessonsPerWeek = 0;
         }
 
         for (int i = 0; i < allClasses.size();i++){

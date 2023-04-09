@@ -7,7 +7,8 @@ import java.util.List;
 public class Classes {
     List<Subject> subjects = new ArrayList<>();
     String className;
-    Classes(List<Subject> subjects, String className){
+    int lessonsPerWeek;
+    Classes(List<Subject> subjects, String className, int lessonsPerWeek){
 
         Iterator<Subject> iterator = subjects.iterator();
         while (iterator.hasNext()){
@@ -15,6 +16,7 @@ public class Classes {
             this.subjects.add(subject);
         }
         this.className = className;
+        this.lessonsPerWeek = lessonsPerWeek;
     }
 
 }

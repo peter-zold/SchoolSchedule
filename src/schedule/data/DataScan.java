@@ -33,7 +33,7 @@ public class DataScan {
                     if (allClasses.get(i).getClassName().equals(dataOfSubject[0])) {
 
                         for (int j = 0; j < Integer.parseInt(dataOfSubject[2]); j++) {
-                            allClasses.get(i).addLessons((new Lesson(dataOfSubject[1], dataOfSubject[3])));
+                            allClasses.get(i).addLessons((new Lesson(dataOfSubject[1], dataOfSubject[3], 0)));
                         }
                     }
                 }
@@ -49,6 +49,8 @@ public class DataScan {
         for (int i = 0; i < allClasses.size(); i++) {
             System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
         }
+
+        TimeTable.createRandomTimeTable(allClasses.get(6));
     }
 }
 

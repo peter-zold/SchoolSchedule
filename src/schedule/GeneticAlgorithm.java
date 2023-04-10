@@ -1,5 +1,12 @@
 package schedule;
 
+import schedule.data.Classes;
+import schedule.data.Lesson;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The GeneticAlgorithm class is our main abstraction for managing the
  * operations of the genetic algorithm. This class is meant to be
@@ -26,15 +33,14 @@ package schedule;
 
 public class GeneticAlgorithm {
 
+    protected int tournamentSize;
     private int populationSize;
-
     /**
      * Mutation rate is the fractional probability than an individual gene will
      * mutate randomly in a given generation. The range is 0.0-1.0, but is
      * generally small (on the order of 0.1 or less).
      */
     private double mutationRate;
-
     /**
      * Crossover rate is the fractional probability that two individuals will
      * "mate" with each other, sharing genetic information, and creating
@@ -42,7 +48,6 @@ public class GeneticAlgorithm {
      * rance is 0.0-1.0 but small.
      */
     private double crossoverRate;
-
     /**
      * Elitism is the concept that the strongest members of the population
      * should be preserved from generation to generation. If an individual is
@@ -50,28 +55,31 @@ public class GeneticAlgorithm {
      */
     private int elitismCount;
 
-    public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount) {
+
+    public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount, int tournamentSize) {
         this.populationSize = populationSize;
         this.mutationRate = mutationRate;
         this.crossoverRate = crossoverRate;
         this.elitismCount = elitismCount;
+        this.tournamentSize = tournamentSize;
+
     }
 
     /**
      * Initialize population
      *
-     * @param chromosomeLength The length of the individuals chromosome
+     * @param allTheClasses The classes arrayList from input data
      * @return population The initial population generated
      */
-    public Population initPopulation(int chromosomeLength) {
+    public Population initPopulation(List<Classes> allTheClasses) {
         // Initialize population
-        Population population = new Population(this.populationSize, chromosomeLength);
+        Population population = new Population(this.populationSize, allTheClasses);
         return population;
     }
 
     /**
      * Calculate fitness for an individual.
-     *
+     * <p>
      * In this case, the fitness score is very simple: it's the number of ones
      * in the chromosome. Don't forget that this method, and this whole
      * GeneticAlgorithm class, is meant to solve the problem in the "Main"
@@ -79,25 +87,13 @@ public class GeneticAlgorithm {
      * different version of this method to appropriately calculate the fitness
      * of an individual.
      *
-     * @param individual
-     *            the individual to evaluate
+     * @param individual the individual to evaluate
      * @return double The fitness value for individual
      */
     public double calcFitness(Individual individual) {
 
         // Track number of correct genes
-        int correctGenes = 0;
-
-        // Loop over individual's genes
-        for (int geneIndex = 0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
-            // Add one fitness point for each "1" found
-            if (individual.getGene(geneIndex) == 1) {
-                correctGenes += 1;
-            }
-        }
-
-        // Calculate fitness
-        double fitness = (double) correctGenes / individual.getChromosomeLength();
+        double fitness = individual.calcFitness();
 
         // Store fitness
         individual.setFitness(fitness);
@@ -107,14 +103,13 @@ public class GeneticAlgorithm {
 
     /**
      * Evaluate the whole population
-     *
+     * <p>
      * Essentially, loop over the individuals in the population, calculate the
      * fitness for each, and then calculate the entire population's fitness. The
      * population's fitness may or may not be important, but what is important
      * here is making sure that each individual gets evaluated.
      *
-     * @param population
-     *            the population to evaluate
+     * @param population the population to evaluate
      */
     public void evalPopulation(Population population) {
         double populationFitness = 0;
@@ -130,7 +125,7 @@ public class GeneticAlgorithm {
 
     /**
      * Check if population has met termination condition
-     *
+     * <p>
      * For this simple problem, we know what a perfect solution looks like, so
      * we can simply stop evolving once we've reached a fitness of one.
      *
@@ -148,52 +143,48 @@ public class GeneticAlgorithm {
     }
 
     /**
-     * Select parent for crossover (roulette wheel)
+     * Selects parent for crossover using tournament selection
+     * <p>
+     * Tournament selection works by choosing N random individuals, and then
+     * choosing the best of those.
      *
      * @param population
-     *            The population to select parent from
      * @return The individual selected as a parent
      */
     public Individual selectParent(Population population) {
-        // Get individuals
-        Individual[] individuals = population.getIndividuals();
+        // Create tournament
+        Population tournament = new Population(this.tournamentSize);
 
-        // Spin roulette wheel
-        double populationFitness = population.getPopulationFitness();
-        double rouletteWheelPosition = Math.random() * populationFitness;
-
-        // Find the parent
-        double spinWheel = 0;
-        for (Individual individual : individuals) {
-            spinWheel += individual.getFitness();
-            if (spinWheel >= rouletteWheelPosition) {
-                return individual;
-            }
+        // Add random individuals to the tournament
+        population.shuffle();
+        for (int i = 0; i < this.tournamentSize; i++) {
+            Individual tournamentIndividual = population.getIndividual(i);
+            tournament.setIndividual(i, tournamentIndividual);
         }
-        // If nobody fits, return the last individual
-        return individuals[population.size() - 1];
+
+        // Return the best
+        return tournament.getFittest(0);
     }
 
     /**
      * Apply crossover to population
-     *
+     * <p>
      * Crossover, more colloquially considered "mating", takes the population
      * and blends individuals to create new offspring. It is hoped that when two
      * individuals crossover that their offspring will have the strongest
      * qualities of each of the parents. Of course, it's possible that an
      * offspring will end up with the weakest qualities of each parent.
-     *
+     * <p>
      * This method considers both the GeneticAlgorithm instance's crossoverRate
      * and the elitismCount.
-     *
+     * <p>
      * The type of crossover we perform depends on the problem domain. We don't
      * want to create invalid solutions with crossover, so this method will need
      * to be changed for different types of problems.
-     *
+     * <p>
      * This particular crossover method selects random genes from each parent.
      *
-     * @param population
-     *            The population to apply crossover to
+     * @param population The population to apply crossover to
      * @return The new population
      */
     public Population crossoverPopulation(Population population) {
@@ -204,26 +195,29 @@ public class GeneticAlgorithm {
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             Individual parent1 = population.getFittest(populationIndex);
 
+
             // Apply crossover to this individual?
             if (this.crossoverRate > Math.random() && populationIndex >= this.elitismCount) {
-                // Initialize offspring
-                Individual offspring = new Individual(parent1.getChromosomeLength());
 
                 // Find second parent
                 Individual parent2 = selectParent(population);
 
-                // Loop over genome
-                for (int geneIndex = 0; geneIndex < parent1.getChromosomeLength(); geneIndex++) {
-                    // Use half of parent1's genes and half of parent2's genes
-                    if (0.5 > Math.random()) {
-                        offspring.setGene(geneIndex, parent1.getGene(geneIndex));
-                    } else {
-                        offspring.setGene(geneIndex, parent2.getGene(geneIndex));
+                // Initialize 10 offsprings
+                Individual[] offsprings = new Individual[10];
+                for (int i = 0; i < 9; i++) {
+                    Individual offspring = Individual.breedOffspring(parent1, parent2);
+                    offspring.setFitness(offspring.calcFitness());
+                    offsprings[i] = offspring;
+                }
+
+                for (int i = 0; i < 9; i++) {
+                    if(offsprings[i].getFitness() > parent1.getFitness()) {
+                        // Add offspring to new population
+                        newPopulation.setIndividual(populationIndex, offsprings[i]);
+                        break;
                     }
                 }
 
-                // Add offspring to new population
-                newPopulation.setIndividual(populationIndex, offspring);
             } else {
                 // Add individual to new population without applying crossover
                 newPopulation.setIndividual(populationIndex, parent1);
@@ -235,51 +229,52 @@ public class GeneticAlgorithm {
 
     /**
      * Apply mutation to population
-     *
+     * <p>
      * Mutation affects individuals rather than the population. We look at each
      * individual in the population, and if they're lucky enough (or unlucky, as
      * it were), apply some randomness to their chromosome. Like crossover, the
      * type of mutation applied depends on the specific problem we're solving.
      * In this case, we simply randomly flip 0s to 1s and vice versa.
-     *
+     * <p>
      * This method will consider the GeneticAlgorithm instance's mutationRate
      * and elitismCount
      *
-     * @param population
-     *            The population to apply mutation to
+     * @param population The population to apply mutation to
      * @return The mutated population
      */
     public Population mutatePopulation(Population population) {
         // Initialize new population
         Population newPopulation = new Population(this.populationSize);
-
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             Individual individual = population.getFittest(populationIndex);
+            Individual individualOriginal = population.getFittest(populationIndex);
 
-            // Loop over individual's genes
-            for (int geneIndex = 0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
-                // Skip mutation if this is an elite individual
+            for (int classIndex = 0; classIndex < individual.getNumOfClasses(); classIndex++) {
                 if (populationIndex > this.elitismCount) {
                     // Does this gene need mutation?
                     if (this.mutationRate > Math.random()) {
-                        // Get new gene
-                        int newGene = 1;
-                        if (individual.getGene(geneIndex) == 1) {
-                            newGene = 0;
-                        }
-                        // Mutate gene
-                        individual.setGene(geneIndex, newGene);
+                        // Get two collision mutations done
+                        individual.mutateTwoCollisions(classIndex);
+                    }
+                    if (this.mutationRate > Math.random()) {
+                        // Get one collision mutations done
+                        individual.mutateOneCollision(classIndex);
+                    }
+                    if (this.mutationRate > Math.random()) {
+                        // Get random collision mutations done
+                        individual.mutateRandom(classIndex);
                     }
                 }
             }
-
-            // Add individual to population
-            newPopulation.setIndividual(populationIndex, individual);
+            if (individual.calcFitness() > individualOriginal.calcFitness()) {
+                // Add individual to population
+                newPopulation.setIndividual(populationIndex, individual);
+            } else {
+                newPopulation.setIndividual(populationIndex, individualOriginal);
+            }
         }
-
         // Return mutated population
         return newPopulation;
     }
 }
-

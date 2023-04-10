@@ -13,7 +13,7 @@ public class TimeTable {
         Lesson[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod);
 
         //Tesztelés
-        printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
+        //printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
         return classLessons;
     }
 

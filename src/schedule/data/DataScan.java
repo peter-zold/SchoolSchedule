@@ -5,10 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class DataScan {
-    public static void main(String[] args) {
+    private List<Classes> allClasses = new ArrayList<>();
 
+    public List<Classes> getAllClasses() {
+        return allClasses;
+    }
 
-        List<Classes> allClasses = new ArrayList<>();
+    public void scanData() {
 
         // Osztályok példányosítása
         File classesName = new File("src\\schedule\\data\\classes.txt");
@@ -46,11 +49,11 @@ public class DataScan {
 
 
         // Az adatok tesztelése
-        for (int i = 0; i < allClasses.size(); i++) {
-            System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
-        }
+        //for (int i = 0; i < allClasses.size(); i++) {
+        //    System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
+        //}
 
-        TimeTable.createRandomTimeTable(allClasses.get(1));
+        //TimeTable.createRandomTimeTable(allClasses.get(1));
     }
 }
 

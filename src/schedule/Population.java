@@ -1,8 +1,9 @@
 package schedule;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Random;
+import schedule.data.Classes;
+import schedule.data.DataScan;
+
+import java.util.*;
 
 /**
  * A population is an abstraction of a collection of individuals. The population
@@ -34,17 +35,17 @@ public class Population {
      *
      * @param populationSize
      *            The number of individuals in the population
-     * @param chromosomeLength
-     *            The size of each individual's chromosome
+     * @param allTheClasses
+     *            classes from input data
      */
-    public Population(int populationSize, int chromosomeLength) {
+    public Population(int populationSize, List<Classes> allTheClasses) {
         // Initialize the population as an array of individuals
         this.population = new Individual[populationSize];
 
         // Create each individual in turn
         for (int individualCount = 0; individualCount < populationSize; individualCount++) {
-            // Create an individual, initializing its chromosome to the given length
-            Individual individual = new Individual(chromosomeLength);
+            // Create an individual, initializing its chromosome accordint to input data
+            Individual individual = new Individual(allTheClasses);
             // Add individual to population
             this.population[individualCount] = individual;
         }

@@ -1,135 +1,190 @@
 package schedule;
 
-/**
- * An "Individual" represents a single candidate solution. The core piece of
- * information about an individual is its "chromosome", which is an encoding of
- * a possible solution to the problem at hand. A chromosome can be a string, an
- * array, a list, etc -- in this class, the chromosome is an integer array.
- *
- * An individual position in the chromosome is called a gene, and these are the
- * atomic pieces of the solution that can be manipulated or mutated. When the
- * chromosome is a string, as in this case, each character or set of characters
- * can be a gene.
- *
- * An individual also has a "fitness" score; this is a number that represents
- * how good a solution to the problem this individual is. The meaning of the
- * fitness score will vary based on the problem at hand.
- *
- * @author bkanber
- *
- */
-public class Individual {
-    private int[] chromosome;
-    private double fitness = -1;
+import com.sun.jdi.connect.Connector;
+import schedule.data.Classes;
+import schedule.data.Lesson;
+import schedule.data.Teacher;
+import schedule.data.TimeTable;
 
-    /**
-     * Initializes individual with specific chromosome
-     *
-     * @param chromosome
-     *            The chromosome to give individual
-     */
-    public Individual(int[] chromosome) {
-        // Create individual chromosome
-        this.chromosome = chromosome;
+import java.util.*;
+
+
+public class Individual {
+    private Lesson[][] timetable;
+    private double fitness = -1;
+    private int numOfClasses;
+    private ArrayList<Integer>[] candidatesForMutation;  //int index is ClassID
+
+    // constructor for creating individual from timetable during algorithm process
+    public Individual(Lesson[][] timetable) {
+        this.timetable = timetable;
+        this.numOfClasses = timetable.length;
+        this.candidatesForMutation = new ArrayList[numOfClasses];
+        for (int i = 0; i < numOfClasses; i++) {
+            this.candidatesForMutation[i] = new ArrayList<Integer>();
+        }
     }
 
-    /**
-     * Initializes random individual.
-     *
-     * This constructor assumes that the chromosome is made entirely of 0s and
-     * 1s, which may not always be the case, so make sure to modify as
-     * necessary. This constructor also assumes that a "random" chromosome means
-     * simply picking random zeroes and ones, which also may not be the case
-     * (for instance, in a traveling salesman problem, this would be an invalid
-     * solution).
-     *
-     * @param chromosomeLength
-     *            The length of the individuals chromosome
-     */
-    public Individual(int chromosomeLength) {
 
-        this.chromosome = new int[chromosomeLength];
-        for (int gene = 0; gene < chromosomeLength; gene++) {
-            if (0.5 < Math.random()) {
-                this.setGene(gene, 1);
+    // constructor for initializing firts generation individuals
+    public Individual(List<Classes> allClasses) {
+        Lesson[][] tempTimeTable = new Lesson[allClasses.size()][];
+        for (int i = 0; i < allClasses.size(); i++) {
+            tempTimeTable[i] = TimeTable.createRandomTimeTable(allClasses.get(i));
+        }
+        this.timetable = tempTimeTable;
+        this.numOfClasses = allClasses.size();
+        this.candidatesForMutation = new ArrayList[numOfClasses];
+        for (int i = 0; i < numOfClasses; i++) {
+            this.candidatesForMutation[i] = new ArrayList<Integer>();
+        }
+    }
+
+    public static Individual breedOffspring(Individual parent1, Individual parent2) {
+        Lesson[][] offspringTimeTable = new Lesson[parent1.getNumOfClasses()][45];
+
+        // Loop over genome for all the offspring candidates
+        for (int classIndex = 0; classIndex < parent1.getNumOfClasses(); classIndex++) {
+            // Use half of parent1's genes and half of parent2's genes
+            if (0.5 > Math.random()) {
+                offspringTimeTable[classIndex] = parent1.getClassTimetable(classIndex);
             } else {
-                this.setGene(gene, 0);
+                offspringTimeTable[classIndex] = parent2.getClassTimetable(classIndex);
             }
         }
-
+        Individual offspring = new Individual(offspringTimeTable);
+        return offspring;
     }
 
-    /**
-     * Gets individual's chromosome
-     *
-     * @return The individual's chromosome
-     */
-    public int[] getChromosome() {
-        return this.chromosome;
+    // get number of classes
+    public int getNumOfClasses() {
+        return numOfClasses;
     }
 
-    /**
-     * Gets individual's chromosome length
-     *
-     * @return The individual's chromosome length
-     */
-    public int getChromosomeLength() {
-        return this.chromosome.length;
+    // get Timetable
+    public Lesson[][] getTimetable() {
+        return this.timetable;
     }
 
-    /**
-     * Set gene at offset
-     *
-     * @param gene
-     * @param offset
-     * @return gene
-     */
-    public void setGene(int offset, int gene) {
-        this.chromosome[offset] = gene;
-    }
-
-    /**
-     * Get gene at offset
-     *
-     * @param offset
-     * @return gene
-     */
-    public int getGene(int offset) {
-        return this.chromosome[offset];
-    }
-
-    /**
-     * Store individual's fitness
-     *
-     * @param fitness
-     *            The individuals fitness
-     */
-    public void setFitness(double fitness) {
-        this.fitness = fitness;
-    }
-
-    /**
-     * Gets individual's fitness
-     *
-     * @return The individual's fitness
-     */
+    // get fitness
     public double getFitness() {
         return this.fitness;
     }
 
-
-    /**
-     * Display the chromosome as a string.
-     *
-     * @return string representation of the chromosome
-     */
-    public String toString() {
-        String output = "";
-        for (int gene = 0; gene < this.chromosome.length; gene++) {
-            output += this.chromosome[gene];
-        }
-        return output;
+    // set fitness manually
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
+
+    // calculate fitness and select candidates for mutation
+    public double calcFitness() {
+        for (ArrayList<Integer> studentClass: candidatesForMutation) {
+            studentClass.clear();
+        }
+        int clashes = 0;
+        // clashes for same teacher in same timeslot
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < timetable[0].length; i++) {
+            for (int j = 0; j < timetable.length; j++) {
+                if (timetable[j][i].getValueOfFreeness() == 0 && !set.add(timetable[j][i].getTeacher().getName())) {
+                    candidatesForMutation[j].add(i);
+                    clashes++;
+                }
+            }
+            set.clear();
+        }
+        // clashes for same lesson in same day
+        Set<String> set2 = new HashSet<>();
+        for (int i = 0; i < timetable.length; i++) {
+            for (int j = 0; j < timetable[i].length; j++) {
+                if (j % 9 == 0) {
+                    set2.clear();
+                }
+                if (timetable[i][j].getValueOfFreeness() == 0 && !set2.add(timetable[i][j].getNameOfLesson())) {
+                    candidatesForMutation[i].add(j);
+                    clashes++;
+                }
+            }
+        }
+        return (double) 1 / (double) (1 + clashes);
+    }
+
+    private void setLesson(Lesson lesson, int classID, int dayHour) {
+        timetable[classID][dayHour] = lesson;
+    }
+
+    private Lesson getLesson(int classID, int dayHour) {
+        return timetable[classID][dayHour];
+    }
+
+    public void mutateTwoCollisions(int classID) {
+        // how many collisions in a class timetable
+        int collNum = candidatesForMutation[classID].size();
+        if (collNum >= 2) {
+            // choose two random indexes, and get Lesson day and hour location indexes from them
+            int i = (int) Math.floor(Math.random() * collNum);
+            int j;
+            do {
+                j = (int) Math.floor(Math.random() * collNum);
+            } while (i == j);
+            int dayHour1 = candidatesForMutation[classID].get(i);
+            int dayHour2 = candidatesForMutation[classID].get(j);
+
+            // swap these lessons, if they are not the same
+            if (!timetable[classID][dayHour1].equals(timetable[classID][dayHour2])) {
+                Lesson temp = timetable[classID][dayHour2];
+                timetable[classID][dayHour2] = timetable[classID][dayHour1];
+                timetable[classID][dayHour1] = temp;
+            }
+        }
+    }
+
+    public void mutateOneCollision(int classID) {
+        // How many collisions in a class timetable
+        int collNum = candidatesForMutation[classID].size();
+        if (collNum >= 1) {
+            // choose two random indexes, and get Lesson day and hour location indexes from them
+            int i = (int) Math.floor(Math.random() * collNum);
+            int dayHour1 = candidatesForMutation[classID].get(i);
+            int dayHour2 = (int) Math.floor(Math.random() * timetable[classID].length);
+
+            // swap these lessons, if they are not the same
+            if (!timetable[classID][dayHour1].equals(timetable[classID][dayHour2]) && timetable[classID][dayHour2].getValueOfFreeness() == 0) {
+                Lesson temp = timetable[classID][dayHour2];
+                timetable[classID][dayHour2] = timetable[classID][dayHour1];
+                timetable[classID][dayHour1] = temp;
+            }
+        }
+    }
+
+    public void mutateRandom(int classID) {
+        // choose two random indexes, and get Lesson day and hour location indexes from them
+        int dayHour1 = (int) Math.floor(Math.random() * timetable[classID].length);
+        int dayHour2 = (int) Math.floor(Math.random() * timetable[classID].length);
+
+        // swap these lessons, if they are not the same
+        if (!timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
+                && timetable[classID][dayHour1].getValueOfFreeness() == 0
+                && timetable[classID][dayHour2].getValueOfFreeness() == 0) {
+            Lesson temp = timetable[classID][dayHour2];
+            timetable[classID][dayHour2] = timetable[classID][dayHour1];
+            timetable[classID][dayHour1] = temp;
+        }
+    }
+
+    public Lesson[] getClassTimetable(int classID) {
+        return this.timetable[classID];
+    }
+
+    public void setClassTimetable(int classID, Lesson[] classTimeTable) {
+        this.timetable[classID] = classTimeTable;
+    }
+
+
 }
+
+
+
+
 
 

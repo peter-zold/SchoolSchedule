@@ -19,10 +19,21 @@ public class Individual {
     public Individual(Lesson[][] timetable) {
         this.timetable = timetable;
         this.numOfClasses = timetable.length;
-        this.candidatesForMutation = new ArrayList[numOfClasses];
-        for (int i = 0; i < numOfClasses; i++) {
+        this.candidatesForMutation = new ArrayList[this.numOfClasses];
+        for (int i = 0; i < this.numOfClasses; i++) {
             this.candidatesForMutation[i] = new ArrayList<Integer>();
         }
+        this.fitness = calcFitness();
+    }
+
+    public Individual(Individual individual) {
+        this.timetable = individual.getTimetable();
+        this.numOfClasses = individual.getNumOfClasses();
+        this.candidatesForMutation = new ArrayList[this.numOfClasses];
+        for (int i = 0; i < this.numOfClasses; i++) {
+            this.candidatesForMutation[i] = new ArrayList<Integer>();
+        }
+        this.fitness = individual.calcFitness();
     }
 
 
@@ -38,6 +49,7 @@ public class Individual {
         for (int i = 0; i < numOfClasses; i++) {
             this.candidatesForMutation[i] = new ArrayList<Integer>();
         }
+        this.fitness = calcFitness();
     }
 
     public static Individual breedOffspring(Individual parent1, Individual parent2) {
@@ -63,7 +75,13 @@ public class Individual {
 
     // get Timetable
     public Lesson[][] getTimetable() {
-        return this.timetable;
+        Lesson[][] newTimeTable = new Lesson[this.numOfClasses][45];
+        for (int i = 0; i < this.numOfClasses; i++) {
+            for (int j = 0; j < 45; j++) {
+                newTimeTable[i][j]=this.timetable[i][j];
+            }
+        }
+        return newTimeTable;
     }
 
     // get fitness
@@ -93,7 +111,7 @@ public class Individual {
             }
             set.clear();
         }
-        // clashes for same lesson in same day
+      // clashes for same lesson in same day
         Set<String> set2 = new HashSet<>();
         for (int i = 0; i < timetable.length; i++) {
             for (int j = 0; j < timetable[i].length; j++) {
@@ -106,7 +124,9 @@ public class Individual {
                 }
             }
         }
-        return (double) 1 / (double) (1 + clashes);
+        double calculatedFitness = (double) 1 / (double) (1 + clashes);
+        setFitness(calculatedFitness);
+        return calculatedFitness;
     }
 
     private void setLesson(Lesson lesson, int classID, int dayHour) {

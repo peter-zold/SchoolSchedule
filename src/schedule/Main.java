@@ -9,14 +9,14 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Create GA object
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.95, -1, 20);
-
+        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.2, 0.1, 0, 20);
         // Scan data
         DataScan ds = new DataScan();
         ds.scanData();
 
         // Initialize population
         Population population = ga.initPopulation(ds.getAllClasses());
+
 
         // Evaluate population
         ga.evalPopulation(population);
@@ -35,19 +35,19 @@ public class Main {
          */
         while (ga.isTerminationConditionMet(population) == false) {
             // Print fittest individual from population
-            System.out.println("Best solution: ");
-            printTimeTable(ds.getAllClasses(),population.getFittest(0));
             System.out.println();
+            System.out.println("Best solution: ");
+            //printTimeTable(ds.getAllClasses(),population.getFittest(0));
             System.out.println(population.getFittest(0).getFitness());
 
             // Apply crossover
-            // population = ga.crossoverPopulation(population);
+            population = ga.crossoverPopulation(population);
 
             // Apply mutation
             population = ga.mutatePopulation(population);
 
             // Evaluate population
-            ga.evalPopulation(population);
+             ga.evalPopulation(population);
 
             // Increment the current generation
             generation++;
@@ -68,6 +68,11 @@ public class Main {
         printTimeTable(ds.getAllClasses(),population.getFittest(0));
         System.out.println();
         System.out.println(population.getFittest(0).getFitness());
+
+        // population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
+        // Hogy ne kelljen lefuttatni sokszor, ezt alakítsa txt-vé, és ezzel dolgozzon tovább
+        // és ez legyen visszaalakítható timetable-é
+
     }
 
     public static void printTimeTable(List<Classes> allClasses, Individual individual) {

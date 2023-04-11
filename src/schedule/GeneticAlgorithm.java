@@ -5,6 +5,7 @@ import schedule.data.Lesson;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -117,7 +118,7 @@ public class GeneticAlgorithm {
         // Loop over population evaluating individuals and suming population
         // fitness
         for (Individual individual : population.getIndividuals()) {
-            populationFitness += calcFitness(individual);
+            populationFitness += individual.calcFitness();
         }
 
         population.setPopulationFitness(populationFitness);
@@ -194,27 +195,34 @@ public class GeneticAlgorithm {
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             Individual parent1 = population.getFittest(populationIndex);
+           // if(populationIndex == 0) System.out.println(populationIndex + " legjobb elem fitnesse mutáció után " + population.getFittest(0).getFitness());
+
 
 
             // Apply crossover to this individual?
-            if (this.crossoverRate > Math.random() && populationIndex >= this.elitismCount) {
+            if (this.crossoverRate > Math.random() && populationIndex > this.elitismCount) {
 
                 // Find second parent
                 Individual parent2 = selectParent(population);
 
+
                 // Initialize 10 offsprings
                 Individual[] offsprings = new Individual[10];
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 10; i++) {
                     Individual offspring = Individual.breedOffspring(parent1, parent2);
                     offspring.setFitness(offspring.calcFitness());
                     offsprings[i] = offspring;
                 }
 
-                for (int i = 0; i < 9; i++) {
+
+                for (int i = 0; i < 10; i++) {
                     if(offsprings[i].getFitness() > parent1.getFitness()) {
                         // Add offspring to new population
                         newPopulation.setIndividual(populationIndex, offsprings[i]);
                         break;
+                    }
+                    else {
+                        newPopulation.setIndividual(populationIndex, parent1);
                     }
                 }
 
@@ -247,11 +255,13 @@ public class GeneticAlgorithm {
         Population newPopulation = new Population(this.populationSize);
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
-            Individual individual = population.getFittest(populationIndex);
             Individual individualOriginal = population.getFittest(populationIndex);
+            Individual individual = new Individual(individualOriginal);
+            //Individual individual = population.getFittest(populationIndex);
+           // if(populationIndex == 0) System.out.println(populationIndex + " legjobb elem fitnesse crossover után " + population.getFittest(0).getFitness());
 
+            if (populationIndex > this.elitismCount) {
             for (int classIndex = 0; classIndex < individual.getNumOfClasses(); classIndex++) {
-                if (populationIndex > this.elitismCount) {
                     // Does this gene need mutation?
                     if (this.mutationRate > Math.random()) {
                         // Get two collision mutations done
@@ -261,16 +271,19 @@ public class GeneticAlgorithm {
                         // Get one collision mutations done
                         individual.mutateOneCollision(classIndex);
                     }
-                    if (this.mutationRate > Math.random()) {
+                    if (this.mutationRate > Math.random()*2) {
                         // Get random collision mutations done
                         individual.mutateRandom(classIndex);
                     }
                 }
+                if (individual.getFitness() >= individualOriginal.getFitness()) {
+                    // Add individual to population
+                    newPopulation.setIndividual(populationIndex, individual);
+                } else {
+                    newPopulation.setIndividual(populationIndex, individualOriginal);
+                }
             }
-            if (individual.calcFitness() > individualOriginal.calcFitness()) {
-                // Add individual to population
-                newPopulation.setIndividual(populationIndex, individual);
-            } else {
+             else {
                 newPopulation.setIndividual(populationIndex, individualOriginal);
             }
         }

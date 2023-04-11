@@ -6,6 +6,15 @@ import schedule.data.Lesson;
 
 import java.util.List;
 
+//Simon:
+// population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
+// Tudni kell az eredményt elmenteni (egyenlőre txt-be)
+// Tudni kell az elmentett órarendet visszaalakítani és timeTable-t létrehozni belőle
+
+// Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
+// (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
+
+
 public class Main {
     public static void main(String[] args) {
         // Create GA object
@@ -68,11 +77,6 @@ public class Main {
         printTimeTable(ds.getAllClasses(),population.getFittest(0));
         System.out.println();
         System.out.println(population.getFittest(0).getFitness());
-
-        // population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
-        // Hogy ne kelljen lefuttatni sokszor, ezt alakítsa txt-vé, és ezzel dolgozzon tovább
-        // és ez legyen visszaalakítható timetable-é
-
     }
 
     public static void printTimeTable(List<Classes> allClasses, Individual individual) {

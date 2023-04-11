@@ -36,7 +36,7 @@ public class Main {
         while (ga.isTerminationConditionMet(population) == false) {
             // Print fittest individual from population
             System.out.println();
-            System.out.println("Best solution: ");
+            System.out.println("Best solution:");
             //printTimeTable(ds.getAllClasses(),population.getFittest(0));
             System.out.println(population.getFittest(0).getFitness());
 

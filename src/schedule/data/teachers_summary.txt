@@ -1,0 +1,13 @@
+Nagyné Kis Gizella,KGE,4,Magyar nyelv és irodalom,22,Történelem
+Kovács Elemér,KE,12,Matematika,6,Kémia,4,Természettudomány,1,Osztályfőnöki
+Végh Aladár,VA,18,Matematika,5,Fizika,1,Osztályfőnöki
+Madaras Janka,MJ,10,Biológia,6Földrajz,4,Fakultáció,1,Osztályfőnöki
+dr.Simon Géza,SG,5,Fizika
+Baráth Anna,BA,10,Digitális kultúra,2,Média,1,Osztályfőnöki
+Pócsik Erzsébet,PE,14,Magyar nyelv és irodalom,12,Angol nyelv			
+Dudás Tamás,DT,12,Magyar nyelv és irodalom,12,Német nyelv,1,Osztályfőnöki
+Tardosi Piroska,TP,12,Angol nyelv,12,Német nyelv,1,Osztályfőnöki
+Erőss Zoltán,EZ,20,Testnevelés,4,Fakultáció		
+Arardi Viola,AV,20,Testnevelés,4,Fakultáció,1,Osztályfőnöki
+Csabai Róbet,CR,4,Ének-zene,6,Vizuális Kultúra,8,Angol nyelv,4,Fakultáció,1,Osztályfőnöki
+

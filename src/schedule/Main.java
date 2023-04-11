@@ -83,7 +83,7 @@ public class Main {
                 if(j % 9 == 0) {
                     System.out.println();
                 }
-                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
+                System.out.println(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
                 if (i % 9 == 8) {
                     System.out.println();
                 }

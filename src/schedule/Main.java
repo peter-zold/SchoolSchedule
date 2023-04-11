@@ -6,6 +6,8 @@ import schedule.data.Lesson;
 
 import java.util.List;
 
+//FELADATOK
+
 //Simon:
 // population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
 // Tudni kell az eredményt elmenteni (egyenlőre txt-be)
@@ -16,6 +18,26 @@ import java.util.List;
 // Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
 // (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
 
+// Péter - Roland
+// Csoportbontás megvalósításán való elmélkedés, technikai megvalósítás kigondolása, majd megvalósítása
+// Annak felosztása, hogy ki mit azt majd akkor, ha már jobban látjuk, hogy mit kell.
+
+
+// TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
+
+// Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
+// Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
+//              (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
+// Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
+// Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
+// Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
+
+
+// - FRONTENDET ÉPÍTENI
+// - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
+        // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
+// - Jó lenne megvalósítani, hogy a kész órarendet pdf-be lehessen konvertálni a frontend felületen valamilyen táblázatos nézetben.
+// - Tesztelni igazi iskolákkal a kész verziót. (párral jó lenne kipróbálni)
 
 public class Main {
     public static void main(String[] args) {

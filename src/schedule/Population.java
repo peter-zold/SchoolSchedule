@@ -54,7 +54,7 @@ public class Population {
     /**
      * Get individuals from the population
      *
-     * @return individuals Individuals in population
+     * @return individuals in population
      */
     public Individual[] getIndividuals() {
         return this.population;
@@ -93,16 +93,6 @@ public class Population {
     }
 
     /**
-     * Set population's group fitness
-     *
-     * @param fitness
-     *            The population's total fitness
-     */
-    public void setPopulationFitness(double fitness) {
-        this.populationFitness = fitness;
-    }
-
-    /**
      * Get population's group fitness
      *
      * @return populationFitness The population's total fitness
@@ -112,10 +102,26 @@ public class Population {
     }
 
     /**
+     * Calculate and set population's fitness
+     * No use at the moment, reserving for future use
+     *
+     * @return size The population's size
+     */
+    public double calcPopulationFitness() {
+        double popFitness = 0;
+        for (Individual individual: this.population) {
+            popFitness += individual.getFitness();
+        }
+        this.populationFitness = popFitness;
+        return popFitness;
+    }
+
+    /**
      * Get population's size
      *
      * @return size The population's size
      */
+
     public int size() {
         return this.population.length;
     }

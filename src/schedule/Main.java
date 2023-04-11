@@ -42,18 +42,17 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Create GA object
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.2, 0.1, 0, 20);
-        // Scan data
+        // Create genetic algorithm object
+        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.5, 0.5, 0, 20);
+
+        // Scan input data, creating teachers, lessons and classes instances
         DataScan ds = new DataScan();
         ds.scanData();
 
-        // Initialize population
+        // Initialize population using scanned data
+        // Evaluating fitness of individuals during construction
         Population population = ga.initPopulation(ds.getAllClasses());
 
-
-        // Evaluate population
-        ga.evalPopulation(population);
 
         // Keep track of current generation
         int generation = 1;
@@ -68,26 +67,23 @@ public class Main {
          * chromosome is all ones, we're done!
          */
         while (ga.isTerminationConditionMet(population) == false) {
-            // Print fittest individual from population
+            // Print fitness of fittest individual of each generation
             System.out.println();
-            System.out.println("Best solution: ");
-            //printTimeTable(ds.getAllClasses(),population.getFittest(0));
+            System.out.println("Best solution in " + generation + " generations: ");
             System.out.println(population.getFittest(0).getFitness());
 
-            // Apply crossover
+            // Apply crossover to the population
             population = ga.crossoverPopulation(population);
 
-            // Apply mutation
+            // Apply mutation to the population
             population = ga.mutatePopulation(population);
 
-            // Evaluate population
-             ga.evalPopulation(population);
 
             // Increment the current generation
             generation++;
 
             // break
-            if(generation > 1000) break;
+            if(generation > 2000) break;
         }
 
         /**

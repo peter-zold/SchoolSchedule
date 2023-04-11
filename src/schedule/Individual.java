@@ -1,9 +1,9 @@
 package schedule;
 
-import com.sun.jdi.connect.Connector;
+
 import schedule.data.Classes;
 import schedule.data.Lesson;
-import schedule.data.Teacher;
+
 import schedule.data.TimeTable;
 
 import java.util.*;
@@ -15,7 +15,13 @@ public class Individual {
     private int numOfClasses;
     private ArrayList<Integer>[] candidatesForMutation;  //int index is ClassID
 
-    // constructor for creating individual from timetable during algorithm process
+
+    /**
+     * Create individual from a timetable and auto-calculate other fields
+     *
+     * @param timetable
+     *            The number of individuals in the population
+     */
     public Individual(Lesson[][] timetable) {
         this.timetable = timetable;
         this.numOfClasses = timetable.length;
@@ -26,6 +32,12 @@ public class Individual {
         this.fitness = calcFitness();
     }
 
+    /**
+     * Clone an individual
+     *
+     * @param individual
+     *            The number of individuals in the population
+     */
     public Individual(Individual individual) {
         this.timetable = individual.getTimetable();
         this.numOfClasses = individual.getNumOfClasses();
@@ -36,8 +48,13 @@ public class Individual {
         this.fitness = individual.calcFitness();
     }
 
+    /**
+     * Create an individual from scanned data for first generation
+     *
+     * @param allClasses
+     *            ArrayList containing instances of all the classes
+     */
 
-    // constructor for initializing firts generation individuals
     public Individual(List<Classes> allClasses) {
         Lesson[][] tempTimeTable = new Lesson[allClasses.size()][];
         for (int i = 0; i < allClasses.size(); i++) {
@@ -52,6 +69,14 @@ public class Individual {
         this.fitness = calcFitness();
     }
 
+    /**
+     * Create an individual from scanned data for first generation
+     *
+     * @param parent1
+     *            Mother parent
+     * @param parent2
+     *            Father parent
+     */
     public static Individual breedOffspring(Individual parent1, Individual parent2) {
         Lesson[][] offspringTimeTable = new Lesson[parent1.getNumOfClasses()][45];
 
@@ -64,16 +89,22 @@ public class Individual {
                 offspringTimeTable[classIndex] = parent2.getClassTimetable(classIndex);
             }
         }
-        Individual offspring = new Individual(offspringTimeTable);
-        return offspring;
+        return new Individual(offspringTimeTable);
     }
 
-    // get number of classes
+    /**
+     * Get number of classes
+     *
+     */
+
     public int getNumOfClasses() {
         return numOfClasses;
     }
 
-    // get Timetable
+    /**
+     * Clone individuals timetable
+     *
+     */
     public Lesson[][] getTimetable() {
         Lesson[][] newTimeTable = new Lesson[this.numOfClasses][45];
         for (int i = 0; i < this.numOfClasses; i++) {
@@ -84,17 +115,29 @@ public class Individual {
         return newTimeTable;
     }
 
-    // get fitness
+    /**
+     * Get individual's fitness value
+     *
+     */
     public double getFitness() {
         return this.fitness;
     }
 
-    // set fitness manually
+    /**
+     * Set individual's fitness value manually
+     *
+     * @param fitness
+     *            Fitness value to set
+     */
     public void setFitness(double fitness) {
         this.fitness = fitness;
     }
 
-    // calculate fitness and select candidates for mutation
+    /**
+     * Calculate and set individual's fitness
+     * Get candidates for mutation
+     *
+     */
     public double calcFitness() {
         for (ArrayList<Integer> studentClass: candidatesForMutation) {
             studentClass.clear();
@@ -124,18 +167,19 @@ public class Individual {
                 }
             }
         }
+        // calculate fitness
         double calculatedFitness = (double) 1 / (double) (1 + clashes);
+        // set fitness
         setFitness(calculatedFitness);
         return calculatedFitness;
     }
 
-    private void setLesson(Lesson lesson, int classID, int dayHour) {
-        timetable[classID][dayHour] = lesson;
-    }
-
-    private Lesson getLesson(int classID, int dayHour) {
-        return timetable[classID][dayHour];
-    }
+    /**
+     * Mutate individual's timetable by swapping colliding classes
+     *
+     * @param classID
+     *            Which classes' timetable to mutate
+     */
 
     public void mutateTwoCollisions(int classID) {
         // how many collisions in a class timetable
@@ -159,6 +203,13 @@ public class Individual {
         }
     }
 
+    /**
+     * Mutate individual's timetable by swapping one colliding classe
+     * with a random class
+     *
+     * @param classID
+     *            Which classes' timetable to mutate
+     */
     public void mutateOneCollision(int classID) {
         // How many collisions in a class timetable
         int collNum = candidatesForMutation[classID].size();
@@ -177,6 +228,12 @@ public class Individual {
         }
     }
 
+    /**
+     * Mutate individual's timetable by swapping random classes
+     *
+     * @param classID
+     *            Which classes' timetable to mutate
+     */
     public void mutateRandom(int classID) {
         // choose two random indexes, and get Lesson day and hour location indexes from them
         int dayHour1 = (int) Math.floor(Math.random() * timetable[classID].length);
@@ -192,12 +249,19 @@ public class Individual {
         }
     }
 
+    /**
+     * Clone a class' timetable
+     *
+     * @param classID
+     *            Which classes' timetable to clone
+     */
     public Lesson[] getClassTimetable(int classID) {
-        return this.timetable[classID];
-    }
-
-    public void setClassTimetable(int classID, Lesson[] classTimeTable) {
-        this.timetable[classID] = classTimeTable;
+        Lesson[] classTimetable = new Lesson[45];
+        for (int i = 0; i < classTimetable.length; i++) {
+            classTimetable[i] = this.timetable[classID][i];
+        }
+        return classTimetable;
+        //return this.timetable[classID];
     }
 
 

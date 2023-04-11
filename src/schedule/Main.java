@@ -9,7 +9,9 @@ import java.util.List;
 //Simon:
 // population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
 // Tudni kell az eredményt elmenteni (egyenlőre txt-be)
-// Tudni kell az elmentett órarendet visszaalakítani és timeTable-t létrehozni belőle
+
+// Tudni kell az elmentett órarendet visszaalakítani és Lesson[][] tipusú timeTable-t létrehozni belőle.
+// Lesson[][] értelmezése: Lesson[sor: osztályok 9A-12b][oszlop: idősávok (naponta 9 időpont * 5 nap = 45 idősáv)]
 
 // Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
 // (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)

@@ -10,4 +10,8 @@ Tardosi Piroska,TP
 Erőss Zoltán,EZ		
 Arardi Viola,AV
 Csabai Róbet,CR
+Balogh Gáspár,BG
+Pataki Jenőné,PJ
+Koleszár István,KI
+Maros Vanda,MV
 

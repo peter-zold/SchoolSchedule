@@ -39,8 +39,8 @@ import java.util.List;
 *  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
 *  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
  * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
- *   ötlet: talán külön classben és ez a class lenne pédányositva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
- *   csak a competencinek megfeleő órákat tarthasson egy tanár
+ *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
+ *    csak a competencinek megfelelő órákat tarthasson egy tanár
 
 
 *  - FRONTENDET ÉPÍTENI

@@ -1,8 +1,9 @@
 package schedule.displayandtxtanddatabase;
 
 import schedule.data.Lesson;
-
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class RoomArrangementTxtMaker {
     TimetableDataInput timetableDataInput = TimetableDataInput.getInstance();
@@ -12,6 +13,8 @@ public class RoomArrangementTxtMaker {
     int lessonArraySize = timetableDataInput.getLessonArraySize();
 
     int dayOfTheWeekCounter = 0;
+//it's just a txtmaker, self-explanatory, but I will write some documentation later, and make the code prettier - Simon
+
 
    public void txtMaker() {
        try (BufferedWriter writer = new BufferedWriter(new FileWriter("timetable.txt"))) {
@@ -33,23 +36,4 @@ public class RoomArrangementTxtMaker {
            e.printStackTrace();
        }
    }
-/*
-    //ne legyen hashmap
-        public void txtMaker(CustomHashMapForDisplayingRoomArrangement<Integer, String, Integer) {
-            // This will be replaced with a database connection in time. Placeholder.
-            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("timetable.txt"), StandardCharsets.UTF_8))) {
-                for (Integer key : timeTableCustomDisplayMap.keySet()) {
-                    String valueString = timeTableCustomDisplayMap.getString(key);
-                    if (valueString != null) {
-                        writer.write(key + ": " + valueString);
-                        writer.newLine();
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
- */
 }

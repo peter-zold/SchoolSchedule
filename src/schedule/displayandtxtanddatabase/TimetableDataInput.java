@@ -3,8 +3,9 @@ package schedule.displayandtxtanddatabase;
 import schedule.Individual;
 import schedule.data.Classes;
 import schedule.data.Lesson;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,11 +39,8 @@ public class TimetableDataInput {
     //not currently used:
     //int[] timeRangesArray;
 
-    //Other
+    //Others:
     private static volatile TimetableDataInput instance = null;
-
-    //not currently used:
-    //TimeTable timeTable = new TimeTable();
 
     public TimetableDataInput() {
         createClassNamesStringArrayList();
@@ -51,12 +49,13 @@ public class TimetableDataInput {
         createFullSubjectNamesArray();
         createTeacherNamesStringArrayList();
         createFullTeacherNamesArray();
+
         //not used currently:
         //createTimeRangeIntegerArrayList();
         //reateTimeRangesArray();
     }
 
-    //Singleton
+    //Singleton:
     public static TimetableDataInput getInstance() {
         if (instance == null) {
             synchronized (TimetableDataInput.class) {
@@ -86,7 +85,7 @@ public class TimetableDataInput {
     }
 
     //Gets the necessary data for timetable, lesson array and txt files generation.
-    // This os the one you need to call if you - Simon
+    // This is the method you need to call to make this work if you call this class - Simon
     public void getTimetableData(List<Classes> allClasses, Individual individual) {
         for (int i = 0; i < allClasses.size(); i++) {
             for (int j = 0; j < lessonArraySize; j++) {
@@ -99,24 +98,10 @@ public class TimetableDataInput {
         createLessonArray();
     }
 
-
     public String[] getDaysOfTheWeekArray() {
         return daysOfTheWeekArray;
     }
 
-    /*
-    //createsa day of the week counter - Simon
-    public int createDayOfTheWeekCounter(int daysOfTheWeekArrayCounterInt, int timeRangeIntCurrent, int timeRange) {
-        if (timeRangePrevious < timeRangeIntCurrent) {
-            daysOfTheWeekArrayCounterInt = -1;
-            timeRangePrevious = timeRangeIntCurrent;
-        }
-        if (0 == timeRange) {
-            ++daysOfTheWeekArrayCounterInt;
-        }
-        return daysOfTheWeekArrayCounterInt;
-    }
-*/
 /*
 - time ranges are not currently used - Simon
 
@@ -149,10 +134,11 @@ public class TimetableDataInput {
     }
 */
 
-    private void createClassNamesStringArrayList() {
-        //initializes an array list, because we don't know initially how big the array will be, and the arraylist is dynamic, we can use its' length
-        //to set the size of the array below
+    //Class Names arrays and Lists
 
+    //1., This creates a class name array list, based on the classes.txt, dynamic
+    //if you change the size, composition of teachers.txt it changes as well, automatically
+    private void createClassNamesStringArrayList() {
         //String datatype
 
         classNamesStringArrayList = new ArrayList<>();
@@ -176,12 +162,13 @@ public class TimetableDataInput {
         return classNamesArray;
     }
 
+    //Subject Names arrays and Lists
+
+    //2., This creates a subject name array list, based on the subjects.txt, dynamic
+    //if you change the size, composition of subjects.txt it changes as well, automatically
+
     private void createSubjectNamesStringArrayList() {
-        //initializes an array list, because we don't know initially how big the array will be, and the arraylist is dynamic, we can use its' length
-        //to set the size of the array
-
         //String datatype
-
         subjectNamesStringArrayList = new ArrayList<>();
 
         try (BufferedReader createSubjectNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\data\\subjects.txt"));) {
@@ -194,11 +181,13 @@ public class TimetableDataInput {
         }
     }
 
+    //contains all subject names in an array, not used currently, but we might need it in the future for the database
     private void createFullSubjectNamesArray() {
         fullSubjectNamesArray = new String[subjectNamesStringArrayList.size()];
         fullSubjectNamesArray = subjectNamesStringArrayList.toArray(fullSubjectNamesArray);
     }
 
+    //the final 2 dimensional array consisting of all the subjects of the fittest timetable
     private void createFinalSubjectNamesArray(int i, int j, String subjectName) {
         if (i == 0 && j == 0) {
             finalSubjectNamesArray = new String[subjectNamesStringArrayList.size()] [lessonArraySize];
@@ -219,7 +208,7 @@ public class TimetableDataInput {
 
     //Teacher Names arrays and Lists
 
-    //1., This creates a teacher name array list, based on the teachers.txt, dynamic
+    //3., This creates a teacher name array list, based on the teachers.txt, dynamic
     //if you change the size, composition of teachers.txt it changes as well automatically
     private void createTeacherNamesStringArrayList() {
         teacherNamesStringArrayList = new ArrayList<>();
@@ -235,20 +224,14 @@ public class TimetableDataInput {
         }
     }
 
-    //2., creates a teacher name String array from the dynamically generated teacher name array list above
-    //contains the names of all teachers, only once
+    //contains all teacher names in an array, not used currently, but we might need it in the future for the database
     private void createFullTeacherNamesArray() {
-        //initialize an array list, because we don't know initially how big the array will be, and the arraylist is dynamic, we can use its' length
-        //to set the size of the array
-
-        //String data type
-
+        //String datatype
         fullTeacherNamesArray = new String[teacherNamesStringArrayList.size()];
         fullTeacherNamesArray = teacherNamesStringArrayList.toArray(fullTeacherNamesArray);
     }
 
-    //3., creates a String array from all the names of the teachers within the fittest, final timetable
-    //contains duplicates of the names, size is dynamically generated based on the size of the arraylist multiplied by 45
+    //the final 2 dimensional array consisting of all the teachers of the fittest timetable
     private void createFinalTeacherNamesArray(int i, int j, String teacherName) {
         if (i == 0 && j == 0) {
             finalTeacherNamesArray = new String[teacherNamesStringArrayList.size()] [lessonArraySize];
@@ -264,13 +247,12 @@ public class TimetableDataInput {
         return fullTeacherNamesArray;
     }
 
-    //this needs to be inserted manually
+    //the new value of Freenes method I created to make it work - Simon
     public int createValueOfFreeness(int numberOfTheLesson) {
         //int valueOfFreeness (0 - 8): makes the identification of cancelled classes, free periods possible, easier, by assigning them a value.
         //It was originally calculated by the calculateValueOfFreeness method in the Timetable class, however that one does not function properly so I created my own method.
-        //The input of that method is not clear, I don't think that feature is fully implemented yet.
-        //Additionally, the original calculateValueOfFreenes is static and it is also set to private, therefore it is unusable.
-        //valueOfFreeness should be renamed, currently the name does not make it clear what it does - Simon
+        //if it's nota free period it gets a value of -1, otherwise it isa self-explanatory numebr from 1-8 depending on which time period it is
+        // Example: so if a free period takes the place of the 0th lesson of the day it gets a 0, if it takes the place of the 8th lesson it gets an 8 - Simon
 
         int howManyTimesItIsDivideableByNine = numberOfTheLesson/9;
             valueOfFreeness = numberOfTheLesson - (9 * howManyTimesItIsDivideableByNine);

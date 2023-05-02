@@ -2,9 +2,9 @@ package schedule;
 
 import schedule.data.Classes;
 import schedule.data.DataScan;
-import schedule.roomarrangement.CustomHashMapForDisplayingRoomArrangement;
-import schedule.roomarrangement.RoomArrangementDataInput;
-import schedule.roomarrangement.RoomArrangementTxtMaker;
+import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
+import schedule.displayandtxtanddatabase.TimetableDataInput;
+import schedule.displayandtxtanddatabase.TimetableDisplay;
 
 import java.util.List;
 
@@ -18,9 +18,7 @@ import java.util.List;
 
 // Tudni kell az elmentett órarendet visszaalakítani és Lesson[][] tipusú timeTable-t létrehozni belőle.
 // Lesson[][] értelmezése: Lesson[sor: osztályok 9A-12b][oszlop: idősávok (naponta 9 időpont * 5 nap = 45 idősáv)]
-// - megvan, de helyette egy custom hashmap-et csináltam, mert nem úgy jöttek be az adatok, hogy lesson-t tudjak belőle csinálni,
-// ahhoz a ti részeiteket is át kelett volna írni
-
+// - megvan
 // Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
 // (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
 //- megbeszéltük Rolanddal, de még dolgozom rajta
@@ -108,75 +106,42 @@ public class Main {
         System.out.println("__________________________________________________");
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
-        createsTimeTableAndDisplaysItToConsole(dataScan.getAllClasses(),population.getFittest(0));
         System.out.println();
-        System.out.println(population.getFittest(0).getFitness());
-        printTimeTableTxt();
+
+        //Timetable display, database connection and txt maker - Simon
+        TimetableDataInput timetableDataInput = TimetableDataInput.getInstance();
+        //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon
+        timetableDataInput.getTimetableData(dataScan.getAllClasses(), population.getFittest(0));
+        //displays the timetable
+        TimetableDisplay timetableDisplay = new TimetableDisplay();
+        timetableDisplay.createAndDisplayTimeTable();
+        //creates txt files
+        RoomArrangementTxtMaker roomArrangementTxtMaker = new RoomArrangementTxtMaker();
+        roomArrangementTxtMaker.txtMaker();
+
+        System.out.println();
+        //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
+        //printTimeTable(dataScan.getAllClasses(),population.getFittest(0));
+
+        //System.out.println(population.getFittest(0).getFitness());
     }
 
-    private static void createsTimeTableAndDisplaysItToConsole(List<Classes> allClasses, Individual individual) {
-        RoomArrangementDataInput roomArrangementDataInput = RoomArrangementDataInput.getInstance();
-        CustomHashMapForDisplayingRoomArrangement<Integer, String, String, Integer, String, String> timeTableCustomDisplayMap = CustomHashMapForDisplayingRoomArrangement.getInstance();
-        String[] daysOfTheWeekArray = roomArrangementDataInput.getDaysOfTheWeekArray();
-        int timeTableCustomDisplayMapCounter = -1;
-        int daysOfTheWeekArrayCounter = -1;
-        int timeRangeI = 0;
+    public static void printTimeTable(List<Classes> allClasses, Individual individual) {
+        // This remains here for testing.
+        // The txtreader, txtmaker, database connection and proper full display can be found in
+        // Simon's roomarrangement package in the various methods
 
-        //puts the values calculated in the for cycles below into Strings and ints so the calculation does not need to be performed twice
-        // (once for roomarrangement data input, and secondly for displaying the results)
-        String nameOfTheClass = null;
-        int timeRange = 0;
-        String subjectName = null;
-        String teacherName = null;
-
-        //timetable to console but also passes values to custom hashmap
         for (int i = 0; i < allClasses.size(); i++) {
-            nameOfTheClass = allClasses.get(i).getClassName();
-            roomArrangementDataInput.fillUpClassNamesStringArrayList(nameOfTheClass);
-
-            System.out.println("\n\nA " + nameOfTheClass + " osztály órarendje:");
-
+            System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
             for (int j = 0; j < 45; j++) {
-                if(j % 9 == 9) {
+                if(j % 9 == 0) {
                     System.out.println();
                 }
-
-                timeRange = j % 9;
-                roomArrangementDataInput.fillUpTimeRangeIntegerArrayList(timeRange);
-                subjectName = individual.getClassTimetable(i)[j].getNameOfLesson();
-                roomArrangementDataInput.fillUpSubjectNamesStringArrayList(subjectName);
-                teacherName = individual.getClassTimetable(i)[j].getTeacher().getName();
-                roomArrangementDataInput.fillUpTeacherNamesStringArrayList(teacherName);
-
-                System.out.print(timeRange + ". óra: " + subjectName + " -" + teacherName + " ,   ");
-
+                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
                 if (i % 9 == 8) {
                     System.out.println();
                 }
-
-                //progress day of the week
-                timeRangeI = i;
-                daysOfTheWeekArrayCounter = roomArrangementDataInput.ChooseDayOfTheWeek(daysOfTheWeekArrayCounter, timeRangeI, timeRange);
-                //make sure ++ is before the variable, not after it
-                timeTableCustomDisplayMap.put(++timeTableCustomDisplayMapCounter, daysOfTheWeekArray[daysOfTheWeekArrayCounter], nameOfTheClass, timeRange, subjectName, teacherName);
             }
         }
-    }
-
-    private static void printTimeTableTxt() {
-        CustomHashMapForDisplayingRoomArrangement<Integer, String, Integer, String, String, Integer> timeTableCustomDisplayMap = CustomHashMapForDisplayingRoomArrangement.getInstance();
-
-        //you cna find the timetable in the timetable.txt
-        //left it here for testing, you can use it to manually write the elements of the custom hashmap to the console
-       /*
-        for (int i = 0; i < timeTableCustomDisplayMap.size(); i++) {
-            if (timeTableCustomDisplayMap.getAllElementsAtOnce(i) != null) {
-                System.out.println(timeTableCustomDisplayMap.getAllElementsAtOnce(i));
-            }
-        }
-         */
-
-        RoomArrangementTxtMaker roomArrangementTxtMaker = new RoomArrangementTxtMaker();
-        roomArrangementTxtMaker.txtMaker(timeTableCustomDisplayMap);
     }
 }

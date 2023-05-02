@@ -25,4 +25,11 @@ public class Lesson {
     public void setValueOfFreeness(int valueOfFreeness) {
         this.valueOfFreeness = valueOfFreeness;
     }
+
+    //I had to insert a toString because I could not test or display it otherwise. - Simon
+
+    @Override
+    public String toString() {
+        return " | " + nameOfLesson + " | " + teacher + "| " + valueOfFreeness + " |]";
+    }
 }

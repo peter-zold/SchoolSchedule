@@ -3,6 +3,7 @@ package schedule.data;
 import java.util.*;
 
 public class TimeTable {
+
     public static Lesson[] createRandomTimeTable(Classes classes) {
 
         List<Lesson> clonedLessons = new ArrayList<>(classes.getAllLessons());

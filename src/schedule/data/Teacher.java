@@ -2,7 +2,7 @@ package schedule.data;
 
 public class Teacher {
     String nameOfTeacher;
-    Teacher(String nameOfTeacher){
+    public Teacher(String nameOfTeacher){
         this.nameOfTeacher = nameOfTeacher;
     }
     public String getName() {
@@ -15,5 +15,12 @@ public class Teacher {
             return false;
         }
         return true;
+    }
+
+    //I had to insert a toString because I could not test or display it otherwise. - Simon
+
+    @Override
+    public String toString() {
+        return "Teacher: " + nameOfTeacher + " ";
     }
 }

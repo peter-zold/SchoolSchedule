@@ -9,7 +9,7 @@ public class Classes {
     private List<Lesson> allLessons = new ArrayList<>();
 
     private int lessonsPerWeek;
-    Classes(String className){
+    public Classes(String className){
         this.className = className;
     }
 

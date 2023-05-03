@@ -76,10 +76,10 @@ public class TimetableDataInputAndOutput {
                 // currently only recognizes "Free Period", if you want to add other missing class variants you have to add it here - Simon
                 if (finalSubjectNamesArray[i][j] == "Free Period") {
                     valueOfFreeness = createValueOfFreeness(i, j);
-                    createValueOfFreenessArray(i, j, valueOfFreeness);
                 } else {
                     valueOfFreeness = -1;
                 }
+                createValueOfFreenessArray(i, j, valueOfFreeness);
                 lessonArray[i][j] = new Lesson(finalSubjectNamesArray[i][j], finalTeacherNamesArray[i][j], valueOfFreeness);
             }
         }

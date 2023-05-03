@@ -2,8 +2,8 @@ package schedule;
 
 import schedule.data.Classes;
 import schedule.data.DataScan;
-import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
-import schedule.displayandtxtanddatabase.TimetableDataInput;
+import schedule.displayandtxtanddatabase.TxtMaker;
+import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
 import schedule.displayandtxtanddatabase.TimetableDisplay;
 
 import java.util.List;
@@ -38,27 +38,44 @@ import java.util.List;
 
 
 /*******************************************************************
-* TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
-
-*  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
-*  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
-*        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
-*  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
-*  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
-*  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
-
-
-*  - FRONTENDET ÉPÍTENI
-*  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
-*       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
-*  - Jó lenne megvalósítani, hogy a kész órarendet pdf-be lehessen konvertálni a frontend felületen valamilyen táblázatos nézetben.
-*  - Tesztelni igazi iskolákkal a kész verziót. (párral jó lenne kipróbálni)
-*/
+ * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
+ *  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
+ *  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
+ *        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
+ *  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
+ *  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
+ *  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
+ *  -FRONTENDET ÉPÍTENI
+ *  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
+ *       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
+ *  - Jó lenne megvalósítani, hogy a kész órarendet pdf-be lehessen konvertálni a frontend felületen valamilyen táblázatos nézetben.
+ *  - Tesztelni igazi iskolákkal a kész verziót. (párral jó lenne kipróbálni)
+ */
 
 public class Main {
     DataScan dataScan = new DataScan();
+
     public static void main(String[] args) {
         new Main().run();
+    }
+
+    public static void printTimeTable(List<Classes> allClasses, Individual individual) {
+        // This fast display remains here for testing.
+        // The txtreader, txtmaker, database connection and proper full display can be found in
+        // the displayandtxtanddatabase package. - Simon
+
+        for (int i = 0; i < allClasses.size(); i++) {
+            System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
+            for (int j = 0; j < 45; j++) {
+                if (j % 9 == 0) {
+                    System.out.println();
+                }
+                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
+                if (i % 9 == 8) {
+                    System.out.println();
+                }
+            }
+        }
     }
 
     private void run() {
@@ -102,7 +119,7 @@ public class Main {
             generation++;
 
             // break
-            if(generation > 2000) break;
+            if (generation > 2000) break;
         }
 
         /**
@@ -116,22 +133,26 @@ public class Main {
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
         //Timetable display, database connection and txt maker - Simon
-        TimetableDataInput timetableDataInput = TimetableDataInput.getInstance();
+        TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
         //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon
-        timetableDataInput.getTimetableData(dataScan.getAllClasses(), population.getFittest(0));
+        timetableDataInputAndOutput.getTimetableData(dataScan.getAllClasses(), population.getFittest(0));
         //displays the timetable - Simon
         TimetableDisplay timetableDisplay = new TimetableDisplay();
         timetableDisplay.createAndDisplayTimeTable();
-        //creates txt files - Simon
-        RoomArrangementTxtMaker roomArrangementTxtMaker = new RoomArrangementTxtMaker();
-        roomArrangementTxtMaker.txtMaker();
+        //creates txt files, timetable.txt and the other txt files can be found in the displayandtxtanddatabase package - Simon
+        TxtMaker txtMaker = new TxtMaker();
+        txtMaker.timetableTxtMaker();
+        //I created these additional methods too, we might need them alter, not currently in use
+        txtMaker.subjectNamesTxtMaker();
+        txtMaker.teacherNamesTxtMaker();
+        txtMaker.valueOfFreenessTxtMaker();
         System.out.println();
         //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
-        //printTimeTable(dataScan.getAllClasses(),population.getFittest(0));
+        //printTimetable(dataScan.getAllClasses(),population.getFittest(0));
         //System.out.println(population.getFittest(0).getFitness());
     }
 
-    public static void printTimeTable(List<Classes> allClasses, Individual individual) {
+    public static void printTimetable(List<Classes> allClasses, Individual individual) {
         // This fast display remains here for testing.
         // The txtreader, txtmaker, database connection and proper full display can be found in
         // the displayandtxtanddatabase package. - Simon

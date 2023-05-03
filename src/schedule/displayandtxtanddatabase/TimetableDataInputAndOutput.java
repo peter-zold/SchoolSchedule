@@ -3,44 +3,45 @@ package schedule.displayandtxtanddatabase;
 import schedule.Individual;
 import schedule.data.Classes;
 import schedule.data.Lesson;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimetableDataInput {
-    //Others:
-    private static volatile TimetableDataInput instance = null;
-    //change the size of the lessonArrayOneDimensional here, it will change it everywhere, this makes it dynamic, and you don't have to type in 45 everywhere
-    int lessonArraySize = 45;
+public class TimetableDataInputAndOutput {
+    private static volatile TimetableDataInputAndOutput instance = null;
+
     //Lists:
-    List<String> classNamesStringArrayList;
-    List<String> subjectNamesStringArrayList;
-    List<String> teacherNamesStringArrayList;
-    String[] classNamesArray;
-    String[] fullTeacherNamesArray;
-    String[][] finalTeacherNamesArray;
+    private List<String> classNamesStringArrayList;
+    private List<String> subjectNamesStringArrayList;
+    private List<String> teacherNamesStringArrayList;
     // List<Integer> timeRangesIntegerArrayList; - not currently used
-    String[] fullSubjectNamesArray;
-    String[][] finalSubjectNamesArray;
-    Lesson[][] lessonArray;
+
+    //Arrays:
+    private String[] classNamesArray;
+    private String[] fullTeacherNamesArray;
+    private String[][] finalTeacherNamesArray;
+    private String[] fullSubjectNamesArray;
+    private String[][] finalSubjectNamesArray;
+    private Lesson[][] lessonArray;
+    private int[][] valueOfFreenessArray;
+    private String[] daysOfTheWeekArray = new String[]{
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    };
+    //not currently used:
+    //int[] timeRangesArray;
+
     //Variables:
     private int valueOfFreeness = -1;
     private int timeRangePrevious = 0;
     private String subjectNameTemp = null;
     private String teacherNameTemp = null;
+    //change the size of the lessonArrayOneDimensional here, it will change it everywhere, this makes it dynamic,
+    // and you don't have to type in 45 everywhere - Simon
+    int lessonArraySize = 45;
 
-
-    //not currently used:
-    //int[] timeRangesArray;
-    //Arrays:
-    private String[] daysOfTheWeekArray = new String[]{
-            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-    };
-
-    public TimetableDataInput() {
+    public TimetableDataInputAndOutput() {
         createClassNamesStringArrayList();
         createClassNamesArray();
         createSubjectNamesStringArrayList();
@@ -54,11 +55,11 @@ public class TimetableDataInput {
     }
 
     //Singleton:
-    public static TimetableDataInput getInstance() {
+    public static TimetableDataInputAndOutput getInstance() {
         if (instance == null) {
-            synchronized (TimetableDataInput.class) {
+            synchronized (TimetableDataInputAndOutput.class) {
                 if (instance == null) {
-                    instance = new TimetableDataInput();
+                    instance = new TimetableDataInputAndOutput();
                 }
             }
         }
@@ -71,15 +72,28 @@ public class TimetableDataInput {
 
         for (int i = 0; i < classNamesArray.length; i++) {
             for (int j = 0; j < lessonArraySize; j++) {
-                //if it is a "Free period" then it assigns it a valueOfFreenness value, if it isn't it is -1 - Simon
+                //if it is a "Free period" then it assigns it a valueOfFreenness value, if it isn't it is -1
+                // currently only recognizes "Free Period", if you want to add other missing class variants you have to add it here - Simon
                 if (finalSubjectNamesArray[i][j] == "Free Period") {
                     valueOfFreeness = createValueOfFreeness(i, j);
+                    createValueOfFreenessArray(i, j, valueOfFreeness);
                 } else {
                     valueOfFreeness = -1;
                 }
                 lessonArray[i][j] = new Lesson(finalSubjectNamesArray[i][j], finalTeacherNamesArray[i][j], valueOfFreeness);
             }
         }
+    }
+
+   private void createValueOfFreenessArray(int i, int j, int valueOfFreenessArrayValue) {
+       if (i == 0 && j == 0) {
+           valueOfFreenessArray = new int[classNamesArray.length][lessonArraySize];
+       }
+       valueOfFreenessArray[i][j] = valueOfFreeness;
+    }
+
+    public int[][] getValueOfFreenessArray() {
+        return valueOfFreenessArray;
     }
 
     //Gets the necessary data for timetable, lesson array and txt files generation.
@@ -138,7 +152,6 @@ public class TimetableDataInput {
     //if you change the size, composition of classes.txt it changes as well, automatically
     private void createClassNamesStringArrayList() {
         //String datatype
-
         classNamesStringArrayList = new ArrayList<>();
 
         try (BufferedReader createClassNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\data\\classes.txt"));) {
@@ -194,15 +207,13 @@ public class TimetableDataInput {
         finalSubjectNamesArray[i][j] = subjectName;
     }
 
-
-    public String[][] getFinalSubjectNamesArray() {
-        return finalSubjectNamesArray;
-    }
-
     public String[] getFullSubjectNamesArray() {
         return fullSubjectNamesArray;
     }
 
+    public String[][] getFinalSubjectNamesArray() {
+        return finalSubjectNamesArray;
+    }
 
     //Teacher Names arrays and Lists
 
@@ -237,26 +248,22 @@ public class TimetableDataInput {
         finalTeacherNamesArray[i][j] = teacherName;
     }
 
+    public String[] getFullTeacherNamesArray() {
+        return fullTeacherNamesArray;
+    }
+
     public String[][] getFinalTeacherNamesArray() {
         return finalTeacherNamesArray;
     }
 
-    public String[] getFullTeacherNamesArray() {
-        return fullTeacherNamesArray;
-    }
+
 
     //the new value of Freenes method I created to make it work - Simon
     public int createValueOfFreeness(int numberOfTheDay, int timeRange) {
         //int valueOfFreeness (0 - 8): makes the identification of cancelled classes, free periods possible, easier, by assigning them a value.
         //It was originally calculated by the calculateValueOfFreeness method in the Timetable class, however that one does not function properly so I created my own method.
-        //if it's not a free period it gets a value of -1, otherwise it is a self-explanatory number from 1-8 depending on which time period it is
+        //if it's not a free period it gets a value of -1, otherwise it is a self-explanatory number from 0-8 depending on which time period it is
         // Example: so if a free period takes the place of the 0th lesson of the day it gets a 0, if it takes the place of the 8th lesson it gets an 8 - Simon
-/*
-        0 - 44
-                0 - 8 + (0*9)
-                        9-17  (1*9)
-            18
-            */
 
         //this si int on purpose don't change it, it needs to cut off the decimal values
         int howManyTimesItIsDivideableByNine = timeRange / 9;
@@ -266,7 +273,6 @@ public class TimetableDataInput {
         // replacing the second lesson has a value of 10 instead of 1 - Simon
         //valueOfFreeness = timeRange;
         //use whichever you like, currently one that does not take the number of days into account is being used currently- Simon
-
         return valueOfFreeness;
     }
 

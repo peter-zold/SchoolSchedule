@@ -7,17 +7,20 @@ import java.io.IOException;
 
 public class RoomArrangementTxtMaker {
     TimetableDataInput timetableDataInput = TimetableDataInput.getInstance();
-    Lesson[][] lessonArray = timetableDataInput.getLessonArray();
-    private String[] classNamesArray = timetableDataInput.getClassNamesArray();
-    private String[] daysOfTheWeekArray = timetableDataInput.getDaysOfTheWeekArray();
-    int lessonArraySize = timetableDataInput.getLessonArraySize();
 
-    int dayOfTheWeekCounter = 0;
-//it's just a txtmaker, self-explanatory, but I will write some documentation later, and make the code prettier - Simon
+    //Variables:
+    private final int lessonArraySize = timetableDataInput.getLessonArraySize();
+    private int dayOfTheWeekCounter = 0;
+
+    //Arrays:
+    private Lesson[][] lessonArray = timetableDataInput.getLessonArray();
+    private final String[] classNamesArray = timetableDataInput.getClassNamesArray();
+    private final String[] daysOfTheWeekArray = timetableDataInput.getDaysOfTheWeekArray();
 
 
+//This creates the txt file from the fittest timetable based on the values generated in the TimeTableDataInput class - Simon
    public void txtMaker() {
-       try (BufferedWriter writer = new BufferedWriter(new FileWriter("timetable.txt"))) {
+       try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\schedule\\displayandtxtanddatabase\\timetable.txt"))) {
 
            for (int i = 0; i < classNamesArray.length; i++) {
                writer.write("\nA " + classNamesArray[i] + " osztály órarendje:\n");

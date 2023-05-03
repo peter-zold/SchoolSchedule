@@ -24,7 +24,6 @@ public class DataScan {
             e.printStackTrace();
         }
 
-
         // Lessonok beolvasása és a megfelelő osztályhoz hozzáadása annyiszor ahány óra van egy héten az adott tantárgyból
         for (int i = 0; i < allClasses.size();i++) {
             File scheduleData = new File("src\\schedule\\data\\classes_summary.txt");
@@ -46,7 +45,6 @@ public class DataScan {
             }
             allClasses.get(i).setLessonsPerWeek(allClasses.get(i).getAllLessons().size());
         }
-
 
         // Az adatok tesztelése
         //for (int i = 0; i < allClasses.size(); i++) {

@@ -8,26 +8,34 @@ import schedule.displayandtxtanddatabase.TimetableDisplay;
 
 import java.util.List;
 
-//FELADATOK
+//TASKS:
 
-//Simon:
-// population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
-// Tudni kell az eredményt elmenteni (egyenlőre txt-be)
-// - megvan, egy kicsit kellett módosítanom a maint hozzá
-// mert mindent static-be akart tenni és nem működött az én részem így, Roland tudja miről van szó, hozzáadtam egy kis run metódust, hogy ne legyen static minden - Simon
-
-// Tudni kell az elmentett órarendet visszaalakítani és Lesson[][] tipusú timeTable-t létrehozni belőle.
-// Lesson[][] értelmezése: Lesson[sor: osztályok 9A-12b][oszlop: idősávok (naponta 9 időpont * 5 nap = 45 idősáv)]
-// - megvan - Simon
-// Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
-// (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
-//- megbeszéltük Rolanddal, de még dolgozom rajta
-
-//+ extra feladat ami nincs itt, adatbázis kapcsolat lekutatása és prezentálása
+//Simon ----------------------------------------------
+// Task1: population.getFitness(0) is the fittest timetable create a method the saves it as a txt file
+// - done, had to slightly modify the Main class, because everything was unnecessarily set to static and it didn't work,
+// Roland knows about this, I madea tiny run() method to circumvent the static tag introduced by the main method - Simon
+//
+// Task2: display the fittest timetable (see above) as a 2 dimensional Lesson[][] array, and make the creation of the lesson array dynamic
+// and make it availabe through a getter method
+// - done, Simon
+//
+//Task3: Create a database connection, implement it in the current state of the Genetic algorithm and make
+// a presentation for the other team members illustrating how it works
+// - doing it currently - Simon
+//
+// Other: I have translated all my comments into English, including this list of tasks. Additionally, I will send some optimization tips, fixes and OOP recommendation
+//to Roland. Recommendations, fixes, tips I have come up with while working with the other team members' code (I won't directly change their code, will only send it to the project manager for consideration)
+// as per our email discussion with the project manager.
+//-------------------------------------
 
 // Péter - Roland
 // Csoportbontás megvalósításán való elmélkedés, technikai megvalósítás kigondolása, majd megvalósítása
 // Annak felosztása, hogy ki mit azt majd akkor, ha már jobban látjuk, hogy mit kell.
+//
+// Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
+// (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
+//- megbeszéltük Rolanddal, de még dolgozom rajta
+
 
 /*******************************************************************
 * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
@@ -38,9 +46,6 @@ import java.util.List;
 *  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
 *  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
 *  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
- * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
- *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
- *    csak a competencinek megfelelő órákat tarthasson egy tanár
 
 
 *  - FRONTENDET ÉPÍTENI

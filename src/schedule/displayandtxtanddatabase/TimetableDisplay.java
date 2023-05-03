@@ -24,7 +24,7 @@ public class TimetableDisplay {
         int dayOfTheWeekCounter = -1;
 
         for (int i = 0; i < classNamesArray.length; i++) {
-            System.out.println("\n\nA " + classNamesArray[i] + " osztály órarendje:");
+            System.out.println("\nA " + classNamesArray[i] + " osztály órarendje:");
             for (int j = 0; j < lessonArraySize; j++) {
                 //display the day and creates rows, gives it structure
                 if (j % 9 == 0) {

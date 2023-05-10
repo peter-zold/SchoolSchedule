@@ -81,6 +81,7 @@ public class TimeTable {
         return classLessons;
     }
 
+    //Comment: This calculation does not work properly, try it with 18, wrong value. - Simon
     private static int calculateValueOfFreeness(int serialNum) {
         int valueOfFreeness = 0;
 

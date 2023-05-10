@@ -20,6 +20,6 @@ public class Teacher {
     //I had to insert a toString method because I could not test or display it otherwise. - Simon
     @Override
     public String toString() {
-        return "Teacher: " + nameOfTeacher + " ";
+        return nameOfTeacher + " ";
     }
 }

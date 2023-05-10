@@ -2,6 +2,8 @@ package schedule;
 
 import schedule.data.Classes;
 import schedule.data.DataScan;
+import schedule.data.Lesson;
+import schedule.displayandtxtanddatabase.TimetableTxtToLessonArray;
 import schedule.displayandtxtanddatabase.TxtMaker;
 import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
 import schedule.displayandtxtanddatabase.TimetableDisplay;
@@ -142,11 +144,19 @@ public class Main {
         //creates txt files, timetable.txt and the other txt files can be found in the displayandtxtanddatabase package - Simon
         TxtMaker txtMaker = new TxtMaker();
         txtMaker.timetableTxtMaker();
-        //I created these additional methods too, we might need them alter, not currently in use
+        //I created these additional txtmaker methods too, we might need them later, not currently in use
         txtMaker.subjectNamesTxtMaker();
         txtMaker.teacherNamesTxtMaker();
         txtMaker.valueOfFreenessTxtMaker();
         System.out.println();
+        //This creates a new Lesson array based on the timetable created, use this to turn any timetable.txt into a Lesson array
+        TimetableTxtToLessonArray timetableTxtToLessonArray = new TimetableTxtToLessonArray();
+        Lesson[][] lessonArrayFromTimetable = timetableTxtToLessonArray.getLessonFromTxtFile();
+        System.out.println(lessonArrayFromTimetable[0][0]);
+        System.out.println(lessonArrayFromTimetable[0][1]);
+        System.out.println(lessonArrayFromTimetable[0][2]);
+        System.out.println(lessonArrayFromTimetable[0][3]);
+        System.out.println(lessonArrayFromTimetable[1][1]);
         //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
         //printTimetable(dataScan.getAllClasses(),population.getFittest(0));
         //System.out.println(population.getFittest(0).getFitness());

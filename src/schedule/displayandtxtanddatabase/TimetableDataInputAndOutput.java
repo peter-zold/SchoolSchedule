@@ -33,7 +33,7 @@ public class TimetableDataInputAndOutput {
     //int[] timeRangesArray;
 
     //Variables:
-    private int valueOfFreeness = -1;
+    private int valueOfFreeness = 0;
     private int timeRangePrevious = 0;
     private String subjectNameTemp = null;
     private String teacherNameTemp = null;
@@ -77,7 +77,7 @@ public class TimetableDataInputAndOutput {
                 if (finalSubjectNamesArray[i][j] == "Free Period") {
                     valueOfFreeness = createValueOfFreeness(i, j);
                 } else {
-                    valueOfFreeness = -1;
+                    valueOfFreeness = 0;
                 }
                 createValueOfFreenessArray(i, j, valueOfFreeness);
                 lessonArray[i][j] = new Lesson(finalSubjectNamesArray[i][j], finalTeacherNamesArray[i][j], valueOfFreeness);
@@ -260,19 +260,36 @@ public class TimetableDataInputAndOutput {
 
     //the new value of Freenes method I created to make it work - Simon
     public int createValueOfFreeness(int numberOfTheDay, int timeRange) {
+
         //int valueOfFreeness (0 - 8): makes the identification of cancelled classes, free periods possible, easier, by assigning them a value.
         //It was originally calculated by the calculateValueOfFreeness method in the Timetable class, however that one does not function properly so I created my own method.
-        //if it's not a free period it gets a value of -1, otherwise it is a self-explanatory number from 0-8 depending on which time period it is
+        //if it's not a free period it gets a value of -1, otherwise it is a self-explanatory number from 0-8 depending on the time of the lesson
         // Example: so if a free period takes the place of the 0th lesson of the day it gets a 0, if it takes the place of the 8th lesson it gets an 8 - Simon
 
         //this si int on purpose don't change it, it needs to cut off the decimal values
         int howManyTimesItIsDivideableByNine = timeRange / 9;
         //this does not take into consdieration the number of the day - Simon
-        valueOfFreeness = timeRange - (9 * howManyTimesItIsDivideableByNine);
-        //this takes into consideration the number of the day, which meas that a free period on Tuesday
-        // replacing the second lesson has a value of 10 instead of 1 - Simon
-        //valueOfFreeness = timeRange;
-        //use whichever you like, currently one that does not take the number of days into account is being used currently- Simon
+
+        //UPDATE: Roland wanted the calculation to only assign values the following way, I have change the method according to his request: - Simon
+
+        switch (timeRange - (9 * howManyTimesItIsDivideableByNine)) {
+            case 0:
+                valueOfFreeness = 1;
+                break;
+            case 6:
+                valueOfFreeness = 2;
+                break;
+            case 7:
+                valueOfFreeness = 3;
+                break;
+            case 8:
+                valueOfFreeness = 4;
+                break;
+            default:
+                System.out.println("Valami baj van a lyukas óra előállításnál");
+                break;
+        }
+
         return valueOfFreeness;
     }
 

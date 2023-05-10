@@ -36,6 +36,10 @@ public class TxtMaker {
                     if (j == lessonArraySize - 1) {
                         dayOfTheWeekCounter = 0;
                     }
+                    if ( i == classNamesArray.length - 1 & j == lessonArraySize - 1 ) {
+                        writer.write("--- END OF TIMETABLE ----");
+                        break;
+                    }
                 }
                 writer.newLine();
             }

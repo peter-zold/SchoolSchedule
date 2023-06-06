@@ -4,11 +4,24 @@ public class Lesson {
     private String nameOfLesson;
     private Teacher teacher;
     private int valueOfFreeness;
+    private String groupID;
 
     public Lesson(String nameOfLesson, String nameOfTeacher, int valueOfFreeness){
         this.nameOfLesson = nameOfLesson;
         this.teacher = new Teacher(nameOfTeacher);
         this.valueOfFreeness = valueOfFreeness;
+    }
+    public Lesson(String groupName, String nameOfLesson, String nameOfTeacher, int valueOfFreeness) {
+        this.nameOfLesson = nameOfLesson;
+        this.teacher = new Teacher(nameOfTeacher);
+        this.valueOfFreeness = valueOfFreeness;
+        if (groupName.equals("")) {
+            this.groupID = "000";
+        } else if (groupName.length()==3){
+            this.groupID = "0" + groupName.substring(1);
+        } else {
+            this.groupID = groupName.substring(1);
+        }
     }
 
     public String getNameOfLesson() {
@@ -21,6 +34,10 @@ public class Lesson {
 
     public int getValueOfFreeness() {
         return valueOfFreeness;
+    }
+
+    public String getGroupID() {
+        return groupID;
     }
 
     public void setValueOfFreeness(int valueOfFreeness) {

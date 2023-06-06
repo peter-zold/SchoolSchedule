@@ -2,19 +2,19 @@ package schedule.data;
 
 import java.util.*;
 
-public class TimeTable {
+public class TimeTable2 {
 
-    public static Lesson[] createRandomTimeTable(Classes classes) {
+    public static List<Lesson>[] createRandomTimeTable(Classes classes) {
 
         List<Lesson> clonedLessons = new ArrayList<>(classes.getAllLessons());
         Collections.shuffle(clonedLessons);
 
         int[] randomHoursPerDay = siteOfHoleInTimeTable(classes);
         int[] siteOfFreePeriod = calculatesiteOfFreePeriod(randomHoursPerDay, classes);
-        Lesson[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod);
+        List<Lesson>[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod, classes.getLessonsPerWeek());
 
         //Tesztelés
-        //printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
+        printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
         return classLessons;
     }
 
@@ -57,16 +57,18 @@ public class TimeTable {
         }
         return siteOfHole;
     }
-    private static Lesson[] lessonsInTimeTable(List lessons, int[] siteOfFreePeriod) {
-        Lesson[] classLessons = new Lesson[45];
 
+    private static List<Lesson>[] lessonsInTimeTable(List<Lesson> lessons, int[] siteOfFreePeriod, int lessonsPerWeek) {
+        //Lesson[] classLessons = new Lesson[45];
+        List<Lesson>[] classLessons = new ArrayList[45];
         // Lyukasórák behelyezése
         for (int i = 0; i < classLessons.length; i++) {
             for (int j = 0; j < siteOfFreePeriod.length; j++) {
                 if (i == siteOfFreePeriod[j]) {
                     int valueOfFreeness = calculateValueOfFreeness(i);
-
-                    classLessons[i] = new Lesson("Free Period", "none", valueOfFreeness);
+                    List<Lesson> holes = new ArrayList<>();
+                    holes.add(new Lesson("/000", "Free Period", "none", valueOfFreeness));
+                    classLessons[i] = holes;
                 }
             }
         }
@@ -74,7 +76,31 @@ public class TimeTable {
         int indexOflessons = 0;
         for (int i = 0; i < classLessons.length; i++) {
             if (classLessons[i] == null) {
-                classLessons[i] = (Lesson) lessons.get(indexOflessons);
+                List<Lesson> subject = new ArrayList<>();
+                Set<Integer> indexes = new HashSet<>();
+                if (lessons.get(indexOflessons).getGroupID().equals("000")) {
+
+                    subject.add(lessons.get(indexOflessons));
+
+                } else if (lessons.get(indexOflessons).getGroupID().startsWith("0")) {
+                    //subject.add(lessons.get(0));
+                    if (indexes.add(indexOflessons)) {
+                        outer:
+                        for (int k = 1; k < 3; k++) {
+                            inner:
+                            for (int j = indexOflessons; j < lessons.size(); j++) {
+                                if (lessons.get(indexOflessons).getGroupID().charAt(1) == lessons.get(j).getGroupID().charAt(1) && lessons.get(j).getGroupID().charAt(2) == Character.forDigit(k, 10)) {
+                                    subject.add(lessons.get(j));
+                                    indexes.add(indexOflessons);
+                                    break inner;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                classLessons[i] = subject;
                 indexOflessons++;
             }
         }
@@ -105,6 +131,7 @@ public class TimeTable {
 
         return valueOfFreeness;
     }
+
     // Kerekítés
     private static int roundingData(double hoursPerDay) {
         int roundedData = (int) hoursPerDay;
@@ -115,7 +142,7 @@ public class TimeTable {
         }
     }
 
-    private static void printTimeTable(Lesson[] classLessons, int[] siteOfFreePeriod, int[] randomHoursPerDay, Classes classes) {
+    private static void printTimeTable(List<Lesson>[] classLessons, int[] siteOfFreePeriod, int[] randomHoursPerDay, Classes classes) {
         // Tesztelés
         System.out.println();
         System.out.println("Melyik nap hány órája van az osztálynak");
@@ -128,17 +155,22 @@ public class TimeTable {
         System.out.println("A " + classes.getClassName() + " osztály órarendje:");
         System.out.println("Soronként 1-1 nap órarendje hétfőtől péntekig: ");
         for (int i = 0; i < classLessons.length; i++) {
-            System.out.print(i % 9 + ". óra: " + classLessons[i].getNameOfLesson() + ",   ");
-            if (i % 9 == 8) {
-                System.out.println();
-            }
+
         }
+
+
 
         System.out.println();
         System.out.println();
         System.out.println("Az összes óra listázva sorban");
         for (int i = 0; i < classLessons.length; i++) {
-            System.out.println(i + ". óra: " + classLessons[i].getNameOfLesson());
+            System.out.print(i + ". óra: ");
+            for (int j = 0; j < classLessons[i].size();j++){
+                System.out.print(classLessons[i].get(j).getGroupID() + " " + classLessons[i].get(j).getNameOfLesson() + "    ");
+            }
+            System.out.println();
+
+
         }
     }
 }

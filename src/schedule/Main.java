@@ -1,6 +1,6 @@
 package schedule;
 
-import schedule.data.DataScan2;
+import schedule.data.DataScan;
 //import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
 //import schedule.displayandtxtanddatabase.TimetableDataInput;
 
@@ -48,7 +48,7 @@ import schedule.data.DataScan2;
 */
 
 public class Main {
-    DataScan2 dataScan = new DataScan2();
+    DataScan dataScan = new DataScan();
     public static void main(String[] args) {
         new Main().run();
     }

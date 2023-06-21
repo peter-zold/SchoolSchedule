@@ -1,7 +1,6 @@
 package schedule;
 
 import schedule.data.Classes;
-import schedule.data.DataScan;
 
 import java.util.*;
 

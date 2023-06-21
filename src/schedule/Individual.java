@@ -10,6 +10,7 @@ import java.util.*;
 
 
 public class Individual {
+
     private Lesson[][] timetable;
     private double fitness = -1;
     private int numOfClasses;
@@ -22,6 +23,7 @@ public class Individual {
      * @param timetable
      *            The number of individuals in the population
      */
+
     public Individual(Lesson[][] timetable) {
         this.timetable = timetable;
         this.numOfClasses = timetable.length;
@@ -263,6 +265,8 @@ public class Individual {
         return classTimetable;
         //return this.timetable[classID];
     }
+
+
 
 
 }

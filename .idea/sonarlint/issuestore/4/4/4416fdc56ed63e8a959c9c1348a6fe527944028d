@@ -1,0 +1,11 @@
+
+x
+java:S1488K"bImmediately return this expression instead of assigning it to the temporary variable "population".(‚‡•–
+n
+java:S3776½"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(¤½¨ôüÿÿÿÿ
+G
+java:S1128"1Remove this unused import 'schedule.data.Lesson'.(ÒÎ‰˜
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ

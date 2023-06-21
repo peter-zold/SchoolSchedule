@@ -1,0 +1,464 @@
+
+A 9a osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+2. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+3. óra:  | Fizika | Teacher: Végh Aladár | -1 |]
+4. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+5. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+6. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Ének-zene | Teacher: Csabai Róbert | -1 |]
+2. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+4. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+5. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+6. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+2. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+3. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+4. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+5. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+6. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+7. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+2. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+3. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+4. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+5. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+6. óra:  | Osztályfőnöki | Teacher: Kovács Elemér | -1 |]
+7. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+8. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+2. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+4. óra:  | Fizika | Teacher: Végh Aladár | -1 |]
+5. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+6. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+7. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+8. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+
+
+A 9b osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+2. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+3. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+4. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+5. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+6. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Fizika | Teacher: dr.Simon Géza | -1 |]
+2. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+3. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+4. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+5. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+6. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+2. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+3. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+4. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+5. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+6. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+7. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+8. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+2. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+3. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+4. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+5. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+6. óra:  | Osztályfőnöki | Teacher: Baráth Anna | -1 |]
+7. óra:  | Fizika | Teacher: dr.Simon Géza | -1 |]
+8. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+2. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+3. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+4. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+5. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+6. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+7. óra:  | Ének-zene | Teacher: Csabai Róbert | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 10a osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+2. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+3. óra:  | Fizika | Teacher: dr.Simon Géza | -1 |]
+4. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+5. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+6. óra:  | Ének-zene | Teacher: Csabai Róbert | -1 |]
+7. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+8. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Osztályfőnöki | Teacher: Dudás Tamás | -1 |]
+2. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+4. óra:  | Fizika | Teacher: dr.Simon Géza | -1 |]
+5. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+6. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+2. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+3. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+4. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+5. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+6. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+2. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+3. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+4. óra:  | Fizika | Teacher: dr.Simon Géza | -1 |]
+5. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+6. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+7. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+2. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+3. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+4. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+5. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+6. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 10b osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+2. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+3. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+4. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+5. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+6. óra:  | Osztályfőnöki | Teacher: Végh Aladár | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+2. óra:  | Kémia | Teacher: Kovács Elemér | -1 |]
+3. óra:  | Fizika | Teacher: Végh Aladár | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Nagyné Kis Gizella | -1 |]
+5. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+6. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+2. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Nagyné Kis Gizella | -1 |]
+4. óra:  | Fizika | Teacher: Végh Aladár | -1 |]
+5. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+6. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+7. óra:  | Ének-zene | Teacher: Csabai Róbert | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+2. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Nagyné Kis Gizella | -1 |]
+4. óra:  | Földrajz | Teacher: Madaras Janka | -1 |]
+5. óra:  | Biológia | Teacher: Madaras Janka | -1 |]
+6. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+7. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+8. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Fizika | Teacher: Végh Aladár | -1 |]
+2. óra:  | Magyar nyelv és irodalom | Teacher: Nagyné Kis Gizella | -1 |]
+3. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+4. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+5. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+6. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 11a osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+2. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+3. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+4. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+5. óra:  | Fakultáció | Teacher: Erőss Zoltán | -1 |]
+6. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+2. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+3. óra:  | Természettudomány | Teacher: Kovács Elemér | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+5. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+6. óra:  | Osztályfőnöki | Teacher: Tardosi Piroska | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+2. óra:  | Fakultáció | Teacher: Erőss Zoltán | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+4. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+5. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+6. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+2. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+3. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+5. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+6. óra:  | Fakultáció | Teacher: Erőss Zoltán | -1 |]
+7. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+2. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+4. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+5. óra:  | Fakultáció | Teacher: Erőss Zoltán | -1 |]
+6. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+7. óra:  | Természettudomány | Teacher: Kovács Elemér | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 11b osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+2. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+3. óra:  | Fakultáció | Teacher: Aradi Viola | -1 |]
+4. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+5. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+6. óra:  | Free Period | Teacher: none | 6 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Természettudomány | Teacher: Kovács Elemér | -1 |]
+2. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+3. óra:  | Vizuális kultúra | Teacher: Csabai Róbert | -1 |]
+4. óra:  | Fakultáció | Teacher: Aradi Viola | -1 |]
+5. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+6. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+7. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Osztályfőnöki | Teacher: Aradi Viola | -1 |]
+2. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+3. óra:  | Természettudomány | Teacher: Kovács Elemér | -1 |]
+4. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+5. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+6. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+2. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+4. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+5. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+6. óra:  | Angol nyelv | Teacher: Pócsik Erzsébet | -1 |]
+7. óra:  | Fakultáció | Teacher: Aradi Viola | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+2. óra:  | Fakultáció | Teacher: Aradi Viola | -1 |]
+3. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+4. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+5. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+6. óra:  | Digitális kultúra | Teacher: Baráth Anna | -1 |]
+7. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 12a osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+2. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+3. óra:  | Fakultáció | Teacher: Csabai Róbert | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+5. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+6. óra:  | Free Period | Teacher: none | 6 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+2. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+3. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+4. óra:  | Fakultáció | Teacher: Csabai Róbert | -1 |]
+5. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+6. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Fakultáció | Teacher: Csabai Róbert | -1 |]
+2. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+3. óra:  | Osztályfőnöki | Teacher: Erőss Zoltán | -1 |]
+4. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+5. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+6. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+7. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+2. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+3. óra:  | Média | Teacher: Baráth Anna | -1 |]
+4. óra:  | Fakultáció | Teacher: Csabai Róbert | -1 |]
+5. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+6. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Magyar nyelv és irodalom | Teacher: Dudás Tamás | -1 |]
+2. óra:  | Angol nyelv | Teacher: Tardosi Piroska | -1 |]
+3. óra:  | Matematika | Teacher: Kovács Elemér | -1 |]
+4. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+5. óra:  | Német nyelv | Teacher: Dudás Tamás | -1 |]
+6. óra:  | Testnevelés | Teacher: Erőss Zoltán | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+
+A 12b osztály órarendje:
+
+Monday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+2. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+3. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+4. óra:  | Fakultáció | Teacher: Maradas Janka | -1 |]
+5. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+6. óra:  | Free Period | Teacher: none | 6 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Tuesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+2. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+3. óra:  | Fakultáció | Teacher: Maradas Janka | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+5. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+6. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Wednesday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+2. óra:  | Fakultáció | Teacher: Maradas Janka | -1 |]
+3. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+4. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+5. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+6. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+7. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Thursday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+2. óra:  | Osztályfőnöki | Teacher: Madaras Janka | -1 |]
+3. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+4. óra:  | Magyar nyelv és irodalom | Teacher: Pócsik Erzsébet | -1 |]
+5. óra:  | Matematika | Teacher: Végh Aladár | -1 |]
+6. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+
+Friday: 
+0. óra:  | Free Period | Teacher: none | 0 |]
+1. óra:  | Testnevelés | Teacher: Aradi Viola | -1 |]
+2. óra:  | Média | Teacher: Baráth Anna | -1 |]
+3. óra:  | Német nyelv | Teacher: Tardosi Piroska | -1 |]
+4. óra:  | Angol nyelv | Teacher: Csabai Róbert | -1 |]
+5. óra:  | Történelem | Teacher: Nagyné Kis Gizella | -1 |]
+6. óra:  | Fakultáció | Teacher: Maradas Janka | -1 |]
+7. óra:  | Free Period | Teacher: none | 7 |]
+8. óra:  | Free Period | Teacher: none | 8 |]
+

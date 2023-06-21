@@ -1,0 +1,26 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(âøÄ—
+o
+java:S2293."YReplace the type specification in this constructor call with the diamond operator ("<>").(âøÄ—
+o
+java:S2293C"YReplace the type specification in this constructor call with the diamond operator ("<>").(âøÄ—
+t
+java:S3012p"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ÇÙ‘–ûÿÿÿÿ
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ôˆ¨”ûÿÿÿÿ
+E
+java:S2140½")Use "java.util.Random.nextInt()" instead.(¼æÑúÿÿÿÿ
+@
+java:S2140À")Use "java.util.Random.nextInt()" instead.(´áæ
+E
+java:S2140Ú")Use "java.util.Random.nextInt()" instead.(¼æÑúÿÿÿÿ
+E
+java:S2140Ü")Use "java.util.Random.nextInt()" instead.(éÅÍüÿÿÿÿ
+@
+java:S2140ï")Use "java.util.Random.nextInt()" instead.(ñƒõé
+E
+java:S2140ğ")Use "java.util.Random.nextInt()" instead.(éÅÍüÿÿÿÿ
+u
+java:S3012…"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(Èïƒşÿÿÿÿ
+W	java:S125ˆ"<This block of commented-out lines of code should be removed.(¿ÊùÈÿÿÿÿÿ

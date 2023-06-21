@@ -1,26 +1,37 @@
 package schedule;
 
+import schedule.data.Classes;
 import schedule.data.DataScan;
+import schedule.data.Lesson;
+import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
+import schedule.displayandtxtanddatabase.TimetableDisplay;
+import schedule.displayandtxtanddatabase.TimetableTxtToLessonArray;
+import schedule.displayandtxtanddatabase.TxtMaker;
+
+import java.util.List;
+
 //import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
 //import schedule.displayandtxtanddatabase.TimetableDataInput;
 
 
 //FELADATOK
 
-//Simon:
-// population.getFitness(0) a nyertes timetable, amivel tovább kell dolgozni a teremrendező algoritmusnál
-// Tudni kell az eredményt elmenteni (egyenlőre txt-be)
-// - megvan, egy kicsit kellett módosítanom a maint hozzá
-// mert mindent static-be akart tenni és nem működött az én részem így, Roland tudja miről van szó, hozzáadtam egy kis run metódust, hogy ne legyen static minden - Simon
-
-// Tudni kell az elmentett órarendet visszaalakítani és Lesson[][] tipusú timeTable-t létrehozni belőle.
-// Lesson[][] értelmezése: Lesson[sor: osztályok 9A-12b][oszlop: idősávok (naponta 9 időpont * 5 nap = 45 idősáv)]
-// - megvan - Simon
-// Ha ez megvan akkor a terembeosztás készítés lesz a feladat, de arról még beszélünk előtte
-// (ehhez kell, hogy egy más kész órarenden lehessen tesztelni, amit bármikor be lehet tölteni)
-//- megbeszéltük Rolanddal, de még dolgozom rajta
-
-//+ extra feladat ami nincs itt, adatbázis kapcsolat lekutatása és prezentálása
+//Simon ----------------------------------------------
+// Task1: population.getFitness(0) is the fittest timetable create a method the saves it as a txt file
+// - done, had to slightly modify the Main class, because everything was unnecessarily set to static and it didn't work,
+// Roland knows about this, I madea tiny run() method to circumvent the static tag introduced by the main method - Simon
+//
+// Task2: display the fittest timetable (see above) as a 2 dimensional Lesson[][] array, and make the creation of the lesson array dynamic
+// and make it availabe through a getter method
+// - done, Simon
+//
+//Task3: Create a database connection, implement it in the current state of the Genetic algorithm and make
+// a presentation for the other team members illustrating how it works
+// - doing it currently - Simon
+//
+// Other: I have translated all my comments into English, including this list of tasks. Additionally, I will send some optimization tips, fixes and OOP recommendation
+//to Roland. Recommendations, fixes, tips I have come up with while working with the other team members' code (I won't directly change their code, will only send it to the project manager for consideration)
+// as per our email discussion with the project manager.
 
 // Péter - Roland
 // Csoportbontás megvalósításán való elmélkedés, technikai megvalósítás kigondolása, majd megvalósítása
@@ -107,20 +118,27 @@ public class Main {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
-        /*
         //Timetable display, database connection and txt maker - Simon
-        TimetableDataInput timetableDataInput = TimetableDataInput.getInstance();
+        TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
         //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon
-        timetableDataInput.getTimetableData(dataScan.getAllClasses(), population.getFittest(0));
+        timetableDataInputAndOutput.getTimetableData(dataScan.getAllClasses(), population.getFittest(0));
         //displays the timetable - Simon
         TimetableDisplay timetableDisplay = new TimetableDisplay();
         timetableDisplay.createAndDisplayTimeTable();
-        //creates txt files - Simon
-        RoomArrangementTxtMaker roomArrangementTxtMaker = new RoomArrangementTxtMaker();
-        roomArrangementTxtMaker.txtMaker();
+        //creates txt files, timetable.txt and the other txt files can be found in the displayandtxtanddatabase package - Simon
+        TxtMaker txtMaker = new TxtMaker();
+        txtMaker.timetableTxtMaker();
+        //I created these additional txtmaker methods too, we might need them later, not currently in use
+        txtMaker.subjectNamesTxtMaker();
+        txtMaker.teacherNamesTxtMaker();
+        txtMaker.valueOfFreenessTxtMaker();
         System.out.println();
+        //This creates a new Lesson array based on the timetable created, use this to turn any timetable.txt into a Lesson array
+        TimetableTxtToLessonArray timetableTxtToLessonArray = new TimetableTxtToLessonArray();
+        Lesson[][] lessonArrayFromTimetable = timetableTxtToLessonArray.getLessonFromTxtFile();
+        //System.out.println(lessonArrayFromTimetable[0][0]);
         //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
-        //printTimeTable(dataScan.getAllClasses(),population.getFittest(0));
+        //printTimetable(dataScan.getAllClasses(),population.getFittest(0));
         //System.out.println(population.getFittest(0).getFitness());
     }
 
@@ -141,7 +159,5 @@ public class Main {
                 }
             }
         }
-
-         */
     }
 }

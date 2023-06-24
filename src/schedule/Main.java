@@ -14,7 +14,7 @@ import java.util.List;
 //import schedule.displayandtxtanddatabase.TimetableDataInput;
 
 
-//FELADATOK
+//FELADATOK - TESZT
 
 //Simon ----------------------------------------------
 // Task1: population.getFitness(0) is the fittest timetable create a method the saves it as a txt file

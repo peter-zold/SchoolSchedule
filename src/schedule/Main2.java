@@ -105,6 +105,9 @@ public class Main2 {
             // Increment the current generation
             generation++;
 
+            // print timetable
+            printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+
             // break
             if(generation > 2000) break;
         }
@@ -148,7 +151,27 @@ public class Main2 {
     }
 
 
+    public static void printTimeTable(List<Classes> allClasses, Individual2 individual) {
+        // This fast display remains here for testing.
+        // The txtreader, txtmaker, database connection and proper full display can be found in
+        // the displayandtxtanddatabase package. - Simon
 
+        for (int i = 0; i < allClasses.size(); i++) {
+            System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
+            for (int k = 0; k < individual.getTimetable()[i].length; k++) {
+                if (k % 9 == 0) {
+                    System.out.println();
+                }
+                System.out.print(k % 9 + ". óra: ");
+                for (int j = 0; j < individual.getTimetable()[i][k].size(); j++) {
+                    System.out.print(individual.getTimetable()[i][k].get(j).getGroupID() + " " + individual.getTimetable()[i][k].get(j).getNameOfLesson() + "    ");
+                }
+                System.out.println();
+
+
+            }
+        }
+    }
     public static void printTimeTable(List<Classes> allClasses, Individual individual) {
         // This fast display remains here for testing.
         // The txtreader, txtmaker, database connection and proper full display can be found in

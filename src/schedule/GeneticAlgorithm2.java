@@ -156,7 +156,7 @@ public class GeneticAlgorithm2 {
                 // get fittest offspring
                 Individual2 fittestOffspring = offspringsPop.getFittest(0);
                 // if offspring is fitter than parent
-                if(fittestOffspring.getFitness() > parent1.getFitness()) {
+                if(fittestOffspring.calcFitness() > parent1.calcFitness()) {
                     // Add offspring to new population
                     newPopulation.setIndividual(populationIndex, fittestOffspring);
                 }
@@ -203,17 +203,17 @@ public class GeneticAlgorithm2 {
                         // Get two colliding classes swap
                         individual.mutateTwoCollisions(classIndex);
                     }
-                    if (this.mutationRate > Math.random()) {
+                    if (this.mutationRate > Math.random()*3) {
                         // Get one colliding class swap with a random
                         individual.mutateOneCollision(classIndex);
                     }
-                    if (this.mutationRate > Math.random()*2) {
+                    if (this.mutationRate > Math.random()*6) {
                         // Get two random classes swap
                         individual.mutateRandom(classIndex);
                     }
                 }
                 // if mutated clone is fitter, swap it with the original
-                if (individual.getFitness() >= individualOriginal.getFitness()) {
+                if (individual.calcFitness() >= individualOriginal.calcFitness()) {
                     // Add individual to population
                     newPopulation.setIndividual(populationIndex, individual);
                 } else {

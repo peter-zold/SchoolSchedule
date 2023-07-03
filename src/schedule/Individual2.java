@@ -162,6 +162,7 @@ public class Individual2 {
             }
             set.clear();
         }
+        /*
         // clashes for same lesson in same day
         Set<String> set2 = new HashSet<>();
         for (int i = 0; i < timetable.length; i++) {
@@ -170,13 +171,15 @@ public class Individual2 {
                     set2.clear();
                 }
                 for (int k = 0; k < timetable[i][j].size(); k++) {
-                    if (timetable[i][j].get(k).getValueOfFreeness() == 0 && !set2.add(timetable[i][j].get(k).getNameOfLesson())) {
+                    if (timetable[i][j].get(k).getValueOfFreeness() == 0 && !set2.add(timetable[i][j].get(k).getNameOfLesson() + timetable[i][j].get(k).getGroupID())) {
                         candidatesForMutation[i].add(j);
                         clashes++;
                     }
                 }
             }
         }
+
+         */
         // calculate fitness
         double calculatedFitness = (double) 1 / (double) (1 + clashes);
         // set fitness

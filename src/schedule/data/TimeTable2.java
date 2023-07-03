@@ -14,7 +14,7 @@ public class TimeTable2 {
         List<Lesson>[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod, classes.getLessonsPerWeek());
 
         //Tesztelés
-        printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
+        //printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
         return classLessons;
     }
 
@@ -172,5 +172,11 @@ public class TimeTable2 {
 
 
         }
+    }
+
+    public static void main(String[] args) {
+        DataScan2 data2 = new DataScan2();
+        data2.scanData();
+        TimeTable2.createRandomTimeTable(data2.getAllClasses().get(0));
     }
 }

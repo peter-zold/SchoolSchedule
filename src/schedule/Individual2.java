@@ -112,7 +112,7 @@ public class Individual2 {
         List<Lesson>[][] newTimeTable = new ArrayList[this.numOfClasses][45];
         for (int i = 0; i < this.numOfClasses; i++) {
             for (int j = 0; j < 45; j++) {
-                newTimeTable[i][j]=this.timetable[i][j];
+                newTimeTable[i][j]= new ArrayList<>(this.timetable[i][j]);
             }
         }
         return newTimeTable;
@@ -203,9 +203,9 @@ public class Individual2 {
 
             // swap these lessons, if they are not the same
             if (!timetable[classID][dayHour1].equals(timetable[classID][dayHour2])) {
-                List<Lesson> temp = timetable[classID][dayHour2];
-                timetable[classID][dayHour2] = timetable[classID][dayHour1];
-                timetable[classID][dayHour1] = temp;
+                List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+                timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+                timetable[classID][dayHour1] = new ArrayList<>(temp);
             }
         }
     }
@@ -228,9 +228,9 @@ public class Individual2 {
 
             // swap these lessons, if they are not the same
             if (!timetable[classID][dayHour1].equals(timetable[classID][dayHour2]) && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
-                List<Lesson> temp = timetable[classID][dayHour2];
-                timetable[classID][dayHour2] = timetable[classID][dayHour1];
-                timetable[classID][dayHour1] = temp;
+                List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+                timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+                timetable[classID][dayHour1] = new ArrayList<>(temp);
             }
         }
     }
@@ -251,9 +251,9 @@ public class Individual2 {
                 // Only if free period does not blend with other group's lessons
                 && timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0
                 && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
-            List<Lesson> temp = timetable[classID][dayHour2];
-            timetable[classID][dayHour2] = timetable[classID][dayHour1];
-            timetable[classID][dayHour1] = temp;
+            List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+            timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+            timetable[classID][dayHour1] = new ArrayList<>(temp);
         }
     }
 
@@ -266,7 +266,7 @@ public class Individual2 {
     public List<Lesson>[] getClassTimetable(int classID) {
         List<Lesson>[] classTimetable = new ArrayList[45];
         for (int i = 0; i < classTimetable.length; i++) {
-            classTimetable[i] = this.timetable[classID][i];
+            classTimetable[i] = new ArrayList<>(this.timetable[classID][i]);
         }
         return classTimetable;
         //return this.timetable[classID];

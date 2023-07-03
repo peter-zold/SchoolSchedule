@@ -67,7 +67,7 @@ public class Main2 {
 
     private void run() {
         // Create genetic algorithm object
-        GeneticAlgorithm2 ga = new GeneticAlgorithm2(1000, 0.2, 0.8, 0, 20);
+        GeneticAlgorithm2 ga = new GeneticAlgorithm2(1000, 0.5, 0.5, 0, 20);
 
         // Scan input data, creating teachers, lessons and classes instances
         dataScan.scanData();

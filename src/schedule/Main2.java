@@ -40,7 +40,6 @@ import java.util.List;
 
 /*******************************************************************
  * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
-
  *  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
  *  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
  *        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
@@ -50,8 +49,6 @@ import java.util.List;
  * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
  *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
  *    csak a competencinek megfelelő órákat tarthasson egy tanár
-
-
  *  - FRONTENDET ÉPÍTENI
  *  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
  *       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
@@ -61,13 +58,14 @@ import java.util.List;
 
 public class Main2 {
     DataScan2 dataScan = new DataScan2();
+
     public static void main(String[] args) {
         new Main2().run();
     }
 
     private void run() {
         // Create genetic algorithm object
-        GeneticAlgorithm2 ga = new GeneticAlgorithm2(1000, 0.2, 0.8, 0, 20);
+        GeneticAlgorithm2 ga = new GeneticAlgorithm2(5000, 0.2, 0.8, 0, 20);
 
         // Scan input data, creating teachers, lessons and classes instances
         dataScan.scanData();
@@ -105,8 +103,9 @@ public class Main2 {
             // Increment the current generation
             generation++;
 
+            printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
             // break
-            if(generation > 2000) break;
+            if (generation > 2000) break;
         }
 
         /**
@@ -148,22 +147,24 @@ public class Main2 {
     }
 
 
-
-    public static void printTimeTable(List<Classes> allClasses, Individual individual) {
+    public static void printTimeTable(List<Classes> allClasses, Individual2 individual) {
         // This fast display remains here for testing.
         // The txtreader, txtmaker, database connection and proper full display can be found in
         // the displayandtxtanddatabase package. - Simon
 
         for (int i = 0; i < allClasses.size(); i++) {
             System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
-            for (int j = 0; j < 45; j++) {
-                if(j % 9 == 0) {
+            for (int k = 0; k < individual.getTimetable()[i].length; k++) {
+                if (k % 9 == 0) {
                     System.out.println();
                 }
-                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
-                if (i % 9 == 8) {
-                    System.out.println();
+                System.out.print(k % 9 + ". óra: ");
+                for (int j = 0; j < individual.getTimetable()[i][k].size(); j++) {
+                    System.out.print(individual.getTimetable()[i][k].get(j).getGroupID() + " " + individual.getTimetable()[i][k].get(j).getNameOfLesson() + "    ");
                 }
+                System.out.println();
+
+
             }
         }
     }

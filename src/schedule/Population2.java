@@ -106,13 +106,12 @@ public class Population2 {
      *
      * @return size The population's size
      */
-    public double calcPopulationFitness() {
+    public void calcPopulationFitness() {
         double popFitness = 0;
         for (Individual2 individual: this.population) {
-            popFitness += individual.getFitness();
+            popFitness += individual.calcFitness();
         }
         this.populationFitness = popFitness;
-        return popFitness;
     }
 
     /**

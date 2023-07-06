@@ -1,4 +1,4 @@
-package schedule.displayandtxtanddatabase;
+package schedule.displayandtxt;
 
 import schedule.Individual;
 import schedule.data.Classes;

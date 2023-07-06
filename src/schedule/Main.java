@@ -3,10 +3,10 @@ package schedule;
 import schedule.data.Classes;
 import schedule.data.DataScan;
 import schedule.data.Lesson;
-import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
-import schedule.displayandtxtanddatabase.TimetableDisplay;
-import schedule.displayandtxtanddatabase.TimetableTxtToLessonArray;
-import schedule.displayandtxtanddatabase.TxtMaker;
+import schedule.displayandtxt.TimetableDataInputAndOutput;
+import schedule.displayandtxt.TimetableDisplay;
+import schedule.displayandtxt.TimetableTxtToLessonArray;
+import schedule.displayandtxt.TxtMaker;
 
 import java.util.List;
 
@@ -62,6 +62,7 @@ public class Main {
     DataScan dataScan = new DataScan();
     public static void main(String[] args) {
         new Main().run();
+        //teremrendező algoritmus
     }
 
     private void run() {
@@ -118,6 +119,10 @@ public class Main {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
+
+        //egy meghívás legyen, egy osztályba
+
+
         //Timetable display, database connection and txt maker - Simon
         TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
         //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon

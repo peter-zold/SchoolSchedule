@@ -12,7 +12,6 @@ public class Jdbc {
     Jdbc() {
         //constructor makes sure the database is created everytime this class is initialized, if it already exists it does not do anything.
         initialize();
-
     }
 
     private void initialize() {
@@ -116,7 +115,7 @@ public class Jdbc {
                      "id INT AUTO_INCREMENT PRIMARY KEY, " +
                      "class VARCHAR(50), " +
                      "day VARCHAR(10), " +
-                     "period VARCHAR(10), " +
+                     "period INT, " +
                      "subject VARCHAR(50), " +
                      "teacher VARCHAR(50), " +
                      "recess INT " +

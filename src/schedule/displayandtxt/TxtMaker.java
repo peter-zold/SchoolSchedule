@@ -2,9 +2,7 @@ package schedule.displayandtxt;
 
 import schedule.data.Lesson;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class TxtMaker {
     TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
@@ -62,6 +60,30 @@ public class TxtMaker {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //removes empty lines
+        removeEmptyLinesFromFile("src\\schedule\\displayandtxtanddatabase\\all_the_subjects_in_the_timetable.txt");
+    }
+
+//removes empty lines, needed to be able to be uploaded to the SQL database
+    private void removeEmptyLinesFromFile(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath + ".tmp"))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Replace the original file with the updated file (without empty lines)
+        File originalFile = new File(filePath);
+        File updatedFile = new File(filePath + ".tmp");
+        updatedFile.renameTo(originalFile);
     }
 
     //this creates a txt file from all the names of the teachers in the Lesson[][] array created from the fittest timetable,

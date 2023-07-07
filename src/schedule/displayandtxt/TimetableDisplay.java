@@ -5,7 +5,7 @@ import schedule.data.Lesson;
 //Moved the timetable display here, feel free to edit it - Simon
 
 public class TimetableDisplay {
-    //TimetableDataInputAndOutput implements the Singleton design pattern - Simon
+    //TimetableDataInputAndOutput implements the Singleton design pattern from TimetableDataInputAndOutput - Simon
     private TimetableDataInputAndOutput timeTableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
 
     //variables:
@@ -34,7 +34,7 @@ public class TimetableDisplay {
                 }
                 //display the hour
                 System.out.print(j % 9 + ". óra: ");
-                //display the most important part the Lesson arrray we created in the TimetableDataInputAndOutput class
+                //display the most important part, the Lesson arrray we created in the TimetableDataInputAndOutput class
                 System.out.println(lessonArray[i][j]);
                 if (j == lessonArraySize - 1) {
                     //resets the day of the week counter for the new week

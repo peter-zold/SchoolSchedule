@@ -72,7 +72,7 @@ public class TimetableDataInputAndOutput {
 
         for (int i = 0; i < classNamesArray.length; i++) {
             for (int j = 0; j < lessonArraySize; j++) {
-                //if it is a "Free period" then it assigns it a valueOfFreenness value, if it isn't it is -1
+                //if it is a "Free period" then it assigns it a valueOfFreenness value, if it isn't it is 0
                 // currently only recognizes "Free Period", if you want to add other missing class variants you have to add it here - Simon
                 if (finalSubjectNamesArray[i][j] == "Free Period") {
                     valueOfFreeness = createValueOfFreeness(i, j);

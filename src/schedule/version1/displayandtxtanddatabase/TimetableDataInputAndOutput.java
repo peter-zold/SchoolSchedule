@@ -1,8 +1,8 @@
-package schedule.displayandtxtanddatabase;
+package schedule.version1.displayandtxtanddatabase;
 
-import schedule.Individual;
-import schedule.data.Classes;
-import schedule.data.Lesson;
+import schedule.version1.Individual;
+import schedule.version1.data.Classes;
+import schedule.version1.data.Lesson;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -154,7 +154,7 @@ public class TimetableDataInputAndOutput {
         //String datatype
         classNamesStringArrayList = new ArrayList<>();
 
-        try (BufferedReader createClassNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\data\\classes.txt"));) {
+        try (BufferedReader createClassNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\version1\\data\\classes.txt"));) {
             String nameOfClass;
             while ((nameOfClass = createClassNamesStringArrayListReader.readLine()) != null) {
                 classNamesStringArrayList.add(nameOfClass);
@@ -182,7 +182,7 @@ public class TimetableDataInputAndOutput {
         //String datatype
         subjectNamesStringArrayList = new ArrayList<>();
 
-        try (BufferedReader createSubjectNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\data\\subjects.txt"));) {
+        try (BufferedReader createSubjectNamesStringArrayListReader = new BufferedReader(new FileReader("src\\schedule\\version1\\data\\subjects.txt"));) {
             String nameOfSubject;
             while ((nameOfSubject = createSubjectNamesStringArrayListReader.readLine()) != null) {
                 subjectNamesStringArrayList.add(nameOfSubject);
@@ -222,7 +222,7 @@ public class TimetableDataInputAndOutput {
     private void createTeacherNamesStringArrayList() {
         teacherNamesStringArrayList = new ArrayList<>();
 
-        try (BufferedReader createTeacherNamesStringArrayReader = new BufferedReader(new FileReader("src\\schedule\\data\\teachers.txt"));) {
+        try (BufferedReader createTeacherNamesStringArrayReader = new BufferedReader(new FileReader("src\\schedule\\version1\\data\\teachers.txt"));) {
 
             String nameOfTeacher;
             while ((nameOfTeacher = createTeacherNamesStringArrayReader.readLine()) != null) {

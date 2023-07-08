@@ -1,4 +1,4 @@
-package schedule.data;
+package schedule.version1.data;
 
 public class Teacher {
     String nameOfTeacher;

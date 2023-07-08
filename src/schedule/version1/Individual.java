@@ -1,10 +1,10 @@
-package schedule;
+package schedule.version1;
 
 
-import schedule.data.Classes;
-import schedule.data.Lesson;
+import schedule.version1.data.Classes;
+import schedule.version1.data.Lesson;
 
-import schedule.data.TimeTable;
+import schedule.version1.data.TimeTable;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package schedule.data;
+package schedule.version1.data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public class DataScan {
     public void scanData() {
 
         // Osztályok példányosítása
-        File classesName = new File("src\\schedule\\data\\classes.txt");
+        File classesName = new File("src\\schedule\\version1\\data\\classes.txt");
         try (Scanner scanner = new Scanner(classesName);) {
             while (scanner.hasNext()) {
                 allClasses.add(new Classes(scanner.nextLine()));
@@ -26,7 +26,7 @@ public class DataScan {
 
         // Lessonok beolvasása és a megfelelő osztályhoz hozzáadása annyiszor ahány óra van egy héten az adott tantárgyból
         for (int i = 0; i < allClasses.size();i++) {
-            File scheduleData = new File("src\\schedule\\data\\classes_summary.txt");
+            File scheduleData = new File("src\\schedule\\version1\\data\\classes_summary.txt");
             try (Scanner scanner = new Scanner(scheduleData);) {
                 while (scanner.hasNext()) {
                     String dataLine = scanner.nextLine();

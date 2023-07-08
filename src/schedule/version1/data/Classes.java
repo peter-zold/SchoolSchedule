@@ -1,4 +1,4 @@
-package schedule.data;
+package schedule.version1.data;
 import java.util.ArrayList;
 import java.util.List;
 

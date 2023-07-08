@@ -1,6 +1,6 @@
-package schedule;
+package schedule.version2;
 
-import schedule.data.Classes;
+import schedule.version1.data.Classes;
 
 import java.util.*;
 
@@ -14,8 +14,8 @@ import java.util.*;
  *
  */
 
-public class Population {
-    private Individual[] population;
+public class Population2 {
+    private Individual2[] population;
     private double populationFitness = -1;
 
     /**
@@ -24,9 +24,9 @@ public class Population {
      * @param populationSize
      *            The number of individuals in the population
      */
-    public Population(int populationSize) {
+    public Population2(int populationSize) {
         // Initial population
-        this.population = new Individual[populationSize];
+        this.population = new Individual2[populationSize];
     }
 
     /**
@@ -37,14 +37,14 @@ public class Population {
      * @param allTheClasses
      *            classes from input data
      */
-    public Population(int populationSize, List<Classes> allTheClasses) {
+    public Population2(int populationSize, List<Classes> allTheClasses) {
         // Initialize the population as an array of individuals
-        this.population = new Individual[populationSize];
+        this.population = new Individual2[populationSize];
 
         // Create each individual in turn
         for (int individualCount = 0; individualCount < populationSize; individualCount++) {
             // Create an individual, initializing its chromosome accordint to input data
-            Individual individual = new Individual(allTheClasses);
+            Individual2 individual = new Individual2(allTheClasses);
             // Add individual to population
             this.population[individualCount] = individual;
         }
@@ -55,7 +55,7 @@ public class Population {
      *
      * @return individuals in population
      */
-    public Individual[] getIndividuals() {
+    public Individual2[] getIndividuals() {
         return this.population;
     }
 
@@ -73,11 +73,11 @@ public class Population {
      *            the strongest, population.length - 1 is the weakest.
      * @return individual Individual at offset
      */
-    public Individual getFittest(int offset) {
+    public Individual2 getFittest(int offset) {
         // Order population by fitness
-        Arrays.sort(this.population, new Comparator<Individual>() {
+        Arrays.sort(this.population, new Comparator<Individual2>() {
             @Override
-            public int compare(Individual o1, Individual o2) {
+            public int compare(Individual2 o1, Individual2 o2) {
                 if (o1.getFitness() > o2.getFitness()) {
                     return -1;
                 } else if (o1.getFitness() < o2.getFitness()) {
@@ -106,13 +106,12 @@ public class Population {
      *
      * @return size The population's size
      */
-    public double calcPopulationFitness() {
+    public void calcPopulationFitness() {
         double popFitness = 0;
-        for (Individual individual: this.population) {
-            popFitness += individual.getFitness();
+        for (Individual2 individual: this.population) {
+            popFitness += individual.calcFitness();
         }
         this.populationFitness = popFitness;
-        return popFitness;
     }
 
     /**
@@ -132,7 +131,7 @@ public class Population {
      * @param offset
      * @return individual
      */
-    public Individual setIndividual(int offset, Individual individual) {
+    public Individual2 setIndividual(int offset, Individual2 individual) {
         return population[offset] = individual;
     }
 
@@ -142,7 +141,7 @@ public class Population {
      * @param offset
      * @return individual
      */
-    public Individual getIndividual(int offset) {
+    public Individual2 getIndividual(int offset) {
         return population[offset];
     }
 
@@ -156,7 +155,7 @@ public class Population {
         Random rnd = new Random();
         for (int i = population.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
-            Individual a = population[index];
+            Individual2 a = population[index];
             population[index] = population[i];
             population[i] = a;
         }

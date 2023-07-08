@@ -1,11 +1,10 @@
-package schedule;
+package schedule.version2;
 
 
-import schedule.data.Classes;
-import schedule.data.Lesson;
+import schedule.version1.data.Classes;
+import schedule.version1.data.Lesson;
 
-import schedule.data.TimeTable;
-import schedule.data.TimeTable2;
+import schedule.version2.data.TimeTable2;
 
 import java.util.*;
 
@@ -162,7 +161,7 @@ public class Individual2 {
             }
             set.clear();
         }
-        /*
+
         // clashes for same lesson in same day
         Set<String> set2 = new HashSet<>();
         for (int i = 0; i < timetable.length; i++) {
@@ -179,7 +178,7 @@ public class Individual2 {
             }
         }
 
-         */
+
         // calculate fitness
         double calculatedFitness = (double) 1 / (double) (1 + clashes);
         // set fitness

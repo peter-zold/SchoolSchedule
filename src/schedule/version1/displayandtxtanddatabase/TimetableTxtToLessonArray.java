@@ -1,6 +1,6 @@
-package schedule.displayandtxtanddatabase;
+package schedule.version1.displayandtxtanddatabase;
 
-import schedule.data.Lesson;
+import schedule.version1.data.Lesson;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class TimetableTxtToLessonArray {
         int row2 = 0;
 
         //You can change which timetable to turn into a Lesson array here.
-        String filePath = "src\\schedule\\displayandtxtanddatabase\\timetable.txt";
+        String filePath = "src\\schedule\\version1\\displayandtxtanddatabase\\timetable.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             while (line != null) {

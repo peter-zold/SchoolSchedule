@@ -1,9 +1,7 @@
-package schedule;
+package schedule.version1;
 
-import schedule.data.Classes;
-import schedule.data.Lesson;
-import java.util.ArrayList;
-import java.util.Arrays;
+import schedule.version1.data.Classes;
+
 import java.util.List;
 
 /**
@@ -30,7 +28,7 @@ import java.util.List;
  * @author bkanber
  */
 
-public class GeneticAlgorithm2 {
+public class GeneticAlgorithm {
 
     protected int tournamentSize;
     private int populationSize;
@@ -55,7 +53,7 @@ public class GeneticAlgorithm2 {
     private int elitismCount;
 
 
-    public GeneticAlgorithm2(int populationSize, double mutationRate, double crossoverRate, int elitismCount, int tournamentSize) {
+    public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount, int tournamentSize) {
         this.populationSize = populationSize;
         this.mutationRate = mutationRate;
         this.crossoverRate = crossoverRate;
@@ -70,9 +68,9 @@ public class GeneticAlgorithm2 {
      * @param allTheClasses The classes arrayList from input data
      * @return population The initial population generated
      */
-    public Population2 initPopulation(List<Classes> allTheClasses) {
+    public Population initPopulation(List<Classes> allTheClasses) {
         // Initialize population
-        Population2 population = new Population2(this.populationSize, allTheClasses);
+        Population population = new Population(this.populationSize, allTheClasses);
         return population;
     }
 
@@ -85,8 +83,8 @@ public class GeneticAlgorithm2 {
      * @param population
      * @return boolean True if termination condition met, otherwise, false
      */
-    public boolean isTerminationConditionMet(Population2 population) {
-        for (Individual2 individual : population.getIndividuals()) {
+    public boolean isTerminationConditionMet(Population population) {
+        for (Individual individual : population.getIndividuals()) {
             if (individual.getFitness() == 1) {
                 return true;
             }
@@ -104,14 +102,14 @@ public class GeneticAlgorithm2 {
      * @param population
      * @return The individual selected as a parent
      */
-    public Individual2 selectParent(Population2 population) {
+    public Individual selectParent(Population population) {
         // Create tournament
-        Population2 tournament = new Population2(this.tournamentSize);
+        Population tournament = new Population(this.tournamentSize);
 
         // Add random individuals to the tournament
         population.shuffle();
         for (int i = 0; i < this.tournamentSize; i++) {
-            Individual2 tournamentIndividual = population.getIndividual(i);
+            Individual tournamentIndividual = population.getIndividual(i);
             tournament.setIndividual(i, tournamentIndividual);
         }
 
@@ -132,31 +130,31 @@ public class GeneticAlgorithm2 {
      * @param population The population to apply crossover to
      * @return The new population
      */
-    public Population2 crossoverPopulation(Population2 population) {
+    public Population crossoverPopulation(Population population) {
         // Create new population
-        Population2 newPopulation = new Population2(population.size());
+        Population newPopulation = new Population(population.size());
 
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
-            Individual2 parent1 = population.getFittest(populationIndex);
+            Individual parent1 = population.getFittest(populationIndex);
 
-            // Apply crossover to this individual?
+           // Apply crossover to this individual?
             if (this.crossoverRate > Math.random() && populationIndex > this.elitismCount) {
 
                 // Find second parent
-                Individual2 parent2 = selectParent(population);
+                Individual parent2 = selectParent(population);
 
                 // Initialize 10 offsprings. Validity of number 10 is up to more testing
-                Population2 offspringsPop = new Population2(10);
+                Population offspringsPop = new Population(10);
                 for (int i = 0; i < 10; i++) {
-                    Individual2 offspring = Individual2.breedOffspring(parent1, parent2);
+                    Individual offspring = Individual.breedOffspring(parent1, parent2);
                     offspring.setFitness(offspring.calcFitness());
                     offspringsPop.setIndividual(i, offspring);
                 }
                 // get fittest offspring
-                Individual2 fittestOffspring = offspringsPop.getFittest(0);
+               Individual fittestOffspring = offspringsPop.getFittest(0);
                 // if offspring is fitter than parent
-                if(fittestOffspring.calcFitness() > parent1.calcFitness()) {
+                if(fittestOffspring.getFitness() > parent1.getFitness()) {
                     // Add offspring to new population
                     newPopulation.setIndividual(populationIndex, fittestOffspring);
                 }
@@ -186,34 +184,34 @@ public class GeneticAlgorithm2 {
      * @param population The population to apply mutation to
      * @return The mutated population
      */
-    public Population2 mutatePopulation(Population2 population) {
+    public Population mutatePopulation(Population population) {
         // Initialize new population
-        Population2 newPopulation = new Population2(this.populationSize);
+        Population newPopulation = new Population(this.populationSize);
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             // choose and individual and clone it
-            Individual2 individualOriginal = population.getFittest(populationIndex);
-            Individual2 individual = new Individual2(individualOriginal);
+            Individual individualOriginal = population.getFittest(populationIndex);
+            Individual individual = new Individual(individualOriginal);
 
             // apply mutation to the clone
             if (populationIndex > this.elitismCount) {
-                for (int classIndex = 0; classIndex < individual.getNumOfClasses(); classIndex++) {
+            for (int classIndex = 0; classIndex < individual.getNumOfClasses(); classIndex++) {
                     // Does this class timetable need mutation?
                     if (this.mutationRate > Math.random()) {
                         // Get two colliding classes swap
                         individual.mutateTwoCollisions(classIndex);
                     }
-                    if (this.mutationRate > Math.random()*3) {
+                    if (this.mutationRate > Math.random()) {
                         // Get one colliding class swap with a random
                         individual.mutateOneCollision(classIndex);
                     }
-                    if (this.mutationRate > Math.random()*6) {
+                    if (this.mutationRate > Math.random()*2) {
                         // Get two random classes swap
                         individual.mutateRandom(classIndex);
                     }
                 }
-                // if mutated clone is fitter, swap it with the original
-                if (individual.calcFitness() >= individualOriginal.calcFitness()) {
+            // if mutated clone is fitter, swap it with the original
+                if (individual.getFitness() >= individualOriginal.getFitness()) {
                     // Add individual to population
                     newPopulation.setIndividual(populationIndex, individual);
                 } else {
@@ -221,8 +219,8 @@ public class GeneticAlgorithm2 {
                     newPopulation.setIndividual(populationIndex, individualOriginal);
                 }
             }
-            else {
-                // if decided to not mutate, original remains
+             else {
+                 // if decided to not mutate, original remains
                 newPopulation.setIndividual(populationIndex, individualOriginal);
             }
         }

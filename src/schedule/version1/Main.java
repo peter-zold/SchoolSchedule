@@ -1,17 +1,17 @@
-package schedule;
+package schedule.version1;
 
-import schedule.data.Classes;
-import schedule.data.DataScan;
-import schedule.data.Lesson;
-import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
-import schedule.displayandtxtanddatabase.TimetableDisplay;
-import schedule.displayandtxtanddatabase.TimetableTxtToLessonArray;
-import schedule.displayandtxtanddatabase.TxtMaker;
+import schedule.version1.data.Classes;
+import schedule.version1.data.DataScan;
+import schedule.version1.data.Lesson;
+import schedule.version1.displayandtxtanddatabase.TimetableDataInputAndOutput;
+import schedule.version1.displayandtxtanddatabase.TimetableDisplay;
+import schedule.version1.displayandtxtanddatabase.TimetableTxtToLessonArray;
+import schedule.version1.displayandtxtanddatabase.TxtMaker;
 
 import java.util.List;
 
-//import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
-//import schedule.displayandtxtanddatabase.TimetableDataInput;
+//import schedule.version1.displayandtxtanddatabase.RoomArrangementTxtMaker;
+//import schedule.version1.displayandtxtanddatabase.TimetableDataInput;
 
 //próba
 //FELADATOK

@@ -1,6 +1,6 @@
-package schedule.displayandtxtanddatabase;
+package schedule.version1.displayandtxtanddatabase;
 
-import schedule.data.Lesson;
+import schedule.version1.data.Lesson;
 
 //Moved the timetable display here, feel free to edit it - Simon
 

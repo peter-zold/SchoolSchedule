@@ -1,18 +1,13 @@
-package schedule;
+package schedule.version2;
 
-import schedule.data.Classes;
-import schedule.data.DataScan;
-import schedule.data.DataScan2;
-import schedule.data.Lesson;
-import schedule.displayandtxtanddatabase.TimetableDataInputAndOutput;
-import schedule.displayandtxtanddatabase.TimetableDisplay;
-import schedule.displayandtxtanddatabase.TimetableTxtToLessonArray;
-import schedule.displayandtxtanddatabase.TxtMaker;
+import schedule.version1.data.Classes;
+import schedule.version2.data.DataScan2;
+import schedule.version1.Individual;
 
 import java.util.List;
 
-//import schedule.displayandtxtanddatabase.RoomArrangementTxtMaker;
-//import schedule.displayandtxtanddatabase.TimetableDataInput;
+//import schedule.version1.displayandtxtanddatabase.RoomArrangementTxtMaker;
+//import schedule.version1.displayandtxtanddatabase.TimetableDataInput;
 
 //próba
 //FELADATOK
@@ -109,6 +104,9 @@ public class Main2 {
             // printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
             // break
+            if (generation%50 ==0){
+                printTimeTable(dataScan.getAllClasses() ,population.getFittest(0));
+            }
             if(generation > 2000) break;
         }
 
@@ -122,6 +120,7 @@ public class Main2 {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
+        printTimeTable(dataScan.getAllClasses() ,population.getFittest(0));
 
         /*
         //Timetable display, database connection and txt maker - Simon

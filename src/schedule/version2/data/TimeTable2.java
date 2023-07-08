@@ -1,4 +1,7 @@
-package schedule.data;
+package schedule.version2.data;
+
+import schedule.version1.data.Classes;
+import schedule.version1.data.Lesson;
 
 import java.util.*;
 

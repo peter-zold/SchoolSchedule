@@ -148,6 +148,7 @@ public class Individual2 {
             studentClass.clear();
         }
         int clashes = 0;
+        /*
         // clashes for same teacher in same timeslot
         Set<String> set = new HashSet<>();
         for (int i = 0; i < timetable[0].length; i++) {
@@ -162,6 +163,27 @@ public class Individual2 {
             set.clear();
         }
 
+         */
+
+        // clashes for same teacher in same timeslot
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < timetable[0].length; i++) {
+            for (int j = 0; j < timetable.length; j++) {
+                for (int k = 0; k < timetable[j][i].size(); k++) {
+                    String tmpTeachersName = timetable[j][i].get(k).getTeacher().getName();
+                    if (timetable[j][i].get(k).getValueOfFreeness() == 0 && map.containsKey(tmpTeachersName)) {
+                        candidatesForMutation[j].add(map.get(tmpTeachersName));
+                        candidatesForMutation[j].add(i);
+                        map.put(tmpTeachersName, i);
+                        clashes++;
+                    } else if (timetable[j][i].get(k).getValueOfFreeness() == 0 && !map.containsKey(tmpTeachersName)) {
+                        map.put(tmpTeachersName, i);
+                    }
+                }
+            }
+            map.clear();
+        }
+/*
         // clashes for same lesson in same day
         Set<String> set2 = new HashSet<>();
         for (int i = 0; i < timetable.length; i++) {
@@ -173,6 +195,28 @@ public class Individual2 {
                     if (timetable[i][j].get(k).getValueOfFreeness() == 0 && !set2.add(timetable[i][j].get(k).getNameOfLesson() + timetable[i][j].get(k).getGroupID())) {
                         candidatesForMutation[i].add(j);
                         clashes++;
+                    }
+                }
+            }
+        }
+
+ */
+        // clashes for same lesson in same day
+        Map<String, Integer> map2 = new HashMap();
+        for (int i = 0; i < timetable.length; i++) {
+            for (int j = 0; j < timetable[i].length; j++) {
+                if (j % 9 == 0) {
+                    map2.clear();
+                }
+                for (int k = 0; k < timetable[i][j].size(); k++) {
+                    String tmpNameOfLesson = timetable[i][j].get(k).getNameOfLesson() + timetable[i][j].get(k).getGroupID();
+                    if (timetable[i][j].get(k).getValueOfFreeness() == 0 && map2.containsKey(tmpNameOfLesson)) {
+                        candidatesForMutation[i].add(map2.get(tmpNameOfLesson));
+                        candidatesForMutation[i].add(j);
+                        map.put(tmpNameOfLesson, j);
+                        clashes++;
+                    } else if (timetable[i][j].get(k).getValueOfFreeness() == 0 && !map2.containsKey(tmpNameOfLesson)) {
+                        map.put(tmpNameOfLesson, j);
                     }
                 }
             }

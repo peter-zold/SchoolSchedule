@@ -70,7 +70,7 @@ public class Main2 {
         // Initialize population using scanned data
         // Evaluating fitness of individuals during construction
         Population2 population = ga.initPopulation(dataScan.getAllClasses());
-
+        //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
         // Keep track of current generation
         int generation = 1;
@@ -101,7 +101,7 @@ public class Main2 {
             generation++;
 
             // print timetable
-            // printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+             printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
             // break
             if (generation%50 ==0){

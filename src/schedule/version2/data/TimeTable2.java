@@ -17,7 +17,7 @@ public class TimeTable2 {
         List<Lesson>[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod, classes.getLessonsPerWeek());
 
         //Tesztelés
-        //printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
+        printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
         return classLessons;
     }
 
@@ -77,36 +77,47 @@ public class TimeTable2 {
         }
         //Tantárgyak behelyezése
         int indexOflessons = 0;
+        Set<Integer> indexes = new HashSet<>();
+
         for (int i = 0; i < classLessons.length; i++) {
             if (classLessons[i] == null) {
                 List<Lesson> subject = new ArrayList<>();
-                Set<Integer> indexes = new HashSet<>();
-                if (lessons.get(indexOflessons).getGroupID().equals("000")) {
+                //Set<Integer> indexes = new HashSet<>();
+                if (lessons.get(indexOflessons).getGroupID().equals("000") && !indexes.contains(indexOflessons)) {
 
                     subject.add(lessons.get(indexOflessons));
+                    indexes.add(indexOflessons);
 
-                } else if (lessons.get(indexOflessons).getGroupID().startsWith("0")) {
-                    //subject.add(lessons.get(0));
-                    if (indexes.add(indexOflessons)) {
-                        outer:
-                        for (int k = 1; k < 3; k++) {
-                            inner:
+
+                } else if (lessons.get(indexOflessons).getGroupID().startsWith("0")){
+                    //subject.add(lessons.get(indexOflessons));
+                    int tempIndexOfLessons = indexOflessons;
+                    while(true) {
+                        if (!indexes.contains(tempIndexOfLessons)) {
+                            subject.add(lessons.get(tempIndexOfLessons));
+                            indexes.add(tempIndexOfLessons);
+
+
                             for (int j = indexOflessons; j < lessons.size(); j++) {
-                                if (lessons.get(indexOflessons).getGroupID().charAt(1) == lessons.get(j).getGroupID().charAt(1) && lessons.get(j).getGroupID().charAt(2) == Character.forDigit(k, 10)) {
+                                if (!indexes.contains(j) && lessons.get(tempIndexOfLessons).getGroupID().charAt(1) == lessons.get(j).getGroupID().charAt(1) && lessons.get(j).getGroupID().charAt(2) != lessons.get(tempIndexOfLessons).getGroupID().charAt(2)) {
                                     subject.add(lessons.get(j));
-                                    indexes.add(indexOflessons);
-                                    break inner;
+                                    indexes.add(j);
+                                    subject.sort((p1, p2) -> p1.getGroupID().compareTo(p2.getGroupID()));
+                                    break;
+
                                 }
                             }
+                            break;
                         }
+                        tempIndexOfLessons++;
                     }
-
                 }
 
                 classLessons[i] = subject;
                 indexOflessons++;
             }
         }
+        //System.out.println(indexes);
         return classLessons;
     }
 

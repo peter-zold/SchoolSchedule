@@ -1,8 +1,8 @@
 package schedule.version2;
 
 
-import schedule.version1.data.Classes;
-import schedule.version1.data.Lesson;
+import schedule.version2.data.Classes;
+import schedule.version2.data.Lesson;
 
 import schedule.version2.data.TimeTable2;
 

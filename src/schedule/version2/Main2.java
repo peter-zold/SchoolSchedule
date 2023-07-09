@@ -1,8 +1,7 @@
 package schedule.version2;
 
-import schedule.version1.data.Classes;
+import schedule.version2.data.Classes;
 import schedule.version2.data.DataScan2;
-import schedule.version1.Individual;
 
 import java.util.List;
 
@@ -171,22 +170,5 @@ public class Main2 {
             }
         }
     }
-    public static void printTimeTable(List<Classes> allClasses, Individual individual) {
-        // This fast display remains here for testing.
-        // The txtreader, txtmaker, database connection and proper full display can be found in
-        // the displayandtxtanddatabase package. - Simon
 
-        for (int i = 0; i < allClasses.size(); i++) {
-            System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
-            for (int j = 0; j < 45; j++) {
-                if(j % 9 == 0) {
-                    System.out.println();
-                }
-                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
-                if (i % 9 == 8) {
-                    System.out.println();
-                }
-            }
-        }
-    }
 }

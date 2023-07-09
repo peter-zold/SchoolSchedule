@@ -1,8 +1,5 @@
 package schedule.version2.data;
 
-import schedule.version1.data.Classes;
-import schedule.version1.data.Lesson;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -63,6 +60,9 @@ public class DataScan2 {
 
 
         for (int i = 0;i<allClasses.size();i++) {
+            for (int j = 0; j < allClasses.get(i).getAllLessons().size(); j++) {
+                //System.out.println(allClasses.get(i).getAllLessons().get(j).getNameOfLesson() + " " + allClasses.get(i).getAllLessons().get(j).getGroupID());
+            }
             TimeTable2.createRandomTimeTable(allClasses.get(i));
         }
 

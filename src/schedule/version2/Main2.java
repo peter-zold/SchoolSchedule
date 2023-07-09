@@ -34,7 +34,6 @@ import java.util.List;
 
 /*******************************************************************
  * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
-
  *  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
  *  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
  *        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
@@ -44,8 +43,6 @@ import java.util.List;
  * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
  *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
  *    csak a competencinek megfelelő órákat tarthasson egy tanár
-
-
  *  - FRONTENDET ÉPÍTENI
  *  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
  *       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
@@ -55,6 +52,7 @@ import java.util.List;
 
 public class Main2 {
     DataScan2 dataScan = new DataScan2();
+
     public static void main(String[] args) {
         new Main2().run();
     }
@@ -100,13 +98,12 @@ public class Main2 {
             generation++;
 
             // print timetable
-             printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+            //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
             // break
-            if (generation%50 ==0){
-                printTimeTable(dataScan.getAllClasses() ,population.getFittest(0));
+            if (generation > 2000) {
+                break;
             }
-            if(generation > 2000) break;
         }
 
         /**
@@ -119,7 +116,7 @@ public class Main2 {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
-        printTimeTable(dataScan.getAllClasses() ,population.getFittest(0));
+        //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
         /*
         //Timetable display, database connection and txt maker - Simon
@@ -162,7 +159,7 @@ public class Main2 {
                 }
                 System.out.print(k % 9 + ". óra: ");
                 for (int j = 0; j < individual.getTimetable()[i][k].size(); j++) {
-                    System.out.print(individual.getTimetable()[i][k].get(j).getGroupID() + " " + individual.getTimetable()[i][k].get(j).getNameOfLesson() + "    ");
+                    System.out.print(individual.getTimetable()[i][k].get(j).getGroupID() + " " + individual.getTimetable()[i][k].get(j).getNameOfLesson() + " - " + individual.getTimetable()[i][k].get(j).getTeacher()+",");
                 }
                 System.out.println();
 

@@ -150,7 +150,7 @@ public class Individual2 {
         int clashes = 0;
 
         // clashes for same teacher in same timeslot
-        /*
+
         Set<String> set = new HashSet<>();
         for (int i = 0; i < timetable[0].length; i++) {
             for (int j = 0; j < timetable.length; j++) {
@@ -164,8 +164,8 @@ public class Individual2 {
             set.clear();
         }
 
-         */
 
+/*
         // clashes for same teacher in same timeslot
         Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < timetable[0].length; i++) {
@@ -184,7 +184,9 @@ public class Individual2 {
             }
             map.clear();
         }
-/*
+
+ */
+
         // clashes for same lesson in same day
         Set<String> set2 = new HashSet<>();
         for (int i = 0; i < timetable.length; i++) {
@@ -202,7 +204,7 @@ public class Individual2 {
         }
 
 
-        */
+        /*
         // clashes for same lesson in same day
         Map<String, Integer> map2 = new HashMap();
         for (int i = 0; i < timetable.length; i++) {
@@ -213,21 +215,16 @@ public class Individual2 {
                 for (int k = 0; k < timetable[i][j].size(); k++) {
                     String tmpNameOfLesson = timetable[i][j].get(k).getNameOfLesson() + timetable[i][j].get(k).getGroupID();
                     if (timetable[i][j].get(k).getValueOfFreeness() == 0 && map2.containsKey(tmpNameOfLesson)) {
-                        //System.out.println("belement if1");
                         candidatesForMutation[i].add(map2.get(tmpNameOfLesson));
                         candidatesForMutation[i].add(j);
-                        //map.put(tmpNameOfLesson, j);
-                       //System.out.println(map2);
                         clashes++;
-                    } else if (timetable[i][j].get(k).getValueOfFreeness() == 0 && !map2.containsKey(tmpNameOfLesson)) {
-                        //System.out.println("belement if2");
-                        //map.put(tmpNameOfLesson, j);
-                      // System.out.println(map2);
                     }
                     map2.put(tmpNameOfLesson, j);
                 }
             }
         }
+
+         */
 
 
         // calculate fitness

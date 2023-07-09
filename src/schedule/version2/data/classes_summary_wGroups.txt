@@ -30,7 +30,7 @@
 9b,Földrajz,2,Madaras Janka,MJ
 9b,Ének-zene,1,Csabai Róbert,CR
 9b,Vizuális kultúra,1,Csabai Róbert,CR
-9b/11,Digitális kultúra,1,Koleszár István,KI
+9b/11,Digitális kultúra,2,Koleszár István,KI
 9b/12,Digitális kultúra,2,Baráth Anna,BA
 9b,Testnevelés,5,Aradi Viola,AV
 9b,Osztályfőnöki,1,Baráth Anna,BA
@@ -123,4 +123,4 @@
 12b,Média,1,Baráth Anna,BA
 12b,Testnevelés,5,Aradi Viola,AV
 12b,Osztályfőnöki,1,Madaras Janka,MJ
-12b,Fakultáció,4,Maradas Janka,MJ
+12b,Fakultáció,4,Madaras Janka,MJ

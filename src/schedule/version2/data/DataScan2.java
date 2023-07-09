@@ -54,18 +54,17 @@ public class DataScan2 {
         }
 
         // Az adatok tesztelése
+        // testData();
+
+
+    }
+    private void testData(){
         for (int i = 0; i < allClasses.size(); i++) {
             System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
         }
-
-
         for (int i = 0;i<allClasses.size();i++) {
-            for (int j = 0; j < allClasses.get(i).getAllLessons().size(); j++) {
-                //System.out.println(allClasses.get(i).getAllLessons().get(j).getNameOfLesson() + " " + allClasses.get(i).getAllLessons().get(j).getGroupID());
-            }
             TimeTable2.createRandomTimeTable(allClasses.get(i));
         }
-
     }
 }
 

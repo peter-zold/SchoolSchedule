@@ -13,7 +13,7 @@ import java.util.List;
 //import schedule.version1.displayandtxtanddatabase.RoomArrangementTxtMaker;
 //import schedule.version1.displayandtxtanddatabase.TimetableDataInput;
 
-//próbácska
+//próba
 //FELADATOK
 
 //Simon ----------------------------------------------

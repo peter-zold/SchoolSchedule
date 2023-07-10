@@ -2,7 +2,6 @@ package schedule.version3;
 
 
 import schedule.version3.data.Classes;
-import schedule.version3.data.DataScan;
 import schedule.version3.data.Lesson;
 import schedule.version3.data.TimeTable;
 
@@ -58,7 +57,10 @@ public class Individual {
      */
 
     public Individual(List<Classes> allClasses) {
+        List<Lesson>[][] tempTimeTable = new ArrayList[allClasses.size()][];
+
         this.timetable = TimeTable.createRandomTimeTable(allClasses);
+
         this.numOfClasses = allClasses.size();
         this.candidatesForMutation = new ArrayList[numOfClasses];
         for (int i = 0; i < numOfClasses; i++) {
@@ -73,32 +75,11 @@ public class Individual {
      * @param parent1 Mother parent
      * @param parent2 Father parent
      */
-    public static Individual breedOffspring(Individual parent1, Individual parent2, int[] allClassGrades) {
-        List<Lesson>[][] offspringTimeTable = new ArrayList[allClassGrades.length][45];
-        int classIndex = 0;
-        int grade = allClassGrades[classIndex];
-        Individual parent = chooseParent(parent1, parent2);
+    public static Individual breedOffspring(Individual parent1, Individual parent2) {
+        List<Lesson>[][] offspringTimeTable = new ArrayList[parent1.getNumOfClasses()][45];
 
-        while(classIndex < allClassGrades.length) {
-            if(grade == allClassGrades[classIndex]) {
-                offspringTimeTable[classIndex] = parent.getClassTimetable(classIndex);
-            } else{
-                parent = chooseParent(parent1, parent2);
-                offspringTimeTable[classIndex] = parent.getClassTimetable(classIndex);
-                grade = allClassGrades[classIndex];
-            }
-            classIndex++;
-        }
-
-        return new Individual(offspringTimeTable);
-    }
-
-
-
-
-        /*
         // Loop over genome for all the offspring candidates
-        for (int classIndex = 0; classIndex < parent1.getNumOfClasses(); classIndex += 2) {
+        for (int classIndex = 0; classIndex < parent1.getNumOfClasses(); classIndex++) {
             // Use half of parent1's genes and half of parent2's genes
             if (0.5 > Math.random()) {
                 offspringTimeTable[classIndex] = parent1.getClassTimetable(classIndex);
@@ -107,18 +88,7 @@ public class Individual {
             }
         }
         return new Individual(offspringTimeTable);
-        }
-        */
-
-
-    private static Individual chooseParent(Individual parent1, Individual parent2) {
-        if (0.5 > Math.random()) {
-            return parent1;
-        } else {
-            return parent2;
-        }
     }
-
 
     /**
      * Get number of classes
@@ -172,45 +142,6 @@ public class Individual {
 
         // clashes for same teacher in same timeslot
 
-        Set<String> teachersForClasses = new HashSet<>();
-        Set<String> teachersForGrades = new HashSet<>();
-        Set<String> teachersForGradeGroups = new HashSet<>();
-
-        for (int i = 0; i < timetable[0].length; i++) {
-            for (int j = 0; j < timetable.length; j++) {
-                for (int k = 0; k < timetable[j][i].size(); k++) {
-                    String teacherName = timetable[j][i].get(k).getTeacher().getName();
-                    String gradeID = timetable[j][i].get(k).getGroupID().substring(0, 3);
-
-                    if (timetable[j][i].get(k).getValueOfFreeness() == 0) {
-                        if (timetable[j][i].get(k).getGroupID().startsWith("1")) {
-                            if (!teachersForClasses.contains(teacherName)) {
-                                if (!teachersForGrades.contains(teacherName)) {
-                                    teachersForGrades.add(teacherName);
-                                    teachersForGradeGroups.add(teacherName + gradeID);
-                                }
-                                else if (!teachersForGradeGroups.contains(teacherName + gradeID)) {
-                                    candidatesForMutation[j].add(i);
-                                    clashes++;
-                                }
-                            } else {
-                                candidatesForMutation[j].add(i);
-                                clashes++;
-                            }
-                        } else if (!teachersForClasses.add(teacherName)
-                                || teachersForGrades.contains(teacherName)) {
-                            candidatesForMutation[j].add(i);
-                            clashes++;
-                        }
-                    }
-                }
-            }
-            teachersForClasses.clear();
-            teachersForGrades.clear();
-            teachersForGradeGroups.clear();
-        }
-
-/*
         Set<String> set = new HashSet<>();
         for (int i = 0; i < timetable[0].length; i++) {
             for (int j = 0; j < timetable.length; j++) {
@@ -223,7 +154,7 @@ public class Individual {
             }
             set.clear();
         }
-*/
+
 
 /*
         // clashes for same teacher in same timeslot
@@ -300,7 +231,7 @@ public class Individual {
      * @param classID Which classes' timetable to mutate
      */
 
-    public void mutateTwoCollisions(int classID, int[] allClassGrades) {
+    public void mutateTwoCollisions(int classID) {
         calcFitness();
         // how many collisions in a class timetable
         //System.out.println(candidatesForMutation[classID]);
@@ -315,7 +246,23 @@ public class Individual {
             int dayHour1 = candidatesForMutation[classID].get(i);
             int dayHour2 = candidatesForMutation[classID].get(j);
 
-            mutate(classID, dayHour1, dayHour2, allClassGrades);
+            // swap these lessons, if they are not the same
+            if (true
+                // !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
+            ) {
+                //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+                //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+                //timetable[classID][dayHour1] = new ArrayList<>(temp);
+                List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
+                for (Lesson lesson : timetable[classID][dayHour2]) {
+                    temp.add(lesson);
+                }
+                timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
+                for (Lesson lesson : timetable[classID][dayHour1]) {
+                    timetable[classID][dayHour2].add(lesson);
+                }
+                timetable[classID][dayHour1] = temp;
+            }
         }
     }
 
@@ -325,7 +272,7 @@ public class Individual {
      *
      * @param classID Which classes' timetable to mutate
      */
-    public void mutateOneCollision(int classID, int[] allClassGrades) {
+    public void mutateOneCollision(int classID) {
         calcFitness();
         // How many collisions in a class timetable
         int collNum = candidatesForMutation[classID].size();
@@ -335,7 +282,22 @@ public class Individual {
             int dayHour1 = candidatesForMutation[classID].get(i);
             int dayHour2 = (int) Math.floor(Math.random() * timetable[classID].length);
 
-            mutate(classID, dayHour1, dayHour2, allClassGrades);
+            // swap these lessons, if they are not the same
+            if (timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
+                // && !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])) {
+                //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+                //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+                //timetable[classID][dayHour1] = new ArrayList<>(temp);
+                List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
+                for (Lesson lesson : timetable[classID][dayHour2]) {
+                    temp.add(lesson);
+                }
+                timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
+                for (Lesson lesson : timetable[classID][dayHour1]) {
+                    timetable[classID][dayHour2].add(lesson);
+                }
+                timetable[classID][dayHour1] = temp;
+            }
         }
     }
 
@@ -344,15 +306,31 @@ public class Individual {
      *
      * @param classID Which classes' timetable to mutate
      */
-    public void mutateRandom(int classID, int[] allClassGrades) {
+    public void mutateRandom(int classID) {
         // choose two random indexes, and get Lesson day and hour location indexes from them
         int dayHour1 = (int) Math.floor(Math.random() * timetable[classID].length);
         int dayHour2 = (int) Math.floor(Math.random() * timetable[classID].length);
 
-        mutate(classID, dayHour1, dayHour2, allClassGrades);
-
+        // swap these lessons, if they are not the same
+        if (//!timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
+            // Only if free period does not blend with other group's lessons
+            // &&
+                timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0
+                        && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
+            //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
+            //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
+            //timetable[classID][dayHour1] = new ArrayList<>(temp);
+            List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
+            for (Lesson lesson : timetable[classID][dayHour2]) {
+                temp.add(lesson);
+            }
+            timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
+            for (Lesson lesson : timetable[classID][dayHour1]) {
+                timetable[classID][dayHour2].add(lesson);
+            }
+            timetable[classID][dayHour1] = temp;
+        }
     }
-
 
     /**
      * Clone a class' timetable
@@ -371,75 +349,7 @@ public class Individual {
         //return this.timetable[classID];
     }
 
-private void swap(int classID, int dayHour1,int dayHour2) {
-    List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
-    for (Lesson lesson : timetable[classID][dayHour2]) {
-        temp.add(lesson);
-    }
-    timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
-    for (Lesson lesson : timetable[classID][dayHour1]) {
-        timetable[classID][dayHour2].add(lesson);
-    }
-    timetable[classID][dayHour1] = temp;
-}
 
-private ArrayList<Integer> findOtherGroup(int classID, int[] allClassGrades) {
-    int grade = allClassGrades[classID];
-    ArrayList<Integer> others = new ArrayList<>();
-    for (int i = 0; i < allClassGrades.length; i++) {
-        if(i != classID && grade == allClassGrades[i]) {
-            others.add(i);
-        }
-    }
-    return others;
-}
-
-private void mutate(int classID, int dayHour1, int dayHour2, int[] allClassGrades) {
-    if(timetable[classID][dayHour1].get(0).getGroupID().startsWith("1")
-            && timetable[classID][dayHour2].get(0).getGroupID().startsWith("1")) {
-        ArrayList<Integer> others = findOtherGroup(classID, allClassGrades);
-        for (int id: others) {
-            swap(id, dayHour1, dayHour2);
-        }
-        swap(classID, dayHour1, dayHour2);
-    }
-    else if(timetable[classID][dayHour1].get(0).getGroupID().startsWith("1")
-            && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
-        ArrayList<Integer> others = findOtherGroup(classID, allClassGrades);
-        boolean enableSwap = true;
-        for (int id: others) {
-            if(timetable[id][dayHour2].get(0).getValueOfFreeness() != 0) {
-                enableSwap = false;
-                break;
-            }
-        }
-        if(enableSwap) {
-            swap(classID, dayHour1, dayHour2);
-            for (int id: others) {
-                swap(id, dayHour1, dayHour2);
-            }
-        }
-    } else if(timetable[classID][dayHour2].get(0).getGroupID().startsWith("1")
-            && timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0) {
-        ArrayList<Integer> others = findOtherGroup(classID, allClassGrades);
-        boolean enableSwap = true;
-        for (int id: others) {
-            if(timetable[id][dayHour1].get(0).getValueOfFreeness() != 0) {
-                enableSwap = false;
-                break;
-            }
-        }
-        if(enableSwap) {
-            swap(classID, dayHour1, dayHour2);
-            for (int id: others) {
-                swap(id, dayHour1, dayHour2);
-            }
-        }
-    } else if(timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0
-            && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
-        swap(classID, dayHour1, dayHour2);
-    }
-}
 }
 
 

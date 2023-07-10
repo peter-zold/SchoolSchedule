@@ -7,13 +7,9 @@ import java.util.*;
 public class DataScan {
 
     private List<Classes> allClasses = new ArrayList<>();
-    private int[] allClassesGrades;
 
     public List<Classes> getAllClasses() {
         return allClasses;
-    }
-    public int[] getAllClassesGrades() {
-        return allClassesGrades;
     }
 
     public void scanData() {
@@ -63,16 +59,10 @@ public class DataScan {
             allClasses.get(i).setLessonsPerWeek(count);
             count = 0;
             nameOfLessons.removeAll(nameOfLessons);
-
-            // Fill an array with classes grades
-            this.allClassesGrades = new int[allClasses.size()];
-            for (int j = 0; j < allClasses.size(); j++){
-                allClassesGrades[j] = allClasses.get(j).getGrade();
-            }
         }
 
         // Az adatok tesztelése
-        //testData();
+        testData();
 
 
     }

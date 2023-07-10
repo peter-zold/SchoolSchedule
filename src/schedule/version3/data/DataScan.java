@@ -7,14 +7,11 @@ import java.util.*;
 public class DataScan {
 
     private List<Classes> allClasses = new ArrayList<>();
-    private int[] allClassesGrades;
+
     public List<Classes> getAllClasses() {
         return allClasses;
     }
 
-    public int[] getAllClassesGrades() {
-        return allClassesGrades;
-    }
     public void scanData() {
 
         // Osztályok példányosítása
@@ -39,7 +36,7 @@ public class DataScan {
 
                     if (dataOfSubject[0].contains(allClasses.get(i).getClassName())) {
                         String groupID = dataOfSubject[0].substring(allClasses.get(i).getClassName().length());
-                        if (groupID.length() == 5 && groupID.charAt(1) != '0'){
+                        if (groupID.length() == 4 && groupID.charAt(1) != '0'){
                             Relationships.putClassesOfGradeLessons(groupID.substring(1,3),i);
                             Relationships.gradeLessonPerWeek.put(groupID.substring(1,3), Integer.parseInt(dataOfSubject[2]));
                             allClasses.get(i).addGradeLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0));
@@ -62,17 +59,10 @@ public class DataScan {
             allClasses.get(i).setLessonsPerWeek(count);
             count = 0;
             nameOfLessons.removeAll(nameOfLessons);
-
-
-            // Fill an array with classes grades
-            this.allClassesGrades = new int[allClasses.size()];
-            for (int j = 0; j < allClasses.size(); j++){
-                allClassesGrades[j] = allClasses.get(j). getGrade();
-            }
         }
 
         // Az adatok tesztelése
-        // testData();
+        testData();
 
 
     }

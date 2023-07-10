@@ -1,0 +1,422 @@
+A 9a osztály órarendje:
+
+0. óra: 000 Free Period - none	
+1. óra: 000 Ének-zene - Csabai Róbert	
+2. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Balogh Gáspár
+3. óra: 021 Angol nyelv - Pócsik Erzsébet	022 Német nyelv - Maros Vanda
+4. óra: 000 Biológia - Madaras Janka	
+5. óra: 021 Német nyelv - Tardosi Piroska	022 Angol nyelv - Koleszár István
+6. óra: 000 Földrajz - Madaras Janka	
+7. óra: 000 Testnevelés - Erőss Zoltán	
+8. óra: 000 Free Period - none	
+
+0. óra: 000 Free Period - none	
+1. óra: 000 Kémia - Kovács Elemér	
+2. óra: 011 Matematika - Kovács Elemér	012 Matematika - Balogh Gáspár
+3. óra: 021 Angol nyelv - Pócsik Erzsébet	022 Angol nyelv - Koleszár István
+4. óra: 000 Fizika - Végh Aladár	
+5. óra: 000 Biológia - Madaras Janka	
+6. óra: 000 Testnevelés - Erőss Zoltán	
+7. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+8. óra: 021 Német nyelv - Tardosi Piroska	022 Német nyelv - Maros Vanda
+
+0. óra: 000 Free Period - none	
+1. óra: 000 Földrajz - Madaras Janka	
+2. óra: 000 Történelem - Nagyné Kis Gizella	
+3. óra: 000 Testnevelés - Erőss Zoltán	
+4. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet	
+5. óra: 021 Angol nyelv - Pócsik Erzsébet	022 Német nyelv - Maros Vanda
+6. óra: 011 Matematika - Kovács Elemér	012 Matematika - Balogh Gáspár
+7. óra: 000 Free Period - none	
+8. óra: 000 Free Period - none	
+
+0. óra: 000 Free Period - none	
+1. óra: 021 Német nyelv - Tardosi Piroska	022 Angol nyelv - Koleszár István
+2. óra: 000 Fizika - Végh Aladár	
+3. óra: 011 Matematika - Kovács Elemér	012 Digitális kultúra - Baráth Anna
+4. óra: 000 Biológia - Madaras Janka	
+5. óra: 000 Testnevelés - Erőss Zoltán	
+6. óra: 000 Magyar nyelv és irodalom 	Pócsik Erzsébet
+7. óra: 000 Kémia - Kovács Elemér	
+8. óra: 000 Free Period - none	
+
+0. óra: 000 Free Period - none	
+1. óra: 000 Történelem - Nagyné Kis Gizella	
+2. óra: 000 Osztályfőnöki - Kovács Elemér	
+3. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Balogh Gáspár
+4. óra: 000 Testnevelés - Erőss Zoltán	
+5. óra: 000 Vizuális kultúra - Csabai Róbert	
+6. óra: 011 Matematika - Kovács Elemér	012 Digitális kultúra - Baráth Anna
+7. óra: 021 Angol nyelv - Pócsik Erzsébet	022 Angol nyelv - Koleszár István
+8. óra: 000 Free Period - none	
+
+
+A 9b osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Tardosi Piroska	022 Angol nyelv - Pataki Jenőné
+2. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+3. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Pataki Jenőné
+4. óra: 000 Fizika - dr.Simon Géza
+5. óra: 011 Matematika - Végh Aladár	012 Digitális kultúra - Baráth Anna
+6. óra: 000 Testnevelés - Aradi Viola
+7. óra: 021 Német nyelv - Dudás Tamás	022 Német nyelv - Maros Vanda
+8. óra: 000 Történelem - Nagyné Kis Gizella
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Aradi Viola
+2. óra: 011 Matematika - Végh Aladár	012 Matematika - Pataki Jenőné
+3. óra: 021 Német nyelv - Dudás Tamás	022 Angol nyelv - Pataki Jenőné
+4. óra: 000 Biológia - Madaras Janka
+5. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+6. óra: 000 Földrajz - Madaras Janka
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Tardosi Piroska	022 Angol nyelv - Pataki Jenőné
+2. óra: 000 Kémia - Kovács Elemér
+3. óra: 000 Történelem - Nagyné Kis Gizella
+4. óra: 000 Biológia - Madaras Janka
+5. óra: 011 Matematika - Végh Aladár	012 Matematika - Pataki Jenőné
+6. óra: 000 Testnevelés - Aradi Viola
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Ének-zene - Csabai Róbert
+2. óra: 021 Német nyelv - Dudás Tamás	022 Német nyelv - Maros Vanda
+3. óra: 021 Angol nyelv - Tardosi Piroska	022 Angol nyelv - Pataki Jenőné
+4. óra: 000 Osztályfőnöki - Baráth Anna
+5. óra: 000 Biológia - Madaras Janka
+6. óra: 000 Kémia - Kovács Elemér
+7. óra: 000 Testnevelés - Aradi Viola
+8. óra: 000 Fizika - dr.Simon Géza
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Aradi Viola
+2. óra: 011 Matematika - Végh Aladár	012 Digitális kultúra - Baráth Anna
+3. óra: 000 Vizuális kultúra - Csabai Róbert
+4. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+5. óra: 000 Földrajz - Madaras Janka
+6. óra: 021 Angol nyelv - Tardosi Piroska	022 Német nyelv - Maros Vanda
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 10a osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 000 Kémia - Kovács Elemér
+2. óra: 000 Testnevelés - Erőss Zoltán
+3. óra: 000 Földrajz - Madaras Janka
+4. óra: 000 Ének-zene - Csabai Róbert
+5. óra: 000 Fizika - dr.Simon Géza
+6. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Csabai Róbert
+7. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Kovács Elemér
+8. óra: 021 Angol nyelv - Pataki Jenőné	022 Német nyelv - Dudás Tamás
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Erőss Zoltán
+2. óra: 000 Történelem - Nagyné Kis Gizella
+3. óra: 000 Biológia - Madaras Janka
+4. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+5. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Kovács Elemér
+6. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Dudás Tamás
+7. óra: 000 Vizuális kultúra - Csabai Róbert
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Történelem - Nagyné Kis Gizella
+2. óra: 000 Testnevelés - Erőss Zoltán
+3. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Csabai Róbert
+4. óra: 011 Matematika - Balogh Gáspár	012 Digitális kultúra - Baráth Anna
+5. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+6. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Dudás Tamás
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Biológia - Madaras Janka
+2. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Kovács Elemér
+3. óra: 000 Fizika - dr.Simon Géza
+4. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Csabai Róbert
+5. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+6. óra: 000 Testnevelés - Erőss Zoltán
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Csabai Róbert
+2. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+3. óra: 000 Testnevelés - Erőss Zoltán
+4. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Kovács Elemér
+5. óra: 000 Fizika - dr.Simon Géza
+6. óra: 000 Osztályfőnöki - Dudás Tamás
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 10b osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 000 Földrajz - Madaras Janka
+2. óra: 000 Biológia - Madaras Janka
+3. óra: 000 Testnevelés - Aradi Viola
+4. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Pócsik Erzsébet
+5. óra: 000 Magyar nyelv és irodalom - Nagyné Kis Gizella
+6. óra: 000 Fizika - Végh Aladár
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Koleszár István	022 Német nyelv - Tardosi Piroska
+2. óra: 000 Biológia - Madaras Janka
+3. óra: 000 Magyar nyelv és irodalom - Nagyné Kis Gizella
+4. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Pócsik Erzsébet
+5. óra: 000 Vizuális kultúra - Csabai Róbert
+6. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+7. óra: 000 Testnevelés - Aradi Viola
+8. óra: 000 Osztályfőnöki - Végh Aladár
+
+0. óra: 000 Free Period - none
+1. óra: 011 Matematika - Balogh Gáspár	012 Digitális kultúra - Baráth Anna
+2. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Végh Aladár
+3. óra: 000 Testnevelés - Aradi Viola
+4. óra: 000 Ének-zene - Csabai Róbert
+5. óra: 000 Kémia - Kovács Elemér
+6. óra: 000 Magyar nyelv és irodalom - Nagyné Kis Gizella
+7. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Tardosi Piroska
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Történelem - Nagyné Kis Gizella
+2. óra: 000 Testnevelés - Aradi Viola
+3. óra: 000 Magyar nyelv és irodalom - Nagyné Kis Gizella
+4. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+5. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Pócsik Erzsébet
+6. óra: 000 Fizika - Végh Aladár
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Fizika - Végh Aladár
+2. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Tardosi Piroska
+3. óra: 000 Testnevelés - Aradi Viola
+4. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+5. óra: 000 Történelem - Nagyné Kis Gizella
+6. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Pócsik Erzsébet
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 11a osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 000 Fakultáció - Erőss Zoltán
+2. óra: 000 Történelem - Nagyné Kis Gizella
+3. óra: 000 Testnevelés - Erőss Zoltán
+4. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Tardosi Piroska
+5. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+6. óra: 021 Angol nyelv - Pataki Jenőné	022 Német nyelv - Tardosi Piroska
+7. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Végh Aladár
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+2. óra: 000 Fakultáció - Erőss Zoltán
+3. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+4. óra: 000 Testnevelés - Erőss Zoltán
+5. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Tardosi Piroska
+6. óra: 000 Free Period - none
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Természettudomány - Kovács Elemér
+2. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Tardosi Piroska
+3. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Tardosi Piroska
+4. óra: 000 Testnevelés - Erőss Zoltán
+5. óra: 011 Matematika - Balogh Gáspár	012 Digitális kultúra - Baráth Anna
+6. óra: 000 Fakultáció - Erőss Zoltán
+7. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+2. óra: 011 Digitális kultúra - Koleszár István	012 Digitális kultúra - Baráth Anna
+3. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+4. óra: 000 Történelem - Nagyné Kis Gizella
+5. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Tardosi Piroska
+6. óra: 000 Osztályfőnöki - Tardosi Piroska
+7. óra: 000 Testnevelés - Erőss Zoltán
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Fakultáció - Erőss Zoltán
+2. óra: 000 Vizuális kultúra - Csabai Róbert
+3. óra: 000 Történelem - Nagyné Kis Gizella
+4. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Tardosi Piroska
+5. óra: 000 Természettudomány - Kovács Elemér
+6. óra: 000 Testnevelés - Erőss Zoltán
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 11b osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+2. óra: 000 Testnevelés - Aradi Viola
+3. óra: 000 Vizuális kultúra - Csabai Róbert
+4. óra: 000 Osztályfőnöki - Aradi Viola
+5. óra: 000 Fakultáció - Aradi Viola
+6. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Pócsik Erzsébet
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+2. óra: 000 Fakultáció - Aradi Viola
+3. óra: 000 Természettudomány - Kovács Elemér
+4. óra: 000 Testnevelés - Aradi Viola
+5. óra: 000 Történelem - Nagyné Kis Gizella
+6. óra: 011 Digitális kultúra - Koleszár István	012 Digitális kultúra - Baráth Anna
+7. óra: 021 Angol nyelv - Koleszár István	022 Német nyelv - Dudás Tamás
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Pócsik Erzsébet
+2. óra: 000 Testnevelés - Aradi Viola
+3. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+4. óra: 000 Természettudomány - Kovács Elemér
+5. óra: 000 Fakultáció - Aradi Viola
+6. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Pócsik Erzsébet
+2. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+3. óra: 021 Angol nyelv - Koleszár István	022 Német nyelv - Dudás Tamás
+4. óra: 000 Fakultáció - Aradi Viola
+5. óra: 000 Testnevelés - Aradi Viola
+6. óra: 000 Történelem - Nagyné Kis Gizella
+7. óra: 011 Digitális kultúra - Koleszár István	012 Matematika - Végh Aladár
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 011 Matematika - Balogh Gáspár	012 Digitális kultúra - Baráth Anna
+2. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Pócsik Erzsébet
+3. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+4. óra: 000 Történelem - Nagyné Kis Gizella
+5. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Dudás Tamás
+6. óra: 000 Testnevelés - Aradi Viola
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 12a osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Koleszár István	022 Német nyelv - Dudás Tamás
+2. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+3. óra: 000 Történelem - Nagyné Kis Gizella
+4. óra: 011 Matematika - Pataki Jenőné	012 Matematika - Kovács Elemér
+5. óra: 000 Fakultáció - Csabai Róbert
+6. óra: 000 Testnevelés - Erőss Zoltán
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Történelem - Nagyné Kis Gizella
+2. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Tardosi Piroska
+3. óra: 000 Testnevelés - Erőss Zoltán
+4. óra: 000 Média - Baráth Anna
+5. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+6. óra: 000 Fakultáció - Csabai Róbert
+7. óra: 011 Matematika - Pataki Jenőné	012 Matematika - Kovács Elemér
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Fakultáció - Csabai Róbert
+2. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Dudás Tamás
+3. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+4. óra: 021 Angol nyelv - Koleszár István	022 Angol nyelv - Tardosi Piroska
+5. óra: 000 Testnevelés - Erőss Zoltán
+6. óra: 000 Free Period - none
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 011 Matematika - Pataki Jenőné 	012 Matematika - Kovács Elemér
+2. óra: 000 Fakultáció - Csabai Róbert
+3. óra: 000 Testnevelés - Erőss Zoltán
+4. óra: 021 Angol nyelv - Koleszár István 	022 Angol nyelv - Tardosi Piroska
+5. óra: 000 Történelem - Nagyné Kis Gizella
+6. óra: 000 Magyar nyelv és irodalom - Dudás Tamás
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 021 Angol nyelv - Koleszár István 	022 Angol nyelv - Tardosi Piroska
+2. óra: 000 Testnevelés - Erőss Zoltán
+3. óra: 011 Matematika - Pataki Jenőné 	012 Matematika - Kovács Elemér
+4. óra: 021 Német nyelv - Maros Vanda 	022 Német nyelv - Dudás Tamás
+5. óra: 000 Osztályfőnöki - Erőss Zoltán
+6. óra: 000 Történelem - Nagyné Kis Gizella
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+
+A 12b osztály órarendje:
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Aradi Viola
+2. óra: 021 Angol nyelv - Pataki Jenőné	022 Német nyelv - Tardosi Piroska
+3. óra: 000 Média - Baráth Anna
+4. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+5. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+6. óra: 000 Történelem - Nagyné Kis Gizella
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+2. óra: 000 Fakultáció - Maradas Janka
+3. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Csabai Róbert
+4. óra: 000 Történelem - Nagyné Kis Gizella
+5. óra: 000 Testnevelés - Aradi Viola
+6. óra: 000 Free Period - none
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Aradi Viola
+2. óra: 000 Fakultáció - Maradas Janka
+3. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+4. óra: 000 Történelem - Nagyné Kis Gizella
+5. óra: 000 Osztályfőnöki - Madaras Janka
+6. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Csabai Róbert
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Testnevelés - Aradi Viola
+2. óra: 021 Angol nyelv - Pataki Jenőné	022 Német nyelv - Tardosi Piroska
+3. óra: 021 Német nyelv - Maros Vanda	022 Angol nyelv - Csabai Róbert
+4. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+5. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+6. óra: 000 Fakultáció - Maradas Janka
+7. óra: 000 Free Period - none
+8. óra: 000 Free Period - none
+
+0. óra: 000 Free Period - none
+1. óra: 000 Magyar nyelv és irodalom - Pócsik Erzsébet
+2. óra: 000 Történelem - Nagyné Kis Gizella
+3. óra: 021 Német nyelv - Maros Vanda	022 Német nyelv - Tardosi Piroska
+4. óra: 000 Fakultáció - Maradas Janka
+5. óra: 011 Matematika - Balogh Gáspár	012 Matematika - Végh Aladár
+6. óra: 021 Angol nyelv - Pataki Jenőné	022 Angol nyelv - Csabai Róbert
+7. óra: 000 Testnevelés - Aradi Viola
+8. óra: 000 Free Period - none

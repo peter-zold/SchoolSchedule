@@ -1,21 +1,12 @@
+package schedule.version3;
 
-package schedule.version1;
-
-import schedule.version1.data.Classes;
-import schedule.version1.data.DataScan;
-import schedule.version1.data.Lesson;
-import schedule.version1.displayandtxtanddatabase.TimetableDataInputAndOutput;
-import schedule.version1.displayandtxtanddatabase.TimetableDisplay;
-import schedule.version1.displayandtxtanddatabase.TimetableTxtToLessonArray;
-import schedule.version1.displayandtxtanddatabase.TxtMaker;
-
-
+import schedule.version3.data.Classes;
+import schedule.version3.data.DataScan;
 
 import java.util.List;
 
 
-
-//próbák
+//próba
 //FELADATOK
 
 //Simon ----------------------------------------------
@@ -40,35 +31,33 @@ import java.util.List;
 // Annak felosztása, hogy ki mit azt majd akkor, ha már jobban látjuk, hogy mit kell.
 
 /*******************************************************************
-* TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
-
-*  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
-*  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
-*        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
-*  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
-*  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
-*  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
+ * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
+ *  - Óraadó tanár csak bizonyos napokon dolgozhasson, amit ráadásul előre meg lehet adni (hogy mikor szeretne)
+ *  - Lehessen egy tanár órarendjét csak 4 napra elosztani és így az egyik napja üres legyen.
+ *        (valamelyik nap továbbképzére jár egész évben, mestertanár stb)
+ *  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
+ *  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
+ *  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
  * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
  *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
  *    csak a competencinek megfelelő órákat tarthasson egy tanár
+ *  - FRONTENDET ÉPÍTENI
+ *  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
+ *       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
+ *  - Jó lenne megvalósítani, hogy a kész órarendet pdf-be lehessen konvertálni a frontend felületen valamilyen táblázatos nézetben.
+ *  - Tesztelni igazi iskolákkal a kész verziót. (párral jó lenne kipróbálni)
+ */
 
-
-*  - FRONTENDET ÉPÍTENI
-*  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
-*       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.
-*  - Jó lenne megvalósítani, hogy a kész órarendet pdf-be lehessen konvertálni a frontend felületen valamilyen táblázatos nézetben.
-*  - Tesztelni igazi iskolákkal a kész verziót. (párral jó lenne kipróbálni)
-*/
-
-public class Main {
+public class Main3 {
     DataScan dataScan = new DataScan();
+
     public static void main(String[] args) {
-        new Main().run();
+        new Main3().run();
     }
 
     private void run() {
         // Create genetic algorithm object
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.5, 0.5, 0, 20);
+        GeneticAlgorithm ga = new GeneticAlgorithm(2000, 0.5, 0.5, 0, 20);
 
         // Scan input data, creating teachers, lessons and classes instances
         dataScan.scanData();
@@ -76,7 +65,7 @@ public class Main {
         // Initialize population using scanned data
         // Evaluating fitness of individuals during construction
         Population population = ga.initPopulation(dataScan.getAllClasses());
-
+        //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
         // Keep track of current generation
         int generation = 1;
@@ -106,8 +95,13 @@ public class Main {
             // Increment the current generation
             generation++;
 
+            // print timetable
+            //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+
             // break
-            if(generation > 2000) break;
+            if (generation > 2000) {
+                break;
+            }
         }
 
         /**
@@ -120,6 +114,9 @@ public class Main {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
+        printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+
+        /*
         //Timetable display, database connection and txt maker - Simon
         TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
         //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon
@@ -142,7 +139,10 @@ public class Main {
         //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
         //printTimetable(dataScan.getAllClasses(),population.getFittest(0));
         //System.out.println(population.getFittest(0).getFitness());
+
+         */
     }
+
 
     public static void printTimeTable(List<Classes> allClasses, Individual individual) {
         // This fast display remains here for testing.
@@ -151,15 +151,19 @@ public class Main {
 
         for (int i = 0; i < allClasses.size(); i++) {
             System.out.println("\n\nA " + allClasses.get(i).getClassName() + " osztály órarendje:");
-            for (int j = 0; j < 45; j++) {
-                if(j % 9 == 0) {
+            for (int k = 0; k < individual.getTimetable()[i].length; k++) {
+                if (k % 9 == 0) {
                     System.out.println();
                 }
-                System.out.print(j % 9 + ". óra: " + individual.getClassTimetable(i)[j].getNameOfLesson() + " -" + individual.getClassTimetable(i)[j].getTeacher().getName() + " ,   ");
-                if (i % 9 == 8) {
-                    System.out.println();
+                System.out.print(k % 9 + ". óra: ");
+                for (int j = 0; j < individual.getTimetable()[i][k].size(); j++) {
+                    System.out.print(individual.getTimetable()[i][k].get(j).getGroupID() + " " + individual.getTimetable()[i][k].get(j).getNameOfLesson() + " - " + individual.getTimetable()[i][k].get(j).getTeacher()+",");
                 }
+                System.out.println();
+
+
             }
         }
     }
+
 }

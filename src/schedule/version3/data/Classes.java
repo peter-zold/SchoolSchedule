@@ -1,13 +1,24 @@
 package schedule.version3.data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Classes {
     private String className;
 
     private List<Lesson> allLessons = new ArrayList<>();
+    private List<Lesson> gradeLessons = new ArrayList<>();
+
+    public List<Lesson> getGradeLessons() {
+        return gradeLessons;
+    }
+
+    public void addGradeLessons(Lesson gradeLesson) {
+        this.gradeLessons.add(gradeLesson);
+    }
 
     private int lessonsPerWeek;
     public Classes(String className){

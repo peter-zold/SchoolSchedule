@@ -1,23 +1,81 @@
 package schedule.version3.data;
 
 
+import java.security.KeyStore;
 import java.util.*;
 
 public class TimeTable {
 
-    public static List<Lesson>[] createRandomTimeTable(Classes classes) {
 
-        List<Lesson> clonedLessons = new ArrayList<>(classes.getAllLessons());
-        Collections.shuffle(clonedLessons);
+    public static List<Lesson>[][] createRandomTimeTable(List<Classes> classes) {
+        Set<Integer>[] siteOfHoles = new HashSet[classes.size()];
+        Set<Integer>[] siteOfReservedPlaces = new HashSet[classes.size()];
+        List<Lesson>[][] randomTimeTable = new ArrayList[classes.size()][];
+        int[] randomHoursPerDay = null;
 
-        int[] randomHoursPerDay = siteOfHoleInTimeTable(classes);
-        int[] siteOfFreePeriod = calculatesiteOfFreePeriod(randomHoursPerDay, classes);
-        List<Lesson>[] classLessons = lessonsInTimeTable(clonedLessons, siteOfFreePeriod, classes.getLessonsPerWeek());
+        Relationships relationships = new Relationships();
+        System.out.println(relationships.getClassesOfGradeLessons().toString());
+        relationships.putPlaceOfGradeLessons("000", 4);
+        System.out.println(relationships.getPlaceOfGradeLessons().toString());
+        relationships.putPlaceOfGradeLessons("000", 3);
+        System.out.println(relationships.getPlaceOfGradeLessons().toString());
+        relationships.putPlaceOfGradeLessons("000", 6);
+        System.out.println(relationships.getPlaceOfGradeLessons().toString());
+        // Összes osztály lyukasóráinak előállítása
+        for (int i = 0; i < classes.size(); i++) {
+            randomHoursPerDay = siteOfHoleInTimeTable(classes.get(i));
+            siteOfHoles[i] = calculatesiteOfFreePeriod(randomHoursPerDay, classes.get(i));
 
-        //Tesztelés
-        //printTimeTable(classLessons, siteOfFreePeriod, randomHoursPerDay, classes);
-        return classLessons;
+            siteOfReservedPlaces[i] = new HashSet<>(siteOfHoles[i]);
+        }
+
+        // a letárolt kapcsolatokon végigmegyünk és mindegyik évfolyam órának meghatározzuk a helyeit
+        Iterator iterator = relationships.getClassesOfGradeLessons().entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry dataOfGradeLesson = (Map.Entry) iterator.next();
+            String code = (String) dataOfGradeLesson.getKey();
+            dataOfGradeLesson.getValue();
+            List<Integer> gradeClassList =  (ArrayList) dataOfGradeLesson.getValue();
+            int hourPerWeek = Relationships.gradeLessonPerWeek.get(code);
+            Set<Integer> badTimeSlots = new HashSet<>();
+
+            for (int j = 0; j < gradeClassList.size(); j++) {
+                badTimeSlots.addAll(siteOfReservedPlaces[gradeClassList.get(j)]);
+            }
+
+            for (int k = 0; k < hourPerWeek; k++) {
+                boolean put;
+                do {
+                    Random random = new Random();
+                    int place = random.nextInt(Constants.MAXIMUM_HOURS_PER_WEEK);
+                    put = badTimeSlots.add(place);
+                    if (put) {
+                        relationships.putPlaceOfGradeLessons(code, place);
+                        badTimeSlots.add(place);
+                        for (int j = 0; j < gradeClassList.size(); j++) {
+                            siteOfReservedPlaces[j].add(place);
+                        }
+                    }
+
+                } while (!put);
+            }
+        }
+        // előállítjuk az osztályok véletlen órarendjét
+        for (int i = 0; i < classes.size(); i++) {
+            List<Lesson> clonedLessons = new ArrayList<>(classes.get(i).getAllLessons());
+            Collections.shuffle(clonedLessons);
+
+            randomTimeTable[i] = lessonsInTimeTable(clonedLessons, classes.get(i).getGradeLessons(), siteOfHoles[i], classes.get(i).getLessonsPerWeek(), relationships);
+
+            //Tesztelés
+            printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay, classes.get(i));
+        }
+
+
+        return randomTimeTable;
     }
+
 
     private static int[] siteOfHoleInTimeTable(Classes classes) {
         Random random = new Random();
@@ -42,37 +100,61 @@ public class TimeTable {
     }
 
     // A napi óraszámokból a lyukak helyének meghatározása
-    private static int[] calculatesiteOfFreePeriod(int[] HoursPerDay, Classes classes) {
-        int[] siteOfHole = new int[45 - classes.getLessonsPerWeek()];
-
-        int indexOfHole = 0;
+    private static Set<Integer> calculatesiteOfFreePeriod(int[] HoursPerDay, Classes classes) {
+        //int[] siteOfHole = new int[45 - classes.getLessonsPerWeek()];
+        Set<Integer> siteOfHole = new HashSet<>();
         for (int i = 0; i < 5; i++) {
             int actualHole = HoursPerDay[i] + 1;
-            siteOfHole[indexOfHole] = i * 9;
-            indexOfHole++;
+            siteOfHole.add(i * 9);
+
             while (actualHole <= 8) {
-                siteOfHole[indexOfHole] = i * 9 + actualHole;
+                siteOfHole.add(i * 9 + actualHole);
+
+                System.out.println((i+1) + ". nap: " + HoursPerDay[i] + "db óra van -> " + (i * 9 + actualHole));
                 actualHole++;
-                indexOfHole++;
             }
         }
         return siteOfHole;
     }
 
-    private static List<Lesson>[] lessonsInTimeTable(List<Lesson> lessons, int[] siteOfFreePeriod, int lessonsPerWeek) {
+    private static List<Lesson>[] lessonsInTimeTable(List<Lesson> lessons, List<Lesson> gradeLessons, Set siteOfFreePeriod, int lessonsPerWeek, Relationships relationships) {
         //Lesson[] classLessons = new Lesson[45];
-        List<Lesson>[] classLessons = new ArrayList[45];
+        List<Lesson>[] classLessons = new ArrayList[Constants.MAXIMUM_HOURS_PER_WEEK];
+
+
         // Lyukasórák behelyezése
-        for (int i = 0; i < classLessons.length; i++) {
-            for (int j = 0; j < siteOfFreePeriod.length; j++) {
-                if (i == siteOfFreePeriod[j]) {
-                    int valueOfFreeness = calculateValueOfFreeness(i);
-                    List<Lesson> holes = new ArrayList<>();
-                    holes.add(new Lesson("/000", "Free Period", "none", valueOfFreeness));
-                    classLessons[i] = holes;
-                }
-            }
+
+        Iterator iterator = siteOfFreePeriod.iterator();
+        while (iterator.hasNext()) {
+            int hole = (int) iterator.next();
+            int valueOfFreeness = calculateValueOfFreeness(hole);
+            List<Lesson> holes = new ArrayList<>();
+            holes.add(new Lesson("/000", "Free Period", "none", valueOfFreeness));
+            classLessons[hole] = holes;
+
         }
+
+        // évfolyam órák behelyezése
+
+        for (int i = 0; i < gradeLessons.size(); i++) {
+
+            String code = gradeLessons.get(i).getGroupID().substring(0, 2);
+            for (int j = 0; j < relationships.getPlaceOfGradeLessons().get(code).size(); j++) {
+                List<Lesson> subject = new ArrayList<>();
+                int place = relationships.getPlaceOfGradeLessons().get(code).get(j);
+                subject.add(gradeLessons.get(i));
+                if (classLessons[place] == null){
+                    classLessons[place] = subject;
+                } else {
+                    classLessons[place].addAll(subject);
+                }
+
+
+            }
+
+
+        }
+
         //Tantárgyak behelyezése
         int indexOflessons = 0;
         Set<Integer> indexes = new HashSet<>();
@@ -87,10 +169,10 @@ public class TimeTable {
                     indexes.add(indexOflessons);
 
 
-                } else if (lessons.get(indexOflessons).getGroupID().startsWith("0")){
+                } else if (lessons.get(indexOflessons).getGroupID().startsWith("0")) {
                     //subject.add(lessons.get(indexOflessons));
                     int tempIndexOfLessons = indexOflessons;
-                    while(true) {
+                    while (tempIndexOfLessons < lessons.size()) {
                         if (!indexes.contains(tempIndexOfLessons)) {
                             subject.add(lessons.get(tempIndexOfLessons));
                             indexes.add(tempIndexOfLessons);
@@ -154,14 +236,14 @@ public class TimeTable {
         }
     }
 
-    private static void printTimeTable(List<Lesson>[] classLessons, int[] siteOfFreePeriod, int[] randomHoursPerDay, Classes classes) {
+    private static void printTimeTable(List<Lesson>[] classLessons, Set<Integer> siteOfFreePeriod, int[] randomHoursPerDay, Classes classes) {
         // Tesztelés
         System.out.println();
         System.out.println("Melyik nap hány órája van az osztálynak");
         System.out.print(Arrays.toString(randomHoursPerDay));
         System.out.println();
         System.out.println("Lyukas órák helye");
-        System.out.println(Arrays.toString(siteOfFreePeriod));
+        System.out.println(siteOfFreePeriod.toString());
         System.out.println();
 
         System.out.println("A " + classes.getClassName() + " osztály órarendje:");
@@ -171,13 +253,12 @@ public class TimeTable {
         }
 
 
-
         System.out.println();
         System.out.println();
         System.out.println("Az összes óra listázva sorban");
         for (int i = 0; i < classLessons.length; i++) {
             System.out.print(i + ". óra: ");
-            for (int j = 0; j < classLessons[i].size();j++){
+            for (int j = 0; j < classLessons[i].size(); j++) {
                 System.out.print(classLessons[i].get(j).getGroupID() + " " + classLessons[i].get(j).getNameOfLesson() + "    ");
             }
             System.out.println();
@@ -189,6 +270,6 @@ public class TimeTable {
     public static void main(String[] args) {
         DataScan data2 = new DataScan();
         data2.scanData();
-        TimeTable.createRandomTimeTable(data2.getAllClasses().get(0));
+        TimeTable.createRandomTimeTable(data2.getAllClasses());
     }
 }

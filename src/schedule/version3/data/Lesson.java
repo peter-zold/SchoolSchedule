@@ -17,8 +17,8 @@ public class Lesson {
         this.valueOfFreeness = valueOfFreeness;
         if (groupName.equals("")) {
             this.groupID = "000";
-        } else if (groupName.length()==3){
-            this.groupID = "0" + groupName.substring(1);
+        } else if (groupName.length()==4){
+            this.groupID = groupName.substring(1);
         } else {
             this.groupID = groupName.substring(1);
         }
@@ -47,6 +47,6 @@ public class Lesson {
     //I had to insert a toString method because I could not test or display it otherwise. - Simon
     @Override
     public String toString() {
-        return " | " + nameOfLesson + " | " + teacher + "| " + valueOfFreeness + " |";
+        return " | " + nameOfLesson + " | " + teacher + "| " + valueOfFreeness + " |" + groupID;
     }
 }

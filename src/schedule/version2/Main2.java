@@ -116,7 +116,7 @@ public class Main2 {
         System.out.println("__________________________________________________");
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
-        //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+        printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
         /*
         //Timetable display, database connection and txt maker - Simon

@@ -15,7 +15,7 @@ public class DataScan {
     public void scanData() {
 
         // Osztályok példányosítása
-        File classesName = new File("src\\schedule\\version2\\data\\classes.txt");
+        File classesName = new File("src\\schedule\\version3\\data\\classes.txt");
         try (Scanner scanner = new Scanner(classesName);) {
             while (scanner.hasNext()) {
                 allClasses.add(new Classes(scanner.nextLine()));
@@ -28,16 +28,24 @@ public class DataScan {
         int count = 0;
         // Lessonok beolvasása és a megfelelő osztályhoz hozzáadása annyiszor ahány óra van egy héten az adott tantárgyból
         for (int i = 0; i < allClasses.size(); i++) {
-            File scheduleData = new File("src\\schedule\\version2\\data\\classes_summary_wGroups.txt");
+            File scheduleData = new File("src\\schedule\\version3\\data\\classes_summary_wGroups.txt");
             try (Scanner scanner = new Scanner(scheduleData);) {
                 while (scanner.hasNext()) {
                     String dataLine = scanner.nextLine();
                     String[] dataOfSubject = dataLine.split(",");
 
                     if (dataOfSubject[0].contains(allClasses.get(i).getClassName())) {
+                        String groupID = dataOfSubject[0].substring(allClasses.get(i).getClassName().length());
+                        if (groupID.length() == 4 && groupID.charAt(1) != '0'){
+                            Relationships.putClassesOfGradeLessons(groupID.substring(1,3),i);
+                            Relationships.gradeLessonPerWeek.put(groupID.substring(1,3), Integer.parseInt(dataOfSubject[2]));
+                            allClasses.get(i).addGradeLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0));
+                        } else {
 
-                        for (int j = 0; j < Integer.parseInt(dataOfSubject[2]); j++) {
-                            allClasses.get(i).addLessons((new Lesson(dataOfSubject[0].substring(allClasses.get(i).getClassName().length()), dataOfSubject[1], dataOfSubject[3], 0)));
+                            for (int j = 0; j < Integer.parseInt(dataOfSubject[2]); j++) {
+
+                                allClasses.get(i).addLessons((new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0)));
+                            }
                         }
                         if (nameOfLessons.add(dataOfSubject[1])) {
                             count = count + Integer.parseInt(dataOfSubject[2]);
@@ -54,7 +62,7 @@ public class DataScan {
         }
 
         // Az adatok tesztelése
-        // testData();
+        testData();
 
 
     }
@@ -62,8 +70,13 @@ public class DataScan {
         for (int i = 0; i < allClasses.size(); i++) {
             System.out.println(allClasses.get(i).getClassName() + " osztálynak " + allClasses.get(i).getLessonsPerWeek() + "db órája van hetente.");
         }
+
         for (int i = 0;i<allClasses.size();i++) {
-            TimeTable.createRandomTimeTable(allClasses.get(i));
+            for (int j =0; j < allClasses.get(i).getAllLessons().size();j++){
+                System.out.println(allClasses.get(i).getAllLessons().get(j));
+            }
+            System.out.println();
+            //TimeTable.createRandomTimeTable(allClasses.get(i));
         }
     }
 }

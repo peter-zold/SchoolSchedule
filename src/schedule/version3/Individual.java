@@ -22,8 +22,7 @@ public class Individual {
     /**
      * Create individual from a timetable and auto-calculate other fields
      *
-     * @param timetable
-     *            The number of individuals in the population
+     * @param timetable The number of individuals in the population
      */
 
     public Individual(List<Lesson>[][] timetable) {
@@ -39,8 +38,7 @@ public class Individual {
     /**
      * Clone an individual
      *
-     * @param individual
-     *            The number of individuals in the population
+     * @param individual The number of individuals in the population
      */
     public Individual(Individual individual) {
         this.timetable = individual.getTimetable();
@@ -55,16 +53,14 @@ public class Individual {
     /**
      * Create an individual from scanned data for first generation
      *
-     * @param allClasses
-     *            ArrayList containing instances of all the classes
+     * @param allClasses ArrayList containing instances of all the classes
      */
 
     public Individual(List<Classes> allClasses) {
         List<Lesson>[][] tempTimeTable = new ArrayList[allClasses.size()][];
-        for (int i = 0; i < allClasses.size(); i++) {
-            tempTimeTable[i] = TimeTable.createRandomTimeTable(allClasses.get(i));
-        }
-        this.timetable = tempTimeTable;
+
+        this.timetable = TimeTable.createRandomTimeTable(allClasses);
+
         this.numOfClasses = allClasses.size();
         this.candidatesForMutation = new ArrayList[numOfClasses];
         for (int i = 0; i < numOfClasses; i++) {
@@ -76,10 +72,8 @@ public class Individual {
     /**
      * Create an individual from scanned data for first generation
      *
-     * @param parent1
-     *            Mother parent
-     * @param parent2
-     *            Father parent
+     * @param parent1 Mother parent
+     * @param parent2 Father parent
      */
     public static Individual breedOffspring(Individual parent1, Individual parent2) {
         List<Lesson>[][] offspringTimeTable = new ArrayList[parent1.getNumOfClasses()][45];
@@ -98,7 +92,6 @@ public class Individual {
 
     /**
      * Get number of classes
-     *
      */
 
     public int getNumOfClasses() {
@@ -107,14 +100,13 @@ public class Individual {
 
     /**
      * Clone individuals timetable
-     *
      */
     public List<Lesson>[][] getTimetable() {
         List<Lesson>[][] newTimeTable = new ArrayList[numOfClasses][45];
         for (int i = 0; i < numOfClasses; i++) {
             for (int j = 0; j < 45; j++) {
-                newTimeTable[i][j]= new ArrayList<>(timetable[i][j].size());
-                for (Lesson lesson: timetable[i][j]) {
+                newTimeTable[i][j] = new ArrayList<>(timetable[i][j].size());
+                for (Lesson lesson : timetable[i][j]) {
                     newTimeTable[i][j].add(lesson);
                 }
             }
@@ -124,7 +116,6 @@ public class Individual {
 
     /**
      * Get individual's fitness value
-     *
      */
     public double getFitness() {
         return this.fitness;
@@ -133,8 +124,7 @@ public class Individual {
     /**
      * Set individual's fitness value manually
      *
-     * @param fitness
-     *            Fitness value to set
+     * @param fitness Fitness value to set
      */
     public void setFitness(double fitness) {
         this.fitness = fitness;
@@ -143,10 +133,9 @@ public class Individual {
     /**
      * Calculate and set individual's fitness
      * Get candidates for mutation
-     *
      */
     public double calcFitness() {
-        for (ArrayList<Integer> studentClass: candidatesForMutation) {
+        for (ArrayList<Integer> studentClass : candidatesForMutation) {
             studentClass.clear();
         }
         int clashes = 0;
@@ -158,8 +147,8 @@ public class Individual {
             for (int j = 0; j < timetable.length; j++) {
                 for (int k = 0; k < timetable[j][i].size(); k++) {
                     if (timetable[j][i].get(k).getValueOfFreeness() == 0 && !set.add(timetable[j][i].get(k).getTeacher().getName())) {
-                    candidatesForMutation[j].add(i);
-                    clashes++;
+                        candidatesForMutation[j].add(i);
+                        clashes++;
                     }
                 }
             }
@@ -239,8 +228,7 @@ public class Individual {
     /**
      * Mutate individual's timetable by swapping colliding classes
      *
-     * @param classID
-     *            Which classes' timetable to mutate
+     * @param classID Which classes' timetable to mutate
      */
 
     public void mutateTwoCollisions(int classID) {
@@ -259,9 +247,9 @@ public class Individual {
             int dayHour2 = candidatesForMutation[classID].get(j);
 
             // swap these lessons, if they are not the same
-            if(true
-                   // !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
-             ) {
+            if (true
+                // !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
+            ) {
                 //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
                 //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
                 //timetable[classID][dayHour1] = new ArrayList<>(temp);
@@ -282,8 +270,7 @@ public class Individual {
      * Mutate individual's timetable by swapping one colliding classe
      * with a random class
      *
-     * @param classID
-     *            Which classes' timetable to mutate
+     * @param classID Which classes' timetable to mutate
      */
     public void mutateOneCollision(int classID) {
         calcFitness();
@@ -297,16 +284,16 @@ public class Individual {
 
             // swap these lessons, if they are not the same
             if (timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
-                    // && !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])) {
+                // && !timetable[classID][dayHour1].equals(timetable[classID][dayHour2])) {
                 //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
                 //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
                 //timetable[classID][dayHour1] = new ArrayList<>(temp);
                 List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
-                for (Lesson lesson: timetable[classID][dayHour2]) {
+                for (Lesson lesson : timetable[classID][dayHour2]) {
                     temp.add(lesson);
                 }
                 timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
-                for (Lesson lesson: timetable[classID][dayHour1]) {
+                for (Lesson lesson : timetable[classID][dayHour1]) {
                     timetable[classID][dayHour2].add(lesson);
                 }
                 timetable[classID][dayHour1] = temp;
@@ -317,8 +304,7 @@ public class Individual {
     /**
      * Mutate individual's timetable by swapping random classes
      *
-     * @param classID
-     *            Which classes' timetable to mutate
+     * @param classID Which classes' timetable to mutate
      */
     public void mutateRandom(int classID) {
         // choose two random indexes, and get Lesson day and hour location indexes from them
@@ -327,19 +313,19 @@ public class Individual {
 
         // swap these lessons, if they are not the same
         if (//!timetable[classID][dayHour1].equals(timetable[classID][dayHour2])
-                // Only if free period does not blend with other group's lessons
-               // &&
-        timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0
-                && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
+            // Only if free period does not blend with other group's lessons
+            // &&
+                timetable[classID][dayHour1].get(0).getValueOfFreeness() == 0
+                        && timetable[classID][dayHour2].get(0).getValueOfFreeness() == 0) {
             //List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2]);
             //timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1]);
             //timetable[classID][dayHour1] = new ArrayList<>(temp);
             List<Lesson> temp = new ArrayList<>(timetable[classID][dayHour2].size());
-            for (Lesson lesson: timetable[classID][dayHour2]) {
+            for (Lesson lesson : timetable[classID][dayHour2]) {
                 temp.add(lesson);
             }
             timetable[classID][dayHour2] = new ArrayList<>(timetable[classID][dayHour1].size());
-            for (Lesson lesson: timetable[classID][dayHour1]) {
+            for (Lesson lesson : timetable[classID][dayHour1]) {
                 timetable[classID][dayHour2].add(lesson);
             }
             timetable[classID][dayHour1] = temp;
@@ -349,22 +335,19 @@ public class Individual {
     /**
      * Clone a class' timetable
      *
-     * @param classID
-     *            Which classes' timetable to clone
+     * @param classID Which classes' timetable to clone
      */
     public List<Lesson>[] getClassTimetable(int classID) {
         List<Lesson>[] classTimetable = new ArrayList[45];
         for (int i = 0; i < classTimetable.length; i++) {
             classTimetable[i] = new ArrayList<>(timetable[classID][i].size());
-            for (Lesson lesson: timetable[classID][i]) {
+            for (Lesson lesson : timetable[classID][i]) {
                 classTimetable[i].add(lesson);
             }
         }
         return classTimetable;
         //return this.timetable[classID];
     }
-
-
 
 
 }

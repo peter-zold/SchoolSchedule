@@ -11,8 +11,8 @@
 9a,Kémia,2,Kovács Elemér,KE
 9a,Földrajz,2,Madaras Janka,MJ
 9a,Ének-zene,1,Csabai Róbert,CR
-9a/111,Vizuális kultúra,1,Csabai Róbert,CR
-9a/112,Vizuális kultúra,1,Huszár Izabella,HI
+9a/101,Vizuális kultúra,1,Csabai Róbert,CR
+9a/102,Vizuális kultúra,1,Huszár Izabella,HI
 9a/011,Digitális kultúra,2,Koleszár István,KI
 9a/012,Digitális kultúra,2,Baráth Anna,BA
 9a,Testnevelés,5,Erőss Zoltán,EZ
@@ -30,8 +30,8 @@
 9b,Kémia,2,Kovács Elemér,KE
 9b,Földrajz,2,Madaras Janka,MJ
 9b,Ének-zene,1,Csabai Róbert,CR
-9b/111,Vizuális kultúra,1,Csabai Róbert,CR
-9b/112,Vizuális kultúra,1,Huszár Izabella,HI
+9b/101,Vizuális kultúra,1,Csabai Róbert,CR
+9b/102,Vizuális kultúra,1,Huszár Izabella,HI
 9b/011,Digitális kultúra,2,Koleszár István,KI
 9b/012,Digitális kultúra,2,Baráth Anna,BA
 9b,Testnevelés,5,Aradi Viola,AV
@@ -88,8 +88,8 @@
 11a/012,Digitális kultúra,2,Baráth Anna,BA
 11a,Testnevelés,5,Erőss Zoltán,EZ
 11a,Osztályfőnöki,1,Tardosi Piroska,TP
-11a/111,Fakultáció I,4,Aradi Viola,AV
-11a/112,Fakultáció II,4,Huszár Izabella,HI
+11a/121,Fakultáció I,4,Aradi Viola,AV
+11a/122,Fakultáció II,4,Huszár Izabella,HI
 11b,Magyar nyelv és irodalom,4,Pócsik Erzsébet,PE
 11b/011,Matematika,3,Balogh Gáspár,BG
 11b/012,Matematika,3,Végh Aladár,VA
@@ -104,8 +104,8 @@
 11b/012,Digitális kultúra,2,Baráth Anna,BA
 11b,Testnevelés,5,Aradi Viola,AV
 11b,Osztályfőnöki,1,Aradi Viola,AV
-11b/111,Fakultáció I,4,Aradi Viola,AV
-11b/112,Fakultáció II,4,Huszár Izabella,HI
+11b/121,Fakultáció,4,Aradi Viola,AV
+11b/122,Fakultáció,4,Huszár Izabella,HI
 12a,Magyar nyelv és irodalom,4,Dudás Tamás,DT
 12a/011,Matematika,4,Pataki Jenőné,PJ
 12a/012,Matematika,4,Kovács Elemér,KE
@@ -117,8 +117,8 @@
 12a,Média,1,Baráth Anna,BA
 12a,Testnevelés,5,Erőss Zoltán,EZ
 12a,Osztályfőnöki,1,Erőss Zoltán,EZ
-12a/111,Fakultáció I,4,Madaras Janka,MJ
-12a/112,Fakultáció II,4,Erőss Zoltán,EZ
+12a/131,Fakultáció,4,Madaras Janka,MJ
+12a/132,Fakultáció,4,Erőss Zoltán,EZ
 12b,Magyar nyelv és irodalom,4,Pócsik Erzsébet,PE
 12b/011,Matematika,4,Balogh Gáspár,BG
 12b/012,Matematika,4,Végh Aladár,VA
@@ -130,5 +130,5 @@
 12b,Média,1,Baráth Anna,BA
 12b,Testnevelés,5,Aradi Viola,AV
 12b,Osztályfőnöki,1,Madaras Janka,MJ
-12b/111,Fakultáció I,4,Madaras Janka,MJ
-12b/112,Fakultáció II,4,Erőss Zoltán,EZ
+12b/131,Fakultáció,4,Madaras Janka,MJ
+12b/132,Fakultáció,4,Erőss Zoltán,EZ

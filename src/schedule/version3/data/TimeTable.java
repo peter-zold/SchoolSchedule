@@ -14,13 +14,6 @@ public class TimeTable {
         int[] randomHoursPerDay = null;
 
         Relationships relationships = new Relationships();
-        System.out.println(relationships.getClassesOfGradeLessons().toString());
-        relationships.putPlaceOfGradeLessons("000", 4);
-        System.out.println(relationships.getPlaceOfGradeLessons().toString());
-        relationships.putPlaceOfGradeLessons("000", 3);
-        System.out.println(relationships.getPlaceOfGradeLessons().toString());
-        relationships.putPlaceOfGradeLessons("000", 6);
-        System.out.println(relationships.getPlaceOfGradeLessons().toString());
         // Összes osztály lyukasóráinak előállítása
         for (int i = 0; i < classes.size(); i++) {
             randomHoursPerDay = siteOfHoleInTimeTable(classes.get(i));
@@ -69,7 +62,7 @@ public class TimeTable {
             randomTimeTable[i] = lessonsInTimeTable(clonedLessons, classes.get(i).getGradeLessons(), siteOfHoles[i], classes.get(i).getLessonsPerWeek(), relationships);
 
             //Tesztelés
-            printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay, classes.get(i));
+            // printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay, classes.get(i));
         }
 
 

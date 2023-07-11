@@ -88,8 +88,8 @@
 11a/012,Digitális kultúra,2,Baráth Anna,BA
 11a,Testnevelés,5,Erőss Zoltán,EZ
 11a,Osztályfőnöki,1,Tardosi Piroska,TP
-11a/121,Fakultáció I,4,Aradi Viola,AV
-11a/122,Fakultáció II,4,Huszár Izabella,HI
+11a/121,Fakultáció,4,Aradi Viola,AV
+11a/122,Fakultáció,4,Huszár Izabella,HI
 11b,Magyar nyelv és irodalom,4,Pócsik Erzsébet,PE
 11b/011,Matematika,3,Balogh Gáspár,BG
 11b/012,Matematika,3,Végh Aladár,VA

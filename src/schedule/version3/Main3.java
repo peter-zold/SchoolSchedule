@@ -99,7 +99,7 @@ public class Main3 {
             generation++;
 
             // print timetable
-            //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
+            printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
             // break
             if (generation > 2000) {

@@ -26,7 +26,7 @@ public class TimetableTxtToLessonArray {
         int row2 = 0;
 
         //You can change which timetable to turn into a Lesson array here.
-        String filePath = "src\\schedule\\displayandtxtanddatabase\\timetable.txt";
+        String filePath = "src\\schedule\\displayandtxt\\timetable.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             while (line != null) {

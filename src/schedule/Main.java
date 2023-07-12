@@ -3,6 +3,7 @@ package schedule;
 import schedule.data.Classes;
 import schedule.data.DataScan;
 import schedule.data.Lesson;
+import schedule.database.SQLCommands;
 import schedule.displayandtxt.TimetableDataInputAndOutput;
 import schedule.displayandtxt.TimetableDisplay;
 import schedule.displayandtxt.TimetableTxtToLessonArray;
@@ -120,9 +121,7 @@ public class Main {
         System.out.println("Found solution in " + generation + " generations");
         System.out.println();
 
-        //egy meghívás legyen, egy osztályba
-
-
+        //-----------------------------------------------------------------------------
         //Timetable display, database connection and txt maker - Simon
         TimetableDataInputAndOutput timetableDataInputAndOutput = TimetableDataInputAndOutput.getInstance();
         //transmits the necessary data for the display of the timetable, to the databases and the txtmakers - Simon
@@ -145,6 +144,12 @@ public class Main {
         //quick timetable for testing, will leave it here if you need a way to quickly display the results - Simon
         //printTimetable(dataScan.getAllClasses(),population.getFittest(0));
         //System.out.println(population.getFittest(0).getFitness());
+
+        //-----------------------------------------------------------------------------
+        //Java database connection - jdbc + MySQL - Simon
+        SQLCommands sqlCommands = new SQLCommands();
+        sqlCommands.createConnectionStart();
+
     }
 
     public static void printTimeTable(List<Classes> allClasses, Individual individual) {

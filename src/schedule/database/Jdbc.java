@@ -1,20 +1,33 @@
 package schedule.database;
 
+import schedule.displayandtxt.TimetableDataInputAndOutput;
+
 import java.sql.*;
 import java.util.Scanner;
 
 public class Jdbc {
     //This class creates a Jdbc and checks whether the database already exists or not, if not it automatically creates it.
-
+    private static volatile Jdbc instance = null;
     String user ="root";
     String password = "Karakter1986!";
+
+    public static Jdbc getInstance() {
+        if (instance == null) {
+            synchronized (Jdbc.class) {
+                if (instance == null) {
+                    instance = new Jdbc();
+                }
+            }
+        }
+        return instance;
+    }
 
     Jdbc() {
         //constructor makes sure the database is created everytime this class is initialized, if it already exists it does not do anything.
         initialize();
     }
 
-    private void initialize() {
+    public void initialize() {
         boolean connectionTestResult = false;
         boolean databaseAlreadyExist = false;
         boolean databaseCreated = false;

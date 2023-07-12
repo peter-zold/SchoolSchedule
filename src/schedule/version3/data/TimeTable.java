@@ -30,7 +30,7 @@ public class TimeTable {
 
             randomTimeTable[i] = lessonsInTimeTable(clonedLessons, classes.get(i).getGradeLessons(), siteOfHoles[i], relationships);
             //Tesztelés
-             printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay[i], classes.get(i));
+            //printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay[i], classes.get(i));
         }
 
         return randomTimeTable;

@@ -21,16 +21,21 @@ public class Population {
     private Individual[] population;
     private double populationFitness = -1;
 
+    int[] allClassesGrades;
+
     /**
-     * Initializes blank population of individuals
+     * Initializes blank population of individuals for the first time
      *
      * @param populationSize
      *            The number of individuals in the population
      */
-    public Population(int populationSize) {
+    public Population(int populationSize, int[] allClassesGrades) {
         // Initial population
         this.population = new Individual[populationSize];
+        this.allClassesGrades = allClassesGrades;
     }
+
+
 
     /**
      * Initializes population of individuals
@@ -40,8 +45,9 @@ public class Population {
      * @param allTheClasses
      *            classes from input data
      */
-    public Population(int populationSize, List<Classes> allTheClasses) {
+    public Population(int populationSize, List<Classes> allTheClasses, int[] allClassesGrades) {
         // Initialize the population as an array of individuals
+        this.allClassesGrades = allClassesGrades;
         this.population = new Individual[populationSize];
 
         // Create each individual in turn
@@ -162,5 +168,9 @@ public class Population {
             population[index] = population[i];
             population[i] = a;
         }
+    }
+
+    public int[] getAllClassesGrades(){
+        return this.allClassesGrades;
     }
 }

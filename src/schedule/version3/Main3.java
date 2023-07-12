@@ -3,6 +3,8 @@ package schedule.version3;
 import schedule.version3.data.Classes;
 import schedule.version3.data.DataScan;
 
+import javax.xml.crypto.Data;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -64,7 +66,8 @@ public class Main3 {
 
         // Initialize population using scanned data
         // Evaluating fitness of individuals during construction
-        Population population = ga.initPopulation(dataScan.getAllClasses());
+        Population population = ga.initPopulation(dataScan.getAllClasses(), dataScan.getAllClassesGrades());
+
         //printTimeTable(dataScan.getAllClasses(), population.getFittest(0));
 
         // Keep track of current generation

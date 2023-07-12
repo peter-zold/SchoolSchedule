@@ -1,6 +1,7 @@
 package schedule.version3;
 
 import schedule.version3.data.Classes;
+import schedule.version3.data.DataScan;
 
 import java.util.List;
 
@@ -68,9 +69,9 @@ public class GeneticAlgorithm {
      * @param allTheClasses The classes arrayList from input data
      * @return population The initial population generated
      */
-    public Population initPopulation(List<Classes> allTheClasses) {
+    public Population initPopulation(List<Classes> allTheClasses, int[] allClassesGrades) {
         // Initialize population
-        Population population = new Population(this.populationSize, allTheClasses);
+        Population population = new Population(this.populationSize, allTheClasses, allClassesGrades);
         return population;
     }
 
@@ -104,7 +105,7 @@ public class GeneticAlgorithm {
      */
     public Individual selectParent(Population population) {
         // Create tournament
-        Population tournament = new Population(this.tournamentSize);
+        Population tournament = new Population(this.tournamentSize, population.getAllClassesGrades());
 
         // Add random individuals to the tournament
         population.shuffle();
@@ -132,7 +133,7 @@ public class GeneticAlgorithm {
      */
     public Population crossoverPopulation(Population population) {
         // Create new population
-        Population newPopulation = new Population(population.size());
+        Population newPopulation = new Population(population.size(), population.getAllClassesGrades());
 
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
@@ -145,9 +146,9 @@ public class GeneticAlgorithm {
                 Individual parent2 = selectParent(population);
 
                 // Initialize 10 offsprings. Validity of number 10 is up to more testing
-                Population offspringsPop = new Population(10);
+                Population offspringsPop = new Population(10, population.getAllClassesGrades());
                 for (int i = 0; i < 10; i++) {
-                    Individual offspring = Individual.breedOffspring(parent1, parent2);
+                    Individual offspring = Individual.breedOffspring(parent1, parent2, population.getAllClassesGrades());
                     offspring.setFitness(offspring.calcFitness());
                     offspringsPop.setIndividual(i, offspring);
                 }
@@ -186,7 +187,7 @@ public class GeneticAlgorithm {
      */
     public Population mutatePopulation(Population population) {
         // Initialize new population
-        Population newPopulation = new Population(this.populationSize);
+        Population newPopulation = new Population(this.populationSize, population.getAllClassesGrades());
         // Loop over current population by fitness
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             // choose and individual and clone it
@@ -199,15 +200,15 @@ public class GeneticAlgorithm {
                     // Does this class timetable need mutation?
                     if (this.mutationRate > Math.random()) {
                         // Get two colliding classes swap
-                        individual.mutateTwoCollisions(classIndex);
+                        individual.mutateTwoCollisions(classIndex, population.allClassesGrades);
+                    }
+                    if (this.mutationRate > Math.random()*2) {
+                        // Get one colliding class swap with a random
+                        individual.mutateOneCollision(classIndex, population.allClassesGrades);
                     }
                     if (this.mutationRate > Math.random()*3) {
-                        // Get one colliding class swap with a random
-                        individual.mutateOneCollision(classIndex);
-                    }
-                    if (this.mutationRate > Math.random()*6) {
                         // Get two random classes swap
-                        individual.mutateRandom(classIndex);
+                        individual.mutateRandom(classIndex, population.allClassesGrades);
                     }
                 }
                 // if mutated clone is fitter, swap it with the original

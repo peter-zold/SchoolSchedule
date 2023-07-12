@@ -89,7 +89,6 @@ public class TimeTable {
             sumOfHours = 0;
 
         } while (randomHoursPerDay[4] < hoursperDayRounded - 1 || hoursperDayRounded + 1 < randomHoursPerDay[4]);
-        System.out.println(Arrays.toString(randomHoursPerDay));
         return randomHoursPerDay;
     }
 

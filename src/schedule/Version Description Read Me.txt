@@ -1,0 +1,80 @@
+Version 1
+
+- The data is read from txt.
+- The data used for testing are adapted to the Hungarian education system.
+- The base of the whole program is a genetic algorithm, which works with random timetables, and 
+  uses mutations and crossowers to find the correct timetable.
+- In the created timetable,for one class, in one day, cannot have two of the same type of lesson.
+- In the created timetable, it cannot happen that a teacher goes to teach in 
+  more than one place at the same time.
+- The finished timetable is saved in txt.
+- The number of daily Lessons for a class is determined randomly (under certain conditions).
+- None of the class has hole lesson.
+- The timetable cannot handle multiple groups in classes
+- The zeroth lesson is built in, but the program doesn't put any lessons there.
+
+- Az adatok beolvasása txt-ből történik.
+- A teszteléshez használt adatok a magyar oktatási rendszerhez vannak igazítva.
+- Az egész program motorja egy genetikus algoritmus, ami egy véletlen órarendből, mutációk és
+  kereszteződések segítségével találja meg a megfelelő órarendet.
+- A létrejövő órarendben egy osztálynak, egy nap, nem lehet ugyanolyan fajta órából kettő.
+- A létrejövő órarendben nem fordulhat elő az, hogy egy tanár egy időpontban több helyre megy tanítani.
+- Az elkészült órarend .txt formátumban mentődik el.
+- Véletlenszerűen alakul ki(bizonyos feltételek mellett), hogy egy osztálynak egy nap hány órája van.
+- Napközben egy osztálynak sincs lyukas órája.
+- Az órarend nem tud még csoportbontást kezelni.
+- Be van építve a nulladik óra, de jelenleg oda nem kerülhet még óra.
+
+
+Version 2
+
+- The data is read from txt.
+- The data used for testing are adapted to the Hungarian education system.
+- The base of the whole program is a genetic algorithm, which works with random timetables, and 
+  uses mutations and crossowers to find the correct timetable.
+- In the created timetable,for one class, in one day, cannot have two of the same type of lesson.
+- In the created timetable, it cannot happen that a teacher goes to teach in 
+  more than one place at the same time.
+- The number of daily Lessons for a class is determined randomly (under certain conditions).
+- None of the class has hole lesson.
+- The timetable can handle class-level grouping.
+- The zeroth lesson is built in, but the program doesn't put any lessons there.
+
+- Az adatok beolvasása txt-ből történik.
+- A teszteléshez használt adatok a magyar oktatási rendszerhez vannak igazítva.
+- Az egész program motorja egy genetikus algoritmus, ami egy véletlen órarendből, mutációk és
+  kereszteződések segítségével találja meg a megfelelő órarendet.
+- A létrejövő órarendben egy osztálynak, egy nap, nem lehet ugyanolyan fajta órából kettő.
+- A létrejövő órarendben nem fordulhat elő az, hogy egy tanár egy időpontban több helyre megy tanítani.
+- Véletlenszerűen alakul ki(bizonyos feltételek mellett), hogy egy osztálynak egy nap hány órája van.
+- Napközben egy osztálynak sincs lyukas órája.
+- Az órarend tud osztályszintű csoportbontást kezelni.
+- Be van építve a nulladik óra, de jelenleg oda nem kerülhet még óra.
+
+
+Version 3
+
+- The data is read from txt.
+- The data used for testing are adapted to the Hungarian education system.
+- The base of the whole program is a genetic algorithm, which works with random timetables, and
+  uses mutations and crossowers to find the correct timetable.
+- In the created timetable,for one class, in one day, cannot have two of the same type of lesson.
+- In the created timetable, it cannot happen that a teacher goes to teach in
+  more than one place at the same time.
+- The number of daily Lessons for a class is determined randomly (under certain conditions).
+- None of the class has hole lesson.
+- The timetable can handle class-level grouping.
+- The timetable can handle grade-level grouping.
+- The zeroth lesson is built in, but the program doesn't put any lessons there.
+
+- Az adatok beolvasása txt-ből történik.
+- A teszteléshez használt adatok a magyar oktatási rendszerhez vannak igazítva.
+- Az egész program motorja egy genetikus algoritmus, ami egy véletlen órarendből, mutációk és
+  kereszteződések segítségével találja meg a megfelelő órarendet.
+- A létrejövő órarendben egy osztálynak, egy nap, nem lehet ugyanolyan fajta órából kettő.
+- A létrejövő órarendben nem fordulhat elő az, hogy egy tanár egy időpontban több helyre megy tanítani.
+- Véletlenszerűen alakul ki(bizonyos feltételek mellett), hogy egy osztálynak egy nap hány órája van.
+- Napközben egy osztálynak sincs lyukas órája.
+- Az órarend tud osztályszintű csoportbontást kezelni.
+- Az órarend tud évfolyamszintű csoportbontást kezelni.
+- Be van építve a nulladik óra, de jelenleg oda nem kerülhet még óra.

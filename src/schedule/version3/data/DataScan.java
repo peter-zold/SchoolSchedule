@@ -39,7 +39,7 @@ public class DataScan {
 
                     if (dataOfSubject[0].contains(allClasses.get(i).getClassName())) {
                         String groupID = dataOfSubject[0].substring(allClasses.get(i).getClassName().length());
-                        if (groupID.length() == 4 && groupID.charAt(1) != '0'){
+                        if (groupID.length() == 5 && groupID.charAt(1) != '0'){
                             Relationships.putClassesOfGradeLessons(groupID.substring(1,3),i);
                             Relationships.gradeLessonPerWeek.put(groupID.substring(1,3), Integer.parseInt(dataOfSubject[2]));
                             allClasses.get(i).addGradeLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0, Integer.parseInt(dataOfSubject[2])));
@@ -72,7 +72,7 @@ public class DataScan {
         }
 
         // Az adatok tesztelése
-        testData();
+        // testData();
 
 
     }

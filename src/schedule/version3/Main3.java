@@ -29,8 +29,16 @@ import java.util.List;
 // as per our email discussion with the project manager.
 
 // Péter - Roland
-// Csoportbontás megvalósításán való elmélkedés, technikai megvalósítás kigondolása, majd megvalósítása
-// Annak felosztása, hogy ki mit azt majd akkor, ha már jobban látjuk, hogy mit kell.
+// version4?
+//- lehessen megadni hogy valami csak nulladik órában lehessen vagy 7.-8.-ban
+//- tanári idő szabályozás - elosztás 4 napra, 3-ra
+//
+//version 5?
+//- dupla óra
+//
+//version6?
+//- lehessen nulladikat megadni
+//- mutáció áttehessen egy utolsó órát egy másik nap végére. (elejére, ha megengedett a nulladik óra)
 
 /*******************************************************************
  * TOVÁBBI MEGOLDANDÓ FELADATOK MÉG A PROJEKT KAPCSÁN
@@ -40,9 +48,6 @@ import java.util.List;
  *  - Lehessen beállítani, hogy lehessen-e nulladik óra, vagy nem.
  *  - Mutációt módosítani úgy, hogy lehessen egy órá valamelyik nap végére tenni és helyére valamelyik nap végéről órát betenni
  *  - Fitness függvény módosítása speciális terem ütközések figyelembevételére (2 infó terem van, de 3 infó óra egyszerre)
- * - Simon ötlete: teacher competency, ének zene tanár ne tarthasson fizika órát, minden tanárnak legyen egy kompetencia array-e
- *    ötlet: talán külön classben és ez a class lenne példányosítva a Teacher calss-en belül, ugyanugy, mint a Techer a Lessonban jelenleg
- *    csak a competencinek megfelelő órákat tarthasson egy tanár
  *  - FRONTENDET ÉPÍTENI
  *  - Ha megvan a frontend akkor egy olyan felület létrehozása (is) ahol az adat bevitel megtörténik
  *       // és ezek elmentése egy adatbázisba, majd a DataScan mdosítása, hogy a beolvasás az adatbázisból történjen.

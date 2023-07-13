@@ -6,16 +6,14 @@ public class Lesson {
     private int valueOfFreeness;
     private String groupID;
     private int howManyPart;
+    private int hoursPerWeek;
 
-    public Lesson(String nameOfLesson, String nameOfTeacher, int valueOfFreeness){
+
+    public Lesson(String groupName, String nameOfLesson, String nameOfTeacher, int valueOfFreeness, int hoursPerWeek) {
         this.nameOfLesson = nameOfLesson;
         this.teacher = new Teacher(nameOfTeacher);
         this.valueOfFreeness = valueOfFreeness;
-    }
-    public Lesson(String groupName, String nameOfLesson, String nameOfTeacher, int valueOfFreeness) {
-        this.nameOfLesson = nameOfLesson;
-        this.teacher = new Teacher(nameOfTeacher);
-        this.valueOfFreeness = valueOfFreeness;
+        this.hoursPerWeek = hoursPerWeek;
         if (groupName.equals("")) {
             this.groupID = "000";
 
@@ -31,6 +29,9 @@ public class Lesson {
             this.groupID = groupName.substring(1,4);
             this.howManyPart = Integer.parseInt(groupName.substring(groupName.length()-1));
         }
+    }
+    void setGrouId(String groupID){
+        this.groupID = groupID;
     }
 
     public int getHowManyPart() {
@@ -53,6 +54,15 @@ public class Lesson {
         return groupID;
     }
 
+
+    public void setGroupID(String groupID) {
+        this.groupID = groupID;
+    }
+
+    public int getHoursPerWeek() {
+        return hoursPerWeek;
+    }
+
     public void setValueOfFreeness(int valueOfFreeness) {
         this.valueOfFreeness = valueOfFreeness;
     }
@@ -61,6 +71,6 @@ public class Lesson {
     @Override
     public String toString() {
 
-        return " | " + nameOfLesson + " | " + teacher + "| " + valueOfFreeness + " |" + groupID + " |" + howManyPart;
+        return " | " + nameOfLesson + " | " + teacher + "| " + valueOfFreeness + " |" + groupID;
     }
 }

@@ -7,7 +7,8 @@
 9a/022,Német nyelv,3,Maros Vanda,MV
 9a,Történelem,2,Nagyné Kis Gizella,NKG
 9a,Biológia,3,Madaras Janka,MJ
-9a,Fizika,2,Végh Aladár,VA
+9a/1012,Fizika,2,dr.Simon Géza,VA
+9a/1022,Fizika,2,Papp János,PJ
 9a,Kémia,2,Kovács Elemér,KE
 9a,Földrajz,2,Madaras Janka,MJ
 9a,Ének-zene,1,Csabai Róbert,CR
@@ -26,7 +27,8 @@
 9b/022,Német nyelv,3,Maros Vanda,MV
 9b,Történelem,2,Nagyné Kis Gizella,NKG
 9b,Biológia,3,Madaras Janka,MJ
-9b,Fizika,2,dr.Simon Géza,SG
+9b/1012,Fizika,2,dr.Simon Géza,SG
+9b/1022,Fizika,2,Papp János,PJ
 9b,Kémia,2,Kovács Elemér,KE
 9b,Földrajz,2,Madaras Janka,MJ
 9b,Ének-zene,1,Csabai Róbert,CR

@@ -19,6 +19,9 @@ public class TimeTable {
             siteOfHoles[i] = calculatesiteOfFreePeriod(randomHoursPerDay[i]);
             siteOfReservedPlaces[i] = new HashSet<>(siteOfHoles[i]);
         }
+        // Ha van több ugyanolyan kódú évfolyam csoportbontás, akkor annak meghatározása, hogy melyik órák lesznek párhuzamosan
+        gradeLessonsInSomeTimeSlot(classes, relationships);
+        System.out.println(classes.get(0).getGradeLessons());
 
         // a letárolt kapcsolatokon végigmegyünk és mindegyik évfolyam órának meghatározzuk a helyeit
         findPlacesOfGradeLessons(relationships, siteOfReservedPlaces);
@@ -30,13 +33,124 @@ public class TimeTable {
 
             randomTimeTable[i] = lessonsInTimeTable(clonedLessons, classes.get(i).getGradeLessons(), siteOfHoles[i], relationships);
             //Tesztelés
-            //printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay[i], classes.get(i));
+            printTimeTable(randomTimeTable[i], siteOfHoles[i], randomHoursPerDay[i], classes.get(i));
         }
 
         return randomTimeTable;
     }
 
+    private static void gradeLessonsInSomeTimeSlot(List<Classes> classes, Relationships relationships) {
+        Set<String> mustremovingCodes = new HashSet<>();
+        for (int i = 0; i < classes.size(); i += 2) {
+            List<Lesson> more = areThereMore(classes.get(i), relationships);
+            mustremovingCodes.addAll(more.stream().map(l -> l.getGroupID().substring(0, 2)).toList());
+            makeLessonList(more, relationships, classes.get(i), classes);
+
+        }
+        Iterator iterator = mustremovingCodes.iterator();
+        while (iterator.hasNext()) {
+            String remove = (String) iterator.next();
+            relationships.getClassesOfGradeLessons().remove(remove);
+            relationships.getPlaceOfGradeLessons().remove(remove);
+        }
+
+    }
+
+    private static void makeLessonList(List<Lesson> more, Relationships relationships, Classes oneClass, List<Classes> classes) {
+        Collections.shuffle(more);
+        Set<Integer> usedIndexes = new HashSet<>();
+        List<Lesson> lessonsSameTimeslot = new ArrayList<>();
+        int actualIndex = 0;
+        while (actualIndex < more.size()) {
+            Set<Character> chars = new HashSet<>();
+            for (int j = 0; j < more.get(actualIndex).getHowManyPart() - 1; j++) {
+                for (int i = actualIndex; i < more.size(); i++) {
+
+                    if (!usedIndexes.contains(i) && !chars.contains(more.get(i).getGroupID().charAt(2))) {
+                        chars.add(more.get(i).getGroupID().charAt(2));
+                        lessonsSameTimeslot.add(more.get(i));
+                        usedIndexes.add(i);
+                    }
+
+                }
+
+            }
+            lessonsSameTimeslot.sort((p1, p2) -> p1.getGroupID().compareTo(p2.getGroupID()));
+            if (!lessonsSameTimeslot.isEmpty()) {
+                setGradecodes(lessonsSameTimeslot, relationships, oneClass, classes);
+                System.out.println(lessonsSameTimeslot.size());
+                System.out.println(lessonsSameTimeslot);
+            }
+            lessonsSameTimeslot.clear();
+            chars.clear();
+            actualIndex++;
+        }
+    }
+
+    private static void setGradecodes(List<Lesson> lessonsSameTimeslot, Relationships relationships, Classes oneClass, List<Classes> classes) {
+        List<Integer> codes = relationships.getCodes();
+        Collections.sort(codes);
+        String actualcode = lessonsSameTimeslot.get(0).getGroupID().substring(0, 2);
+        int nextCode = codes.get(codes.size() - 1) + 1;
+        String nextCodeInString = String.valueOf(nextCode);
+
+        List<Integer> tmpList = relationships.getClassesOfGradeLessons().get(lessonsSameTimeslot.get(0).getGroupID().substring(0, 2));
+        relationships.putInstanceClassesOfGradeLessons(nextCodeInString, tmpList);
+
+        relationships.getGradeLessonPerWeek().put(nextCodeInString, 1);
+
+        relationships.addInstanceCodes(nextCode);
+
+        for (int i = 0; i < lessonsSameTimeslot.size(); i++) {
+            String lastCharacter = lessonsSameTimeslot.get(i).getGroupID().substring(2);
+
+            String groupName = "/" + nextCodeInString + lastCharacter + lessonsSameTimeslot.get(i).getHoursPerWeek();
+            String nameOfLesson = lessonsSameTimeslot.get(i).getNameOfLesson();
+            String nameOfTeacher = lessonsSameTimeslot.get(i).getTeacher().nameOfTeacher;
+            int valueOfFreeness = 0;
+            int hoursPerWeek = 1;
+
+
+            List<Integer> relationsList = relationships.getClassesOfGradeLessons().get(actualcode);
+
+            for (int j = 0; j < relationsList.size(); j++) {
+                classes.get(relationsList.get(j)).getGradeLessons().add(new Lesson(groupName, nameOfLesson, nameOfTeacher, valueOfFreeness, hoursPerWeek));
+                // törölni ha megegyezik pár paraméter
+                for (int k = 0; k < classes.get(relationsList.get(j)).getGradeLessons().size(); k++) {
+                    if (classes.get(relationsList.get(j)).getGradeLessons().get(k).getGroupID() == lessonsSameTimeslot.get(i).getGroupID() && classes.get(relationsList.get(j)).getGradeLessons().get(k).getNameOfLesson() == lessonsSameTimeslot.get(i).getNameOfLesson()) {
+                        classes.get(relationsList.get(j)).getGradeLessons().remove(k);
+                    }
+
+                }
+            }
+        }
+    }
+
+    private static List<Lesson> areThereMore(Classes classes, Relationships relationships) {
+        List<Lesson> more = new ArrayList<>();
+        Map<String, Lesson> filter = new HashMap<>();
+        System.out.println(classes.getGradeLessons());
+        for (int j = 0; j < classes.getGradeLessons().size(); j++) {
+            if (filter.containsKey(classes.getGradeLessons().get(j).getGroupID())) {
+                more.add(classes.getGradeLessons().get(j));
+                more.add(filter.get(classes.getGradeLessons().get(j).getGroupID()));
+            } else {
+                filter.put(classes.getGradeLessons().get(j).getGroupID(), classes.getGradeLessons().get(j));
+            }
+        }
+        List<Lesson> result = new ArrayList<>(more);
+        for (int i = 0; i < more.size(); i++) {
+            int hoursPerWeek = more.get(i).getHoursPerWeek();
+            System.out.println(hoursPerWeek);
+            for (int j = 0; j < hoursPerWeek - 1; j++) {
+                result.add(more.get(i));
+            }
+        }
+        return result;
+    }
+
     private static void findPlacesOfGradeLessons(Relationships relationships, Set<Integer>[] siteOfReservedPlaces) {
+        System.out.println(relationships.getClassesOfGradeLessons());
         Iterator iterator = relationships.getClassesOfGradeLessons().entrySet().iterator();
 
         while (iterator.hasNext()) {
@@ -44,7 +158,7 @@ public class TimeTable {
             String code = (String) dataOfGradeLesson.getKey();
             dataOfGradeLesson.getValue();
             List<Integer> gradeClassList = (ArrayList) dataOfGradeLesson.getValue();
-            int hourPerWeek = Relationships.gradeLessonPerWeek.get(code);
+            int hourPerWeek = relationships.getGradeLessonPerWeek().get(code);
             Set<Integer> badTimeSlots = new HashSet<>();
 
             for (int j = 0; j < gradeClassList.size(); j++) {
@@ -116,7 +230,7 @@ public class TimeTable {
             int hole = (int) iterator.next();
             int valueOfFreeness = calculateValueOfFreeness(hole);
             List<Lesson> holes = new ArrayList<>();
-            holes.add(new Lesson("/000", "Free Period", "none", valueOfFreeness));
+            holes.add(new Lesson("/000", "Free Period", "none", valueOfFreeness, 0));
             classLessons[hole] = holes;
         }
 
@@ -124,6 +238,8 @@ public class TimeTable {
         for (int i = 0; i < gradeLessons.size(); i++) {
 
             String code = gradeLessons.get(i).getGroupID().substring(0, 2);
+            System.out.println(gradeLessons.get(i).getNameOfLesson() + " " + code);
+            System.out.println(relationships.getPlaceOfGradeLessons());
             for (int j = 0; j < relationships.getPlaceOfGradeLessons().get(code).size(); j++) {
                 List<Lesson> subject = new ArrayList<>();
                 int place = relationships.getPlaceOfGradeLessons().get(code).get(j);
@@ -164,7 +280,7 @@ public class TimeTable {
                             for (int k = 0; k < lessons.get(tempIndexOfLessons).getHowManyPart() - 1; k++) {
                                 for (int j = indexOflessons; j < lessons.size(); j++) {
 
-                                    if (!indexes.contains(j) && lessons.get(tempIndexOfLessons).getGroupID().charAt(1) == lessons.get(j).getGroupID().charAt(1) && lessons.get(j).getGroupID().charAt(2) !='0' && whichGroup.add(lessons.get(j).getGroupID().charAt(2))) {
+                                    if (!indexes.contains(j) && lessons.get(tempIndexOfLessons).getGroupID().charAt(1) == lessons.get(j).getGroupID().charAt(1) && lessons.get(j).getGroupID().charAt(2) != '0' && whichGroup.add(lessons.get(j).getGroupID().charAt(2))) {
                                         subject.add(lessons.get(j));
                                         indexes.add(j);
                                         whichGroup.add(lessons.get(j).getGroupID().charAt(2));

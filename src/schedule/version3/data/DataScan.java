@@ -42,12 +42,12 @@ public class DataScan {
                         if (groupID.length() == 4 && groupID.charAt(1) != '0'){
                             Relationships.putClassesOfGradeLessons(groupID.substring(1,3),i);
                             Relationships.gradeLessonPerWeek.put(groupID.substring(1,3), Integer.parseInt(dataOfSubject[2]));
-                            allClasses.get(i).addGradeLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0));
+                            allClasses.get(i).addGradeLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0, Integer.parseInt(dataOfSubject[2])));
                         } else {
 
                             for (int j = 0; j < Integer.parseInt(dataOfSubject[2]); j++) {
 
-                                allClasses.get(i).addLessons((new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0)));
+                                allClasses.get(i).addLessons(new Lesson(groupID, dataOfSubject[1], dataOfSubject[3], 0, Integer.parseInt(dataOfSubject[2])));
                             }
                         }
                         if (nameOfLessons.add(dataOfSubject[1])) {
